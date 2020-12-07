@@ -1,6 +1,6 @@
 /* loading CSS in Javascript to automatically inject new css
 in browser's memory without having to refresh the browser.
-Developement performances and practical benefits */
+Development performance and practical benefits */
 import "../styles/styles.css";
 
 /* lazy loading for images.
