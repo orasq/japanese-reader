@@ -1,0 +1,17 @@
+.form {
+  &__login {
+    & > * + * {
+      margin-left: 15px;
+    }
+  }
+
+  &__login-input {
+    max-width: 150px;
+    padding: 5px 10px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 0.9rem;
+  }
+}

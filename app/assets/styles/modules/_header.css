@@ -1,0 +1,18 @@
+.header {
+  background-color: lime;
+
+  &__wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: 30px 15px;
+    width: 100%;
+    max-width: $wrapper_size;
+  }
+
+  &__logo {
+    font-size: 2rem;
+  }
+}

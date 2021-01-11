@@ -1,3 +1,6 @@
 /* COLORS */
-$mainBlue: #2f5572;
-$mainOrange: #d59541;
+
+$header_color: #c2a4a4;
+
+/* SIZES */
+$wrapper_size: 1200px;
