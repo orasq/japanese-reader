@@ -20,7 +20,7 @@ const postCSSPlugins = [
   require("postcss-simple-vars"),
   require("postcss-nested"),
   require("postcss-hexrgba"),
-  require("autoprefixer"),
+  require("autoprefixer")
 ];
 
 /* what should webpack do
@@ -32,9 +32,9 @@ let cssConfig = {
     "css-loader?url=false",
     {
       loader: "postcss-loader",
-      options: { postcssOptions: { plugins: postCSSPlugins } },
-    },
-  ],
+      options: { postcssOptions: { plugins: postCSSPlugins } }
+    }
+  ]
 };
 
 /* create css and js tags in html files,
@@ -42,13 +42,13 @@ and load last version of the files */
 
 let pages = fse
   .readdirSync("./app")
-  .filter((file) => {
+  .filter(file => {
     return file.endsWith(".html");
   })
-  .map((page) => {
+  .map(page => {
     return new HtmlWebpackPlugin({
       filename: page,
-      template: `./app/${page}`,
+      template: `./app/${page}`
     });
   });
 
@@ -61,8 +61,20 @@ let config = {
   plugins: pages,
   /* modules to use */
   module: {
-    rules: [cssConfig],
-  },
+    rules: [
+      cssConfig,
+      {
+        test: /\.js$/,
+        exclude: /(node_modules)/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-react", "@babel/preset-env"]
+          }
+        }
+      }
+    ]
+  }
 };
 
 /* 'dev' tasks
@@ -75,7 +87,7 @@ if (currentTask == "dev") {
   config.output = {
     filename: "bundled.js",
     /* webpack requires an absolute path -> using nodeJS package */
-    path: path.resolve(__dirname, "app"),
+    path: path.resolve(__dirname, "app")
   };
   /* webpack-dev-server gives automatic browser refresh */
   config.devServer = {
@@ -87,8 +99,7 @@ if (currentTask == "dev") {
     contentBase: path.join(__dirname, "app"),
     hot: true /* allows webpack to inject css and js in browser memory without reload/refresh */,
     port: 3000,
-    host:
-      "0.0.0.0" /* allows devices on same network to be able to access webpack dev server */,
+    host: "0.0.0.0" /* allows devices on same network to be able to access webpack dev server */
   };
   config.mode = "development";
 }
@@ -108,17 +119,6 @@ class RunAfterCompile {
 related config */
 
 if (currentTask == "build") {
-  /* babel config */
-  config.module.rules.push({
-    test: /\.js$/,
-    exclude: /(node_modules)/,
-    use: {
-      loader: "babel-loader",
-      options: {
-        presets: ["@babel/preset-env"],
-      },
-    },
-  });
   /* MiniCssExtractPlugin loader */
   cssConfig.use.unshift(MiniCssExtractPlugin.loader);
   /* minify css file */
@@ -129,12 +129,12 @@ if (currentTask == "build") {
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
     /* webpack requires an absolute path */
-    path: path.resolve(__dirname, "docs"),
+    path: path.resolve(__dirname, "docs")
   };
   config.mode = "production";
   /* create separate files for project (code we write) and vendors (lodash, lazysizes, ...) js code */
   config.optimization = {
-    splitChunks: { chunks: "all" },
+    splitChunks: { chunks: "all" }
   };
   config.plugins.push(
     new CleanWebpackPlugin(),
