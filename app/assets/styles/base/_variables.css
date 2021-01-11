@@ -1,6 +1,13 @@
 /* COLORS */
+$color_bg: #e5f8f9;
+$color_dark: #1f4e5f;
+$color_mid: #79a8a9;
+$color_light: #c8dedf;
 
-$header_color: #c2a4a4;
+$color_header: #1f4e5f;
 
 /* SIZES */
 $wrapper_size: 1200px;
+
+/* BORDER RADIUS */
+$radius_btn: 5px;

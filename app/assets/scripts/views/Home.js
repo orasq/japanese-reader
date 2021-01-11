@@ -1,17 +1,20 @@
 import React, { useEffect } from "react";
 
 // components import
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import Page from "../components/Page";
+import BookCard from "../components/BookCard";
 
 function Home() {
   return (
-    <>
-      <Header />
-      <Page>Hey</Page>
-      <Footer />
-    </>
+    <Page>
+      <div className="bookcard__wrap">
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+        <BookCard />
+      </div>
+    </Page>
   );
 }
 

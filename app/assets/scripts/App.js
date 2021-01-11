@@ -13,8 +13,20 @@ import ReactDOM from "react-dom";
 
 // views import
 import Home from "./views/Home";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
-ReactDOM.render(<Home />, document.querySelector("#app"));
+function App() {
+  return (
+    <>
+      <Header />
+      <Home />
+      <Footer />
+    </>
+  );
+}
+
+ReactDOM.render(<App />, document.querySelector("#app"));
 
 /* allows webpack's hot modules replacements */
 if (module.hot) {

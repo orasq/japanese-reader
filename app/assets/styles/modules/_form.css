@@ -1,7 +1,7 @@
 .form {
   &__login {
     & > * + * {
-      margin-left: 15px;
+      margin-left: 10px;
     }
   }
 
@@ -10,7 +10,7 @@
     padding: 5px 10px;
 
     border: none;
-    border-radius: 5px;
+    border-radius: $radius_btn;
 
     font-size: 0.9rem;
   }
