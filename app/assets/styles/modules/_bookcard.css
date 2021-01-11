@@ -1,4 +1,69 @@
 .bookcard {
-  display: flex;
-  flex-direction: row;
+  position: relative;
+  padding: 10px;
+  border-radius: $radius_big;
+  transition: $anim_fast ease-out;
+  transition-property: background, transform;
+  will-change: transform;
+
+  &:hover {
+    background: $color_light;
+    transform: translateY(-3px);
+  }
+
+  &__wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    justify-content: center;
+    gap: 10px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__cover {
+    position: relative;
+    height: 0; /* to keep aspect ratio */
+    width: 100%;
+    padding-top: 150%; /* to keep aspect ratio */
+
+    border-radius: $radius_med;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+    color: $color_dark;
+    text-align: center;
+    text-decoration: none;
+  }
+
+  &__finished &__content {
+    filter: grayscale(100%);
+    opacity: 0.5;
+  }
+
+  &__finished-icon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 1.2rem;
+    color: $green;
+    z-index: 1;
+  }
 }

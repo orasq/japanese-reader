@@ -10,6 +10,7 @@ import "lazysizes";
 // React
 import React from "react";
 import ReactDOM from "react-dom";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // views import
 import Home from "./views/Home";
@@ -18,11 +19,15 @@ import Footer from "./components/Footer";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Header />
-      <Home />
+      <Switch>
+        <Route path="/" exact>
+          <Home />
+        </Route>
+      </Switch>
       <Footer />
-    </>
+    </BrowserRouter>
   );
 }
 

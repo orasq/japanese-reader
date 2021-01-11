@@ -1,5 +1,5 @@
 .header {
-  border-bottom: 1px solid $color_light;
+  /*border-bottom: 1px solid $color_light;*/
 
   &__wrap {
     display: flex;
@@ -7,9 +7,10 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    padding: 15px;
+    margin-bottom: 30px;
+    padding: 30px;
     width: 100%;
-    max-width: $wrapper_size;
+    /* max-width: $wrapper_size; */
   }
 
   &__logo {
@@ -29,6 +30,12 @@
 
   &__theme-icon {
     font-size: 1.5rem;
-    color: $color_dark;
+    color: $color_med;
+    cursor: pointer;
+    transition: color $anim_fast ease-out;
+
+    &:hover {
+      color: $color_med_hover;
+    }
   }
 }

@@ -3,16 +3,25 @@
   flex-direction: row;
   align-items: center;
   height: 2rem;
-  padding: 5px 10px;
-  background-color: $color_dark;
+  padding: 5px 15px;
+  background: $color_med;
   border: none;
-  border-radius: $radius_btn;
+  border-radius: $radius_round;
 
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #fff;
+  text-transform: uppercase;
 
-  & ion-icon {
+  cursor: pointer;
+  overflow: hidden;
+  transition: background $anim_fast ease-out;
+
+  &:hover {
+    background: $color_med_hover;
+  }
+
+  &__icon {
     margin-right: 10px;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 }

@@ -1,13 +1,30 @@
 /* COLORS */
-$color_bg: #e5f8f9;
-$color_dark: #1f4e5f;
-$color_mid: #79a8a9;
-$color_light: #c8dedf;
+:root {
+  --lightness: ;
+}
+
+$color_hue: 180;
+$color_saturation: 30%;
+
+$color_bg: hsl($color_hue, $color_saturation, 95%);
+$color_dark: hsl($color_hue, $color_saturation, 25%);
+$color_med: hsl($color_hue, $color_saturation, 50%);
+$color_light: hsl($color_hue, $color_saturation, 80%);
+
+$color_med_hover: hsl($color_hue, $color_saturation, 40%);
 
 $color_header: #1f4e5f;
+
+$green: rgb(133, 216, 92);
 
 /* SIZES */
 $wrapper_size: 1200px;
 
 /* BORDER RADIUS */
 $radius_btn: 5px;
+$radius_med: 15px;
+$radius_big: 20px;
+$radius_round: 100px;
+
+/* ANIMATIONS */
+$anim_fast: 0.2s;

@@ -1,0 +1,64 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 40px;
+
+  &__search-group {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__search-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 20px;
+    font-size: 1.2rem;
+    color: $color_light;
+    z-index: 1;
+  }
+
+  &__field {
+    position: relative;
+    flex: 1;
+    padding: 15px 50px;
+    border-radius: $radius_round;
+    border: 1px solid $color_light;
+    font-size: 1rem;
+    color: $color_dark;
+  }
+
+  &__delete-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+    font-size: 1.2rem;
+    color: $color_med;
+
+    cursor: pointer;
+    opacity: 0;
+    transition: color $anim_fast ease-out;
+
+    &:hover {
+      color: $color_med_hover;
+    }
+
+    &--visible {
+      opacity: 1;
+    }
+  }
+
+  &__filter-wrap {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__checkbox-group {
+    margin-left: 20px;
+  }
+}
