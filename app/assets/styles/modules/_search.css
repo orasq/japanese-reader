@@ -27,6 +27,8 @@
     padding: 15px 50px;
     border-radius: $radius_round;
     border: 1px solid $color_light;
+    background: $color_bg;
+
     font-size: 1rem;
     color: $color_dark;
   }

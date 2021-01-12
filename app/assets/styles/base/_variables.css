@@ -6,7 +6,7 @@
 $color_hue: 180;
 $color_saturation: 30%;
 
-$color_bg: hsl($color_hue, $color_saturation, 95%);
+$color_bg: hsl($color_hue, $color_saturation, 98%);
 $color_dark: hsl($color_hue, $color_saturation, 25%);
 $color_med: hsl($color_hue, $color_saturation, 50%);
 $color_light: hsl($color_hue, $color_saturation, 80%);

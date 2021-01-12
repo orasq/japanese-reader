@@ -25,6 +25,7 @@
     border: 1px solid $color_light;
     font-size: 1rem;
     color: $color_dark;
+    background: $color_bg;
   }
 
   &__text-input {
@@ -75,7 +76,7 @@ input[type="checkbox"] + label::after {
   margin-right: 10px;
   height: 14px;
   width: 14px;
-  background: #fff;
+  background: $color_bg;
   border-radius: $radius_round;
   cursor: pointer;
   transition: transform $anim_fast ease-out;
@@ -91,4 +92,5 @@ input[type="checkbox"]:checked + label::before {
 
 input[type="checkbox"]:checked + label::after {
   transform: translateX(16px);
+  background: #fff;
 }
