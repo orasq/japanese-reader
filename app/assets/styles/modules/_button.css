@@ -30,3 +30,13 @@
     font-size: 1rem;
   }
 }
+
+/* DARK THEME */
+
+body.dark-theme .button {
+  background: $dark-color_dark;
+
+  &:hover:not(:disabled) {
+    background: $dark-color_med;
+  }
+}

@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: $color_bg !important; /* !important to prevent 'japanese reading extension‘ to modify bg color*/
 
   &__title {
     margin-bottom: 5rem;
@@ -14,6 +15,7 @@
     max-width: 60ch;
     font-family: $font_jap;
     font-size: 1.2rem;
+    font-weight: 300;
     line-height: 1.8;
 
     p {
@@ -27,5 +29,15 @@
 
   &--font-big &__content {
     font-size: 1.6rem;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .reader {
+  background: $dark-color_bg !important; /* !important to prevent 'japanese reading extension‘ to modify bg color*/
+
+  &__title {
+    color: $dark-color_med;
   }
 }

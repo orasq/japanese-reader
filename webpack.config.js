@@ -99,7 +99,8 @@ if (currentTask == "dev") {
     contentBase: path.join(__dirname, "app"),
     hot: true /* allows webpack to inject css and js in browser memory without reload/refresh */,
     port: 3000,
-    host: "0.0.0.0" /* allows devices on same network to be able to access webpack dev server */
+    host: "0.0.0.0" /* allows devices on same network to be able to access webpack dev server */,
+    historyApiFallback: { index: "index.html" } /* for React */
   };
   config.mode = "development";
 }

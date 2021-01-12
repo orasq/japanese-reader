@@ -16,6 +16,11 @@
   &__logo {
     font-size: 2rem;
     color: $color_dark;
+    transition: color $anim_fast ease-out;
+
+    &:hover {
+      color: $color_med_hover;
+    }
   }
 
   &__tools {
@@ -36,6 +41,19 @@
 
     &:hover {
       color: $color_med_hover;
+    }
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .header {
+  &__logo,
+  &__theme-icon {
+    color: $dark-color_dark;
+
+    &:hover {
+      color: $dark-color_med;
     }
   }
 }

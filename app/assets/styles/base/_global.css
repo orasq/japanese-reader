@@ -59,7 +59,31 @@ button:focus {
   /* Internet Explorer 10-11 */
   color: $color_light;
 }
+
 ::-ms-input-placeholder {
   /* Microsoft Edge */
   color: $color_light;
+}
+
+/* DARK THEME */
+
+body.dark-theme {
+  color: $dark-color_light;
+  background: $dark-color_bg;
+
+  h1 {
+    color: $color_dark;
+  }
+
+  ::placeholder {
+    color: $dark-color_dark;
+  }
+
+  :-ms-input-placeholder {
+    color: $dark-color_dark;
+  }
+
+  ::-ms-input-placeholder {
+    color: $dark-color_dark;
+  }
 }

@@ -46,3 +46,24 @@
     color: $color_light;
   }
 }
+
+/* DARK THEME */
+body.dark-theme .reader-tools {
+  border: 2px solid $dark-color_dark;
+  background: $dark-color_bg;
+  color: $dark-color_med;
+
+  &__cog {
+    color: $dark-color_med;
+  }
+
+  &__icons {
+    &:hover {
+      color: $dark-color_light;
+    }
+  }
+
+  &--open .reader-tools__cog {
+    color: $dark-color_dark;
+  }
+}

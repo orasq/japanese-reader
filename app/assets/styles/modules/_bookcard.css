@@ -47,6 +47,7 @@
     margin-top: 15px;
     margin-bottom: 5px;
     font-size: 0.9rem;
+    font-weight: 300;
     line-height: 1.5rem;
     color: $color_dark;
     text-align: center;
@@ -62,8 +63,29 @@
     position: absolute;
     top: 5px;
     right: 5px;
+    overflow: hidden;
     font-size: 1.2rem;
     color: $color_med;
     z-index: 1;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .bookcard {
+  &:hover {
+    background: $dark-color_dark;
+  }
+
+  &__title {
+    color: $dark-color_light;
+  }
+
+  &__cover {
+    filter: brightness(0.7);
+  }
+
+  &__finished-icon {
+    color: $dark-color_light;
   }
 }

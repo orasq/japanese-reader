@@ -26,6 +26,11 @@
     font-size: 1rem;
     color: $color_dark;
     background: $color_bg;
+    transition: border-color $anim_fast ease-out;
+
+    &:focus {
+      border-color: $color_med;
+    }
   }
 
   &__text-input {
@@ -93,4 +98,49 @@ input[type="checkbox"]:checked + label::before {
 input[type="checkbox"]:checked + label::after {
   transform: translateX(16px);
   background: #fff;
+}
+
+/* DARK THEME */
+
+body.dark-theme .form {
+  &__label {
+    color: $dark-color_med;
+  }
+
+  &__text-input,
+  &__text-area {
+    border-color: $dark-color_dark;
+    color: $dark-color_light;
+    background: $dark-color_bg;
+
+    &:focus {
+      border-color: $dark-color_med;
+    }
+  }
+}
+
+body.dark-theme {
+  input[type="checkbox"] + label {
+    color: $dark-color_med;
+  }
+
+  input[type="checkbox"] + label::before {
+    background: $dark-color_dark;
+  }
+
+  input[type="checkbox"] + label::after {
+    background: $dark-color_med;
+  }
+
+  input[type="checkbox"]:checked + label {
+    color: $dark-color_light;
+  }
+
+  input[type="checkbox"]:checked + label::before {
+    background: $dark-color_med;
+  }
+
+  input[type="checkbox"]:checked + label::after {
+    background: $dark-color_light;
+  }
 }

@@ -31,6 +31,11 @@
 
     font-size: 1rem;
     color: $color_dark;
+    transition: border-color $anim_fast ease-out;
+
+    &:focus {
+      border-color: $color_med;
+    }
   }
 
   &__delete-btn {
@@ -62,5 +67,22 @@
 
   &__checkbox-group {
     margin-left: 20px;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .search {
+  &__field {
+    background: $dark-color_bg;
+    border-color: $dark-color_dark;
+    color: $dark-color_light;
+
+    &:focus {
+      border-color: $dark-color_med;
+    }
+  }
+  &__search-icon {
+    color: $dark-color_dark;
   }
 }

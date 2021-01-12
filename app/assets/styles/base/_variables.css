@@ -1,8 +1,6 @@
 /* COLORS */
-:root {
-  --lightness: ;
-}
 
+/* light */
 $color_hue: 180;
 $color_saturation: 30%;
 
@@ -10,12 +8,17 @@ $color_bg: hsl($color_hue, $color_saturation, 98%);
 $color_dark: hsl($color_hue, $color_saturation, 25%);
 $color_med: hsl($color_hue, $color_saturation, 50%);
 $color_light: hsl($color_hue, $color_saturation, 80%);
-
 $color_med_hover: hsl($color_hue, $color_saturation, 40%);
 
-$color_header: #1f4e5f;
+/* dark */
+$dark-color_hue: 180;
+$dark-color_saturation: 30%;
 
-$green: rgb(133, 216, 92);
+$dark-color_bg: hsl($dark-color_hue, $dark-color_saturation, 8%);
+$dark-color_dark: hsl($dark-color_hue, $dark-color_saturation, 15%);
+$dark-color_med: hsl($dark-color_hue, $dark-color_saturation, 35%);
+$dark-color_light: hsl($dark-color_hue, $dark-color_saturation, 80%);
+$dark-color_med_hover: hsl($dark-color_hue, $dark-color_saturation, 40%);
 
 /* SIZES */
 $wrapper_width: 1200px;
