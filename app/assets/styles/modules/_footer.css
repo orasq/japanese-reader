@@ -1,6 +1,6 @@
 .footer {
-  padding: 15px 0;
-  border-top: 1px solid $color_light;
+  margin-top: 80px;
+  padding: 35px 0;
 
   font-size: 0.8rem;
   color: $color_dark;
@@ -9,6 +9,6 @@
   &__wrap {
     margin: 0 auto;
     width: 100%;
-    max-width: $wrapper_size;
+    max-width: $wrapper_width;
   }
 }

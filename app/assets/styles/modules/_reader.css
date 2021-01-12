@@ -1,0 +1,31 @@
+.reader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    margin-bottom: 5rem;
+    font-size: 1.6rem;
+    color: $color_med;
+    text-align: center;
+  }
+
+  &__content {
+    max-width: 60ch;
+    font-family: $font_jap;
+    font-size: 1.2rem;
+    line-height: 1.8;
+
+    p {
+      margin-bottom: 3ch;
+    }
+  }
+
+  &--font-big &__title {
+    font-size: 2.6rem;
+  }
+
+  &--font-big &__content {
+    font-size: 1.6rem;
+  }
+}

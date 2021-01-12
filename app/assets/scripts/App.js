@@ -13,9 +13,11 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // views import
-import Home from "./views/Home";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Home from "./views/Home";
+import Reader from "./views/Reader";
+import CreateBook from "./views/CreateBook";
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
       <Switch>
         <Route path="/" exact>
           <Home />
+        </Route>
+        <Route path="/book/:id">
+          <Reader />
+        </Route>
+        <Route path="/create-book" exact>
+          <CreateBook />
         </Route>
       </Switch>
       <Footer />

@@ -16,8 +16,13 @@
   overflow: hidden;
   transition: background $anim_fast ease-out;
 
-  &:hover {
+  &:hover:not(:disabled) {
     background: $color_med_hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 
   &__icon {

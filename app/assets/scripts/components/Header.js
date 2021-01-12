@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaGlasses, FaAdjust, FaPlusCircle } from "react-icons/fa";
 
 // components import
@@ -8,13 +9,15 @@ function Header() {
   return (
     <header className="header">
       <div className="header__wrap">
-        <div className="header__logo">
+        <Link to="/" className="header__logo">
           <FaGlasses />
-        </div>
+        </Link>
         <div className="header__tools">
-          <button className="button">
-            <FaPlusCircle className="button__icon" /> Add a Book
-          </button>
+          <Link to="/create-book">
+            <button className="button">
+              <FaPlusCircle className="button__icon" /> Add a Book
+            </button>
+          </Link>
           <FaAdjust class="header__theme-icon" />
         </div>
       </div>

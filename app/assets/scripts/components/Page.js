@@ -4,7 +4,7 @@ import React, { useEffect } from "react";
 import Wrapper from "./Wrapper";
 
 function Page(props) {
-  return <Wrapper narrow>{props.children}</Wrapper>;
+  return <Wrapper narrow={props.narrow}>{props.children}</Wrapper>;
 }
 
 export default Page;

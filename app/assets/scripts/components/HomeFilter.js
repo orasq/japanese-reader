@@ -11,8 +11,8 @@ function HomeFilter() {
       </div>
       <div className="search__filter-wrap">
         <div className="search__checkbox-group">
-          <input id="read" type="checkbox" />
-          <label htmlFor="read">Read</label>
+          <input id="finished" type="checkbox" />
+          <label htmlFor="finished">Already read</label>
         </div>
         <div className="search__checkbox-group">
           <input id="alphabetical" type="checkbox" />

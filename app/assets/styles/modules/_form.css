@@ -1,18 +1,39 @@
 .form {
-  &__login {
-    & > * + * {
-      margin-left: 10px;
-    }
+  margin-top: 60px;
+
+  & > * + * {
+    margin-top: 30px;
   }
 
-  &__login-input {
-    max-width: 150px;
-    padding: 5px 10px;
+  &__group {
+    display: flex;
+    flex-direction: column;
+  }
 
-    border: none;
-    border-radius: $radius_btn;
-
+  &__label {
+    margin-left: 20px;
+    margin-bottom: 10px;
     font-size: 0.9rem;
+    font-weight: 400;
+    color: $color_med;
+  }
+
+  &__text-input,
+  &__text-area {
+    padding: 15px 20px;
+    border-radius: $radius_big;
+    border: 1px solid $color_light;
+    font-size: 1rem;
+    color: $color_dark;
+  }
+
+  &__text-input {
+    border-radius: $radius_round;
+  }
+
+  &__text-area {
+    min-height: 30vw;
+    padding: 30px 20px;
   }
 }
 

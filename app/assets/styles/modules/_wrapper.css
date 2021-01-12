@@ -1,10 +1,12 @@
 .wrapper {
   padding: 30px 15px;
   flex: 1;
+  width: 100%;
+  max-width: $wrapper_width;
+  margin: 0 auto;
 
   &--narrow {
-    margin: 0 auto;
     width: 100%;
-    max-width: $wrapper_size;
+    max-width: $wrapper_width_narrow;
   }
 }

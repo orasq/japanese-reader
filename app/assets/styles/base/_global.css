@@ -4,7 +4,7 @@ html {
 
 body {
   font-family: "Roboto", sans-serif;
-  color: #333;
+  color: $color_dark;
 }
 
 img {
@@ -25,11 +25,26 @@ h6 {
   margin: 0;
 }
 
+h1 {
+  font-size: 2.2rem;
+  color: $color_med;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
 a {
   text-decoration: none;
 }
 
-input:focus {
+p {
+  margin: 0;
+}
+
+input:focus,
+textarea:focus,
+button:focus {
   outline: none;
 }
 
