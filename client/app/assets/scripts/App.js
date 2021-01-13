@@ -12,6 +12,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
+// Apollo setup to be able to use GraphQL queries
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql"
+});
+
 // views import
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -21,21 +28,23 @@ import CreateBook from "./views/CreateBook";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Header />
-      <Switch>
-        <Route path="/" exact>
-          <Home />
-        </Route>
-        <Route path="/book/:id">
-          <Reader />
-        </Route>
-        <Route path="/create-book" exact>
-          <CreateBook />
-        </Route>
-      </Switch>
-      <Footer />
-    </BrowserRouter>
+    <ApolloProvider client={client}>
+      <BrowserRouter>
+        <Header />
+        <Switch>
+          <Route path="/" exact>
+            <Home />
+          </Route>
+          <Route path="/book/:id">
+            <Reader />
+          </Route>
+          <Route path="/create-book" exact>
+            <CreateBook />
+          </Route>
+        </Switch>
+        <Footer />
+      </BrowserRouter>
+    </ApolloProvider>
   );
 }
 

@@ -1,11 +1,16 @@
+require("dotenv").config();
+
+const cors = require("cors");
+
 const express = require("express");
-const dotenv = require("dotenv");
-dotenv.config();
 const mongoose = require("mongoose");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema.js");
 
 const app = express();
+
+// allow cross-origin requests
+app.use(cors());
 
 // connect to database
 mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifiedTopology: true });

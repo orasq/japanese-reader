@@ -2,24 +2,14 @@ import React, { useEffect } from "react";
 
 // components import
 import Page from "../components/Page";
-import BookCard from "../components/BookCard";
+import BookList from "../components/BookList";
 import HomeFilter from "../components/HomeFilter";
 
 function Home() {
   return (
     <Page>
       <HomeFilter />
-      <div className="bookcard__wrap">
-        <BookCard />
-        <BookCard />
-        <BookCard read />
-        <BookCard />
-        <BookCard />
-        <BookCard read />
-        <BookCard />
-        <BookCard />
-        <BookCard />
-      </div>
+      <BookList />
     </Page>
   );
 }

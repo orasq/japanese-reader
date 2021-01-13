@@ -39,7 +39,7 @@ function Header() {
               <FaPlusCircle className="button__icon" /> Add a Book
             </button>
           </Link>
-          <FaAdjust onClick={ToggleTheme} class="header__theme-icon" />
+          <FaAdjust onClick={ToggleTheme} className="header__theme-icon" />
         </div>
       </div>
     </header>

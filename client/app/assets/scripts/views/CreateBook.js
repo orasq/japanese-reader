@@ -1,31 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { graphql } from "react-apollo";
+import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
+
+// queries import
+import { getAuthorsQuery, createBookMutation } from "../queries/queries";
 
 // components import
 import Page from "../components/Page";
 
 function CreateBook() {
+  const [title, setTitle] = useState();
+  const [cover, setCover] = useState();
+  const [text, setText] = useState();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(title);
+  }
+
   return (
     <Page narrow>
-      <h1 class="text-center">Create a new book</h1>
-      <form class="form">
+      <h1 className="text-center">Create a new book</h1>
+      <form onSubmit={handleSubmit} className="form">
         <div className="form__group">
-          <label className="form__label" htmlFor="japtitle">
-            Japanese title *
+          <label className="form__label" htmlFor="title">
+            Book's title
           </label>
           <input
-            id="japtitle"
-            type="text"
-            className="form__text-input"
-            placeholder="Enter title of the book ..."
-          />
-        </div>
-        <div className="form__group">
-          <label className="form__label" htmlFor="engtitle">
-            English Title *
-          </label>
-          <input
-            id="engtitle"
+            autoFocus
+            onChange={e => setTitle(e.target.value)}
+            id="title"
             type="text"
             className="form__text-input"
             placeholder="Enter title of the book ..."
@@ -35,15 +40,25 @@ function CreateBook() {
           <label className="form__label" htmlFor="imageupload">
             Book's Cover
           </label>
-          <input id="imageupload" type="file" className="form__" />
+          <input
+            onChange={e => setCover(e.target.value)}
+            id="imageupload"
+            type="file"
+            className="form__"
+          />
         </div>
         <div className="form__group">
           <label className="form__label" htmlFor="txtcontent">
             Text *
           </label>
-          <textarea id="txtcontent" type="text" className="form__text-area" />
+          <textarea
+            onChange={e => setText(e.target.value)}
+            id="txtcontent"
+            type="text"
+            className="form__text-area"
+          />
         </div>
-        <button className="button" disabled>
+        <button className="button">
           <FaPlusCircle className="button__icon" /> Create new book
         </button>
       </form>
@@ -51,4 +66,7 @@ function CreateBook() {
   );
 }
 
-export default CreateBook;
+export default compose(
+  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(createBookMutation, { name: "createBookMutation" })
+)(CreateBook);

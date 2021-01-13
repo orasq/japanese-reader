@@ -95,7 +95,7 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    addAuthor: {
+    createAuthor: {
       type: AuthorType,
       args: {
         name: { type: new GraphQLNonNull(GraphQLString) }
@@ -106,7 +106,7 @@ const Mutation = new GraphQLObjectType({
         return author.save();
       }
     },
-    addBook: {
+    createBook: {
       type: BookType,
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
