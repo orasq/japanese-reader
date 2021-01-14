@@ -4,19 +4,25 @@ import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
 
 // queries import
-import { getAuthorsQuery, createBookMutation } from "../queries/queries";
+import { getAllAuthorsQuery, createBookMutation } from "../queries/queries";
 
 // components import
 import Page from "../components/Page";
 
-function CreateBook() {
+function CreateBook(props) {
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(title);
+    props.createBookMutation({
+      variables: {
+        title: title,
+        cover: cover,
+        text: text
+      }
+    });
   }
 
   return (
@@ -67,6 +73,6 @@ function CreateBook() {
 }
 
 export default compose(
-  graphql(getAuthorsQuery, { name: "getAuthorsQuery" }),
+  graphql(getAllAuthorsQuery, { name: "getAllAuthorsQuery" }),
   graphql(createBookMutation, { name: "createBookMutation" })
 )(CreateBook);

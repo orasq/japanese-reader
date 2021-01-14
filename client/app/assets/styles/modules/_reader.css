@@ -12,6 +12,7 @@
   }
 
   &__content {
+    width: 100%;
     max-width: 60ch;
     font-family: $font_jap;
     font-size: 1.2rem;

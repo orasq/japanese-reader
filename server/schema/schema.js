@@ -110,9 +110,9 @@ const Mutation = new GraphQLObjectType({
       type: BookType,
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
-        cover: { type: new GraphQLNonNull(GraphQLString) },
+        cover: { type: GraphQLString },
         text: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: new GraphQLNonNull(GraphQLID) }
+        authorId: { type: GraphQLID }
       },
       resolve(parent, args) {
         /* Book() = mongoose model */

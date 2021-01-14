@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const express = require("express");
 const mongoose = require("mongoose");
+var bodyParser = require("body-parser");
 const { graphqlHTTP } = require("express-graphql");
 const schema = require("./schema/schema.js");
 
@@ -17,6 +18,8 @@ mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifi
 mongoose.connection.once("open", () => {
   console.log("connected to database");
 });
+
+app.use(bodyParser.json({ limit: "1mb" }));
 
 app.use(
   "/graphql",

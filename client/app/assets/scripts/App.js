@@ -35,9 +35,8 @@ function App() {
           <Route path="/" exact>
             <Home />
           </Route>
-          <Route path="/book/:id">
-            <Reader />
-          </Route>
+          {/* To be eable to use "params" in graphql query */}
+          <Route path="/book/:bookId" component={Reader} />
           <Route path="/create-book" exact>
             <CreateBook />
           </Route>
