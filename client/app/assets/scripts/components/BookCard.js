@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FaCheckCircle, FaPlusCircle } from "react-icons/fa";
+import { FaCheckCircle } from "react-icons/fa";
 
 function BookCard(props) {
   function titleExcerpt() {
@@ -22,7 +22,11 @@ function BookCard(props) {
       {props.read && <FaCheckCircle className="bookcard__finished-icon" />}
       <div className="bookcard__content">
         <div className="bookcard__cover">
-          <img src="/assets/images/book-cover.jpg" alt="book cover" nopin="nopin" />
+          <img
+            src={`data:image/png;base64,${props.book.cover}`}
+            alt={props.book.title}
+            nopin="nopin"
+          />
         </div>
         <h3 className="bookcard__title">{titleExcerpt()}</h3>
       </div>

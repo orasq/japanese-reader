@@ -8,7 +8,7 @@ Add "lazyload" class to <img> tags, and change 'srcset' to 'data-srcset'*/
 import "lazysizes";
 
 // React
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -22,14 +22,21 @@ const client = new ApolloClient({
 // views import
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import FloatingAlert from "./components/FloatingAlert";
 import Home from "./views/Home";
 import Reader from "./views/Reader";
 import CreateBook from "./views/CreateBook";
 
 function App() {
+  const [flashMessages, setFlashMessages] = useState([]);
+
+  function addFlashMessages(msg) {
+    setFlashMessages(prev => prev.concat(msg));
+  }
   return (
     <ApolloProvider client={client}>
       <BrowserRouter>
+        <FloatingAlert messages={flashMessages} />
         <Header />
         <Switch>
           <Route path="/" exact>
@@ -37,8 +44,8 @@ function App() {
           </Route>
           {/* To be eable to use "params" in graphql query */}
           <Route path="/book/:bookId" component={Reader} />
-          <Route path="/create-book" exact>
-            <CreateBook />
+          <Route path="/create-book">
+            <CreateBook addFlashMessages={addFlashMessages} />
           </Route>
         </Switch>
         <Footer />

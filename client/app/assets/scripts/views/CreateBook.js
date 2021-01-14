@@ -1,4 +1,9 @@
+////////////////////////////////////////////////////////////
+// Important !! Necessary to work with async/await and Babel
+import regeneratorRuntime from "regenerator-runtime";
+////////////////////////////////////////////////////////////
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { graphql } from "react-apollo";
 import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
@@ -8,21 +13,40 @@ import { getAllAuthorsQuery, createBookMutation } from "../queries/queries";
 
 // components import
 import Page from "../components/Page";
+import { reduceRight } from "lodash";
 
 function CreateBook(props) {
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
 
-  function handleSubmit(e) {
+  // convert file to base64 for basic image upload
+  function handleChange(e) {
+    let image = e.target.files[0];
+    if (image) {
+      const reader = new FileReader();
+      reader.onload = handleReaderLoaded;
+      reader.readAsBinaryString(image);
+    }
+  }
+  // convert file to base64 for basic image upload
+  function handleReaderLoaded(readerEvent) {
+    let binaryString = readerEvent.target.result;
+    setCover(btoa(binaryString));
+  }
+
+  async function handleSubmit(e) {
     e.preventDefault();
-    props.createBookMutation({
+    const response = await props.createBookMutation({
       variables: {
         title: title,
         cover: cover,
         text: text
       }
     });
+
+    console.log(await response);
+    props.history.push(`/book/${response.data.createBook.id}`);
   }
 
   return (
@@ -47,10 +71,11 @@ function CreateBook(props) {
             Book's Cover
           </label>
           <input
-            onChange={e => setCover(e.target.value)}
+            onChange={handleChange}
             id="imageupload"
+            name="imageupload"
             type="file"
-            className="form__"
+            accept=".jpg, .jpeg, .png"
           />
         </div>
         <div className="form__group">
@@ -73,6 +98,7 @@ function CreateBook(props) {
 }
 
 export default compose(
+  withRouter,
   graphql(getAllAuthorsQuery, { name: "getAllAuthorsQuery" }),
   graphql(createBookMutation, { name: "createBookMutation" })
 )(CreateBook);

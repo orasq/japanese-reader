@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { graphql } from "react-apollo";
+import ReactMarkdown from "react-markdown";
 
 // queries import
 import { getBookQuery } from "../queries/queries";
@@ -39,7 +40,9 @@ function Reader(props) {
       ) : (
         <div className={`reader ${fontSize == "big" ? "reader--font-big" : ""}`}>
           <h1 className="reader__title">{book.title}</h1>
-          <div className="reader__content">{book.text}</div>
+          <div className="reader__content">
+            <ReactMarkdown source={book.text} allowTypes={["paragraph"]} />
+          </div>
         </div>
       )}
     </Page>

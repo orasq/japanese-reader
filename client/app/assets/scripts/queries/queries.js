@@ -5,6 +5,7 @@ const getAllBooksQuery = gql`
     getAllBooks {
       id
       title
+      cover
     }
   }
 `;
@@ -30,6 +31,7 @@ const getAllAuthorsQuery = gql`
 const createBookMutation = gql`
   mutation($title: String!, $cover: String, $text: String!) {
     createBook(title: $title, cover: $cover, text: $text) {
+      id
       title
       text
     }
