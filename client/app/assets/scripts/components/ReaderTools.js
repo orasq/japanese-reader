@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import { FaCheckCircle, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
@@ -40,7 +41,9 @@ function ReaderTools(props) {
   return (
     <div ref={tools} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
       <div className="reader-tools__wrap">
-        <RiEdit2Fill className="reader-tools__icons" />
+        <Link to={`/book/${props.bookId}/edit`}>
+          <RiEdit2Fill className="reader-tools__icons" />
+        </Link>
         <FaCheckCircle className="reader-tools__icons" />
         <FaFont onClick={props.toggleFont} className="reader-tools__icons" />
       </div>

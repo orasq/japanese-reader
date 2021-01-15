@@ -8,7 +8,7 @@ Add "lazyload" class to <img> tags, and change 'srcset' to 'data-srcset'*/
 import "lazysizes";
 
 // React
-import React, { useState, useReducer } from "react";
+import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
@@ -26,6 +26,7 @@ import FloatingMessage from "./components/FloatingMessage";
 import Home from "./views/Home";
 import Reader from "./views/Reader";
 import CreateBook from "./views/CreateBook";
+import EditBook from "./views/EditBook";
 
 // app context, state & reducer import
 import StateContext from "./contexts/StateContext";
@@ -47,7 +48,8 @@ function App() {
                 <Home />
               </Route>
               {/* To be eable to use "params" in graphql query */}
-              <Route path="/book/:bookId" component={Reader} />
+              <Route path="/book/:bookId" component={Reader} exact />
+              <Route path="/book/:bookId/edit" component={EditBook} />
               <Route path="/create-book">
                 <CreateBook />
               </Route>

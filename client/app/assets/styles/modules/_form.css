@@ -41,6 +41,52 @@
     min-height: 30vw;
     padding: 30px 20px;
   }
+
+  &__cover-wrap {
+    position: relative;
+    width: 100px; /* padding-top is relative to the parent width */
+    margin-left: 20px;
+  }
+
+  &__cover {
+    position: relative;
+    height: 0; /* to keep aspect ratio */
+    padding-top: 150%; /* to keep aspect ratio */
+
+    border-radius: $radius_med;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__cover-delete {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    background-color: $error;
+    border-bottom-left-radius: $radius_med;
+    border-bottom-right-radius: $radius_med;
+    border: none;
+    border-top: 2px solid $color_bg;
+    font-size: 0.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    cursor: pointer;
+    z-index: 2;
+
+    svg {
+      margin-right: 3px;
+    }
+  }
 }
 
 input[type="checkbox"] {

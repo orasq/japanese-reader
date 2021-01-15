@@ -51,7 +51,10 @@ function CreateBook(props) {
       });
       props.history.push(`/book/${response.data.createBook.id}`);
       // dispatch floating message
-      AppDispatch({ type: "ADD_FLOATING_MESSAGE", value: "A new book has been created" });
+      AppDispatch({
+        type: "ADD_FLOATING_MESSAGE",
+        value: "A new book has been successfully created"
+      });
     } catch {
       console.log("error");
     }

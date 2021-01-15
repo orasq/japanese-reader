@@ -15,6 +15,7 @@ const getBookQuery = gql`
     getBook(id: $id) {
       title
       text
+      cover
     }
   }
 `;

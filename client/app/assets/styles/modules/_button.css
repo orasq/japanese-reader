@@ -25,9 +25,21 @@
     cursor: not-allowed;
   }
 
+  &--delete {
+    background: $error;
+  }
+
   &__icon {
     margin-right: 10px;
     font-size: 1rem;
+  }
+
+  &__group-row {
+    display: flex;
+
+    & > * + * {
+      margin-left: 20px;
+    }
   }
 }
 

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { graphql } from "react-apollo";
 import ReactMarkdown from "react-markdown";
 
@@ -10,6 +11,7 @@ import Page from "../components/Page";
 import ReaderTools from "../components/ReaderTools";
 
 function Reader(props) {
+  const { bookId } = useParams();
   // states
   const [book, setBook] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +36,7 @@ function Reader(props) {
 
   return (
     <Page>
-      <ReaderTools toggleFont={ToggleFont} />
+      <ReaderTools bookId={bookId} toggleFont={ToggleFont} />
       {isLoading ? (
         <p>Loading ...</p>
       ) : (
