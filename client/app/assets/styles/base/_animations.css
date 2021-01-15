@@ -1,0 +1,45 @@
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(20%) rotate(10deg);
+  }
+  40% {
+    transform: translateX(-20%) rotate(-10deg);
+  }
+  60% {
+    transform: translateX(20%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes alertPopup {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%) translateY(20%);
+  }
+  5% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(-50%) translateY(20%);
+  }
+  15% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  95% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(-20%);
+  }
+}

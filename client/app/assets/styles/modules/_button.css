@@ -27,6 +27,17 @@
 
   &--delete {
     background: $error;
+
+    svg {
+      font-size: 0.8rem;
+    }
+  }
+
+  &--delete:hover:not(:disabled) {
+    background: $error_hover;
+    svg {
+      animation: shake $anim_med ease-out;
+    }
   }
 
   &__icon {
@@ -50,5 +61,13 @@ body.dark-theme .button {
 
   &:hover:not(:disabled) {
     background: $dark-color_med;
+  }
+
+  &--delete {
+    background: $dark-error;
+
+    &:hover:not(:disabled) {
+      background: $dark-error_hover;
+    }
   }
 }

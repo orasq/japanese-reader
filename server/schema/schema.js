@@ -110,9 +110,8 @@ const Mutation = new GraphQLObjectType({
       type: BookType,
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
-        cover: { type: GraphQLString },
-        text: { type: new GraphQLNonNull(GraphQLString) },
-        authorId: { type: GraphQLID }
+        cover: { type: new GraphQLNonNull(GraphQLString) },
+        text: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         /* Book() = mongoose model */
@@ -123,6 +122,31 @@ const Mutation = new GraphQLObjectType({
           authorId: args.authorId
         });
         return book.save();
+      }
+    },
+    deleteBook: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) }
+      },
+      resolve(parent, args) {
+        return Book.findByIdAndDelete(args.id);
+      }
+    },
+    editBook: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        cover: { type: new GraphQLNonNull(GraphQLString) },
+        text: { type: new GraphQLNonNull(GraphQLString) }
+      },
+      resolve(parent, args) {
+        return Book.findByIdAndUpdate(args.id, {
+          title: args.title,
+          cover: args.cover,
+          text: args.text
+        });
       }
     }
   }

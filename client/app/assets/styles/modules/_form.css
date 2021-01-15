@@ -1,5 +1,6 @@
 .form {
   margin-top: 60px;
+  margin-bottom: 30px;
 
   & > * + * {
     margin-top: 30px;
@@ -46,15 +47,14 @@
     position: relative;
     width: 100px; /* padding-top is relative to the parent width */
     margin-left: 20px;
+    border-radius: $radius_med;
+    overflow: hidden;
   }
 
   &__cover {
     position: relative;
     height: 0; /* to keep aspect ratio */
     padding-top: 150%; /* to keep aspect ratio */
-
-    border-radius: $radius_med;
-    overflow: hidden;
 
     img {
       position: absolute;
@@ -72,20 +72,26 @@
     left: 0;
     padding: 5px;
     background-color: $error;
-    border-bottom-left-radius: $radius_med;
-    border-bottom-right-radius: $radius_med;
     border: none;
     border-top: 2px solid $color_bg;
     font-size: 0.7rem;
     color: #fff;
     text-transform: uppercase;
     text-align: center;
+    transition: background $anim_fast ease-out;
     cursor: pointer;
     z-index: 2;
+
+    &:hover {
+      background-color: $error_hover;
+    }
 
     svg {
       margin-right: 3px;
     }
+  }
+  &__cover-delete:hover svg {
+    animation: shake $anim_med ease-out;
   }
 }
 
@@ -161,6 +167,14 @@ body.dark-theme .form {
 
     &:focus {
       border-color: $dark-color_med;
+    }
+  }
+  &__cover-delete {
+    background-color: $dark-error;
+    border-top: 2px solid $dark-color_bg;
+
+    &:hover {
+      background-color: $dark-error_hover;
     }
   }
 }

@@ -7,30 +7,56 @@ import { withRouter } from "react-router-dom";
 import { graphql } from "react-apollo";
 import * as compose from "lodash.flowright";
 import { FaPlusCircle, FaTrash } from "react-icons/fa";
+import { RiEdit2Fill } from "react-icons/ri";
 
 // context import
 import DispatchContext from "../contexts/DispatchContext";
 
 // queries import
-import { getBookQuery, createBookMutation } from "../queries/queries";
+import {
+  getBookQuery,
+  createBookMutation,
+  deleteBookMutation,
+  editBookMutation
+} from "../queries/queries";
 
 // components import
 import Page from "../components/Page";
 
 function CreateBook(props) {
   const [isLoading, setIsLoading] = useState(true);
+  const [bookId, setBookId] = useState();
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
-  console.log(cover);
+  console.log(props.history);
 
   const AppDispatch = useContext(DispatchContext);
 
-  // delete image
-  function deleteImage() {}
+  // delete book
+  async function deleteBook(e) {
+    e.preventDefault();
+    try {
+      const response = await props.deleteBookMutation({
+        variables: {
+          id: bookId
+        }
+      });
+      console.log(response.data.deleteBook.id);
+      // redirect to homepage
+      props.history.push("/");
+      // dispatch floating message
+      AppDispatch({
+        type: "ADD_FLOATING_MESSAGE",
+        value: "This book has been successfully deleted"
+      });
+    } catch {
+      console.log("error");
+    }
+  }
 
   // convert file to base64 for basic image upload
-  function handleChange(e) {
+  function handleImageChange(e) {
     let image = e.target.files[0];
     if (image) {
       const reader = new FileReader();
@@ -47,14 +73,15 @@ function CreateBook(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await props.createBookMutation({
+      const response = await props.editBookMutation({
         variables: {
+          id: bookId,
           title: title,
           cover: cover,
           text: text
         }
       });
-      props.history.push(`/book/${response.data.createBook.id}`);
+      props.history.push(`/book/${bookId}`);
       // dispatch floating message
       AppDispatch({
         type: "ADD_FLOATING_MESSAGE",
@@ -67,6 +94,7 @@ function CreateBook(props) {
 
   useEffect(() => {
     if (!props.data.loading) {
+      setBookId(props.data.getBook.id);
       setTitle(props.data.getBook.title);
       setCover(props.data.getBook.cover);
       setText(props.data.getBook.text);
@@ -111,7 +139,7 @@ function CreateBook(props) {
                 </div>
               ) : (
                 <input
-                  onChange={handleChange}
+                  onChange={handleImageChange}
                   id="imageupload"
                   name="imageupload"
                   type="file"
@@ -131,15 +159,15 @@ function CreateBook(props) {
                 className="form__text-area"
               />
             </div>
-            <div className="button__group-row">
-              <button className="button">
-                <FaPlusCircle className="button__icon" /> Create new book
-              </button>
-              <button className="button button--delete">
-                <FaTrash className="button__icon" /> Delete this book
-              </button>
-            </div>
           </form>
+          <div className="button__group-row">
+            <button onClick={handleSubmit} className="button">
+              <RiEdit2Fill className="button__icon" /> Edit this book
+            </button>
+            <button onClick={deleteBook} className="button button--delete">
+              <FaTrash className="button__icon" /> Delete this book
+            </button>
+          </div>
         </>
       )}
     </Page>
@@ -157,5 +185,6 @@ export default compose(
       };
     }
   }),
-  graphql(createBookMutation, { name: "createBookMutation" })
+  graphql(editBookMutation, { name: "editBookMutation" }),
+  graphql(deleteBookMutation, { name: "deleteBookMutation" })
 )(CreateBook);

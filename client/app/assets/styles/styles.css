@@ -6,6 +6,7 @@
 @import "base/_mixins";
 @import "base/_global";
 @import "base/_utility";
+@import "base/_animations";
 
 /* MODULES */
 @import "modules/_app";

@@ -35,26 +35,3 @@ body.dark-theme .floating-messages__msg {
 
   color: $dark-color_light;
 }
-
-@keyframes alertPopup {
-  0% {
-    visibility: hidden;
-    opacity: 0;
-    transform: translateX(-50%) translateY(20%);
-  }
-  5% {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  95% {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateX(-50%) translateY(-20%);
-  }
-}

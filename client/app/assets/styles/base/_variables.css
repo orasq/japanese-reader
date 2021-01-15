@@ -1,7 +1,9 @@
 /* COLORS */
 
-$success: #58b858;
 $error: #b85858;
+$error_hover: #933f3f;
+$dark-error: #522d2d;
+$dark-error_hover: #633737;
 
 /* light */
 $color_hue: 180;
@@ -35,6 +37,8 @@ $radius_round: 100px;
 
 /* ANIMATIONS */
 $anim_fast: 0.2s;
+$anim_med: 0.6s;
+$anim_slow: 1s;
 
 /* FONTS */
 $font_jap: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo,
