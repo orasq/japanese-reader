@@ -1,5 +1,5 @@
-.floating-alerts {
-  &__message {
+.floating-messages {
+  &__msg {
     position: fixed;
     top: 30px;
     left: 50%;
@@ -24,12 +24,12 @@
     }
   }
 
-  &__message:last-of-type {
+  &__msg:last-of-type {
     display: flex;
   }
 }
 
-body.dark-theme .floating-alerts_message {
+body.dark-theme .floating-messages__msg {
   background: $dark-color_med;
   box-shadow: 0px 6px 25px 0px rgba(0, 0, 0, 0.5);
 

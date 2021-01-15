@@ -2,23 +2,27 @@
 // Important !! Necessary to work with async/await and Babel
 import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { graphql } from "react-apollo";
 import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
+
+// context import
+import DispatchContext from "../contexts/DispatchContext";
 
 // queries import
 import { getAllAuthorsQuery, createBookMutation } from "../queries/queries";
 
 // components import
 import Page from "../components/Page";
-import { reduceRight } from "lodash";
 
 function CreateBook(props) {
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
+
+  const AppDispatch = useContext(DispatchContext);
 
   // convert file to base64 for basic image upload
   function handleChange(e) {
@@ -37,16 +41,20 @@ function CreateBook(props) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const response = await props.createBookMutation({
-      variables: {
-        title: title,
-        cover: cover,
-        text: text
-      }
-    });
-
-    console.log(await response);
-    props.history.push(`/book/${response.data.createBook.id}`);
+    try {
+      const response = await props.createBookMutation({
+        variables: {
+          title: title,
+          cover: cover,
+          text: text
+        }
+      });
+      props.history.push(`/book/${response.data.createBook.id}`);
+      // dispatch floating message
+      AppDispatch({ type: "ADD_FLOATING_MESSAGE", value: "A new book has been created" });
+    } catch {
+      console.log("error");
+    }
   }
 
   return (

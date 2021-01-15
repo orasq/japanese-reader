@@ -12,7 +12,7 @@
 @import "modules/_wrapper";
 @import "modules/_header";
 @import "modules/_footer";
-@import "modules/_floating-alerts";
+@import "modules/_floating-messages";
 @import "modules/_form";
 @import "modules/_button";
 @import "modules/_bookcard";
