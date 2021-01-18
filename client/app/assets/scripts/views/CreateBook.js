@@ -10,19 +10,20 @@ import { FaPlusCircle } from "react-icons/fa";
 
 // context import
 import DispatchContext from "../contexts/DispatchContext";
-
+import StateContext from "../contexts/StateContext";
 // queries import
-import { getAllAuthorsQuery, createBookMutation } from "../queries/queries";
-
+import { getAllBooksQuery, createBookMutation } from "../queries/queries";
 // components import
 import Page from "../components/Page";
 
 function CreateBook(props) {
+  // contexts
+  const AppDispatch = useContext(DispatchContext);
+  const AppState = useContext(StateContext);
+  // state
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
-
-  const AppDispatch = useContext(DispatchContext);
 
   // convert file to base64 for basic image upload
   function handleChange(e) {
@@ -49,6 +50,9 @@ function CreateBook(props) {
           text: text
         }
       });
+      // edit state
+      AppDispatch({ type: "ADD_BOOK", value: { title, cover, text } });
+      // redirect to book page
       props.history.push(`/book/${response.data.createBook.id}`);
       // dispatch floating message
       AppDispatch({
@@ -110,6 +114,6 @@ function CreateBook(props) {
 
 export default compose(
   withRouter,
-  graphql(getAllAuthorsQuery, { name: "getAllAuthorsQuery" }),
+  graphql(getAllBooksQuery, { name: "getAllBooksQuery" }),
   graphql(createBookMutation, { name: "createBookMutation" })
 )(CreateBook);

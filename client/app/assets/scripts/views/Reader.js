@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { graphql } from "react-apollo";
 import ReactMarkdown from "react-markdown";
 
 // queries import
 import { getBookQuery } from "../queries/queries";
-
 // components import
 import Page from "../components/Page";
 import ReaderTools from "../components/ReaderTools";
 
 function Reader(props) {
-  const { bookId } = useParams();
   // states
   const [book, setBook] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [fontSize, setFontSize] = useState(localStorage.getItem("fontSize"));
+
+  const { bookId } = useParams();
 
   // functions
   function ToggleFont() {

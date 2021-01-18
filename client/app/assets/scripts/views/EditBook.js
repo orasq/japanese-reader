@@ -15,7 +15,7 @@ import DispatchContext from "../contexts/DispatchContext";
 // queries import
 import {
   getBookQuery,
-  createBookMutation,
+  getAllBooksQuery,
   deleteBookMutation,
   editBookMutation
 } from "../queries/queries";
@@ -29,7 +29,6 @@ function CreateBook(props) {
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
-  console.log(props.history);
 
   const AppDispatch = useContext(DispatchContext);
 
@@ -40,7 +39,8 @@ function CreateBook(props) {
       const response = await props.deleteBookMutation({
         variables: {
           id: bookId
-        }
+        },
+        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
       console.log(response.data.deleteBook.id);
       // redirect to homepage
@@ -79,7 +79,8 @@ function CreateBook(props) {
           title: title,
           cover: cover,
           text: text
-        }
+        },
+        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
       props.history.push(`/book/${bookId}`);
       // dispatch floating message
@@ -186,5 +187,6 @@ export default compose(
     }
   }),
   graphql(editBookMutation, { name: "editBookMutation" }),
+  graphql(getAllBooksQuery, { name: "getAllBooksQuery" }),
   graphql(deleteBookMutation, { name: "deleteBookMutation" })
 )(CreateBook);
