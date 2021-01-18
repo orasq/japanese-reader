@@ -31,11 +31,11 @@ import EditBook from "./views/EditBook";
 // app context, state & reducer import
 import StateContext from "./contexts/StateContext";
 import DispatchContext from "./contexts/DispatchContext";
-import AppState from "./AppState";
+import appState from "./appState";
 import AppReducer from "./AppReducer";
 
 function App() {
-  const [state, dispatch] = useReducer(AppReducer, AppState);
+  const [state, dispatch] = useReducer(AppReducer, appState);
   return (
     <StateContext.Provider value={state}>
       <DispatchContext.Provider value={dispatch}>

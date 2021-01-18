@@ -18,8 +18,8 @@ import Page from "../components/Page";
 
 function CreateBook(props) {
   // contexts
-  const AppDispatch = useContext(DispatchContext);
-  const AppState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
+  const appState = useContext(StateContext);
   // state
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
@@ -48,14 +48,15 @@ function CreateBook(props) {
           title: title,
           cover: cover,
           text: text
-        }
+        },
+        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
       // edit state
-      AppDispatch({ type: "ADD_BOOK", value: { title, cover, text } });
+      appDispatch({ type: "ADD_BOOK", value: { title, cover, text } });
       // redirect to book page
       props.history.push(`/book/${response.data.createBook.id}`);
       // dispatch floating message
-      AppDispatch({
+      appDispatch({
         type: "ADD_FLOATING_MESSAGE",
         value: "A new book has been successfully created"
       });

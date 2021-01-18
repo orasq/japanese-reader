@@ -1,6 +1,6 @@
-const AppState = {
+const appState = {
   floatingMessages: [],
   books: []
 };
 
-export default AppState;
+export default appState;

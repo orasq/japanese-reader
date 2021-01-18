@@ -30,7 +30,7 @@ function CreateBook(props) {
   const [cover, setCover] = useState();
   const [text, setText] = useState();
 
-  const AppDispatch = useContext(DispatchContext);
+  const appDispatch = useContext(DispatchContext);
 
   // delete book
   async function deleteBook(e) {
@@ -46,7 +46,7 @@ function CreateBook(props) {
       // redirect to homepage
       props.history.push("/");
       // dispatch floating message
-      AppDispatch({
+      appDispatch({
         type: "ADD_FLOATING_MESSAGE",
         value: "This book has been successfully deleted"
       });
@@ -84,7 +84,7 @@ function CreateBook(props) {
       });
       props.history.push(`/book/${bookId}`);
       // dispatch floating message
-      AppDispatch({
+      appDispatch({
         type: "ADD_FLOATING_MESSAGE",
         value: "This book has been successfully edited"
       });

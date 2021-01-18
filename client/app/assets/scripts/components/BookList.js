@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 // import { useQuery } from "apollo-boost";
-import { graphql, useQuery } from "react-apollo";
+import { graphql } from "react-apollo";
 
 // queries import
 import { getAllBooksQuery } from "../queries/queries";
@@ -18,7 +18,6 @@ function BookList(props) {
   const [books, setBooks] = useState(AppState.books);
   const [isLoading, setIsLoading] = useState(true);
   // queries
-  // const { loading, error, data } = useQuery(getAllBooksQuery);
 
   // effects
   useEffect(() => {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { graphql } from "react-apollo";
+
 import ReactMarkdown from "react-markdown";
 
 // queries import

@@ -8,9 +8,9 @@ import BookList from "../components/BookList";
 import HomeFilter from "../components/HomeFilter";
 
 function Home() {
-  const AppState = useContext(StateContext);
-  console.log("current state", AppState);
-  // useEffect(() => {}, [AppState]);
+  const appState = useContext(StateContext);
+  console.log("home state:", appState);
+  // useEffect(() => {}, [appState]);
   return (
     <Page>
       <HomeFilter />

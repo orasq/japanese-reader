@@ -5,10 +5,10 @@ import { FaCheckCircle } from "react-icons/fa";
 import StateContext from "../contexts/StateContext";
 
 function FloatingMessage() {
-  const AppState = useContext(StateContext);
+  const appState = useContext(StateContext);
   return (
     <div className="floating-messages">
-      {AppState.floatingMessages.map((msg, index) => {
+      {appState.floatingMessages.map((msg, index) => {
         return (
           <div key={index} className="floating-messages__msg">
             <FaCheckCircle />
