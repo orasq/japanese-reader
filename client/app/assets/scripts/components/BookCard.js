@@ -17,9 +17,9 @@ function BookCard(props) {
   return (
     <Link
       to={`/book/${props.book.id}`}
-      className={`bookcard ${props.read ? "bookcard__finished" : ""}`}
+      className={`bookcard ${props.book.finished ? "bookcard__finished" : ""}`}
     >
-      {props.read && <FaCheckCircle className="bookcard__finished-icon" />}
+      {props.book.finished && <FaCheckCircle className="bookcard__finished-icon" />}
       <div className="bookcard__content">
         <div className="bookcard__cover">
           <img

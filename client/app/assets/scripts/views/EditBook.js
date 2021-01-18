@@ -6,7 +6,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
 import { graphql } from "react-apollo";
 import * as compose from "lodash.flowright";
-import { FaPlusCircle, FaTrash } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
 // context import
@@ -50,8 +50,8 @@ function CreateBook(props) {
         type: "ADD_FLOATING_MESSAGE",
         value: "This book has been successfully deleted"
       });
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -88,17 +88,17 @@ function CreateBook(props) {
         type: "ADD_FLOATING_MESSAGE",
         value: "This book has been successfully edited"
       });
-    } catch {
-      console.log("error");
+    } catch (error) {
+      console.log(error);
     }
   }
 
   useEffect(() => {
     if (!props.data.loading) {
-      setBookId(props.data.getBook.id);
-      setTitle(props.data.getBook.title);
-      setCover(props.data.getBook.cover);
-      setText(props.data.getBook.text);
+      setBookId(props.data.book.id);
+      setTitle(props.data.book.title);
+      setCover(props.data.book.cover);
+      setText(props.data.book.text);
       setIsLoading(false);
     }
   }, [props.data.loading]);

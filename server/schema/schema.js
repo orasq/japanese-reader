@@ -5,7 +5,8 @@ const {
   GraphQLString,
   GraphQLID,
   GraphQLList,
-  GraphQLNonNull
+  GraphQLNonNull,
+  GraphQLBoolean
 } = graphql;
 
 // models
@@ -28,6 +29,9 @@ const BookType = new GraphQLObjectType({
     },
     text: {
       type: GraphQLString
+    },
+    finished: {
+      type: GraphQLBoolean
     },
     author: {
       type: AuthorType,
@@ -61,27 +65,27 @@ const AuthorType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
-    getBook: {
+    book: {
       type: BookType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Book.findById(args.id);
       }
     },
-    getAllBooks: {
+    allBooks: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
         return Book.find({});
       }
     },
-    getAuthor: {
+    author: {
       type: AuthorType,
       args: { id: { type: GraphQLID } },
       resolve(parent, args) {
         return Author.findById(args.id);
       }
     },
-    getAllAuthors: {
+    allAuthors: {
       type: new GraphQLList(AuthorType),
       resolve(parent, args) {
         return Author.find({});
@@ -111,7 +115,8 @@ const Mutation = new GraphQLObjectType({
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
         cover: { type: new GraphQLNonNull(GraphQLString) },
-        text: { type: new GraphQLNonNull(GraphQLString) }
+        text: { type: new GraphQLNonNull(GraphQLString) },
+        finished: { type: new GraphQLNonNull(GraphQLBoolean) }
       },
       resolve(parent, args) {
         /* Book() = mongoose model */
@@ -119,6 +124,7 @@ const Mutation = new GraphQLObjectType({
           title: args.title,
           cover: args.cover,
           text: args.text,
+          finished: args.finished,
           authorId: args.authorId
         });
         return book.save();
@@ -146,6 +152,18 @@ const Mutation = new GraphQLObjectType({
           title: args.title,
           cover: args.cover,
           text: args.text
+        });
+      }
+    },
+    finishedBook: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        finished: { type: new GraphQLNonNull(GraphQLBoolean) }
+      },
+      resolve(parent, args) {
+        return Book.findByIdAndUpdate(args.id, {
+          finished: args.finished
         });
       }
     }

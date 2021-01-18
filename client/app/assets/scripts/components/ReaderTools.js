@@ -1,13 +1,25 @@
-import React, { useEffect, useState, useRef } from "react";
+////////////////////////////////////////////////////////////
+// Important !! Necessary to work with async/await and Babel
+import regeneratorRuntime from "regenerator-runtime";
+////////////////////////////////////////////////////////////
+import React, { useEffect, useState, useRef, useContext } from "react";
+import { graphql } from "react-apollo";
 import { Link } from "react-router-dom";
-import { FaCheckCircle, FaFont, FaCog } from "react-icons/fa";
+import { FaCheckCircle, FaCheck, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
+
+// queries import
+import { finishedBookMutation, getAllBooksQuery } from "../queries/queries";
+// context import
+import DispatchContext from "../contexts/DispatchContext";
 
 function ReaderTools(props) {
   const tools = useRef(null);
   // states
   const [toolsOpened, setToolsOpened] = useState(false);
-
+  const [isFinished, setIsFinished] = useState(props.finished);
+  // context
+  const appDispatch = useContext(DispatchContext);
   // functions
   function ToggleTools() {
     setToolsOpened(!toolsOpened);
@@ -15,6 +27,30 @@ function ReaderTools(props) {
 
   function CloseTools() {
     setToolsOpened(false);
+  }
+
+  async function markAsFinished() {
+    console.log(props.bookId, !isFinished);
+    try {
+      const response = await props.finishedBookMutation({
+        variables: {
+          id: props.bookId,
+          finished: !isFinished
+        },
+        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
+      });
+      // change state
+      setIsFinished(!isFinished);
+      // dispatch message
+      if (!isFinished === true) {
+        appDispatch({
+          type: "ADD_FLOATING_MESSAGE",
+          value: "This is book is now marked as 'finished'"
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
   }
 
   // check if clicked element is tools box
@@ -44,7 +80,15 @@ function ReaderTools(props) {
         <Link to={`/book/${props.bookId}/edit`}>
           <RiEdit2Fill className="reader-tools__icons" />
         </Link>
-        <FaCheckCircle className="reader-tools__icons" />
+        {isFinished ? (
+          <FaCheck
+            onClick={markAsFinished}
+            className="reader-tools__icons reader-tools__icons--finished"
+          />
+        ) : (
+          <FaCheckCircle onClick={markAsFinished} className="reader-tools__icons" />
+        )}
+
         <FaFont onClick={props.toggleFont} className="reader-tools__icons" />
       </div>
       <FaCog onClick={ToggleTools} className="reader-tools__cog" />
@@ -52,4 +96,4 @@ function ReaderTools(props) {
   );
 }
 
-export default ReaderTools;
+export default graphql(finishedBookMutation, { name: "finishedBookMutation" })(ReaderTools);

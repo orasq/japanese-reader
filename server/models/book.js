@@ -5,6 +5,7 @@ const bookSchema = new Schema({
   title: String,
   cover: String,
   text: String,
+  finished: Boolean,
   authorId: String
 });
 

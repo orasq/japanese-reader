@@ -1,7 +1,7 @@
 .floating-messages {
   &__msg {
     position: fixed;
-    top: 30px;
+    top: 32px;
     left: 50%;
     transform: translateX(-50%);
 
@@ -10,10 +10,10 @@
 
     padding: 10px 30px;
     border-radius: $radius_round;
-    background: #fff;
+    background: $color_med;
     box-shadow: 0px 6px 25px 0px $color_light;
 
-    color: $color_med;
+    color: #fff;
     font-size: 0.9rem;
 
     animation: alertPopup ease-out 4s forwards;

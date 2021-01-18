@@ -1,6 +1,5 @@
 const appState = {
-  floatingMessages: [],
-  books: []
+  floatingMessages: []
 };
 
 export default appState;

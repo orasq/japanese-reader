@@ -2,28 +2,30 @@ import { gql } from "apollo-boost";
 
 const getAllBooksQuery = gql`
   {
-    getAllBooks {
+    allBooks {
       id
-      title
       cover
+      title
+      finished
     }
   }
 `;
 
 const getBookQuery = gql`
   query($id: ID!) {
-    getBook(id: $id) {
+    book(id: $id) {
       id
       title
-      text
       cover
+      text
+      finished
     }
   }
 `;
 
 const getAllAuthorsQuery = gql`
   {
-    getAllAuthors {
+    allAuthors {
       id
       name
     }
@@ -31,11 +33,12 @@ const getAllAuthorsQuery = gql`
 `;
 
 const createBookMutation = gql`
-  mutation($title: String!, $cover: String!, $text: String!) {
-    createBook(title: $title, cover: $cover, text: $text) {
+  mutation($title: String!, $cover: String!, $text: String!, $finished: Boolean!) {
+    createBook(title: $title, cover: $cover, text: $text, finished: $finished) {
       id
       title
       text
+      finished
     }
   }
 `;
@@ -44,6 +47,15 @@ const deleteBookMutation = gql`
   mutation($id: ID!) {
     deleteBook(id: $id) {
       id
+    }
+  }
+`;
+
+const finishedBookMutation = gql`
+  mutation($id: ID!, $finished: Boolean!) {
+    finishedBook(id: $id, finished: $finished) {
+      id
+      finished
     }
   }
 `;
@@ -62,5 +74,6 @@ export {
   getAllAuthorsQuery,
   createBookMutation,
   deleteBookMutation,
-  editBookMutation
+  editBookMutation,
+  finishedBookMutation
 };
