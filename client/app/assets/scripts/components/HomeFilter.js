@@ -1,23 +1,42 @@
-import React, { useEffect } from "react";
-import { FaSearch, FaTimesCircle } from "react-icons/fa";
+import React, { useContext } from "react";
+
+// context import
+import StateContext from "../contexts/StateContext";
+import DispatchContext from "../contexts/DispatchContext";
+
+// components import
+import SearchField from "./SearchField";
+import Checkbox from "./Checkbox";
 
 function HomeFilter() {
+  // contexts
+  const appState = useContext(StateContext);
+  const appDispatch = useContext(DispatchContext);
+
+  // functions
+  function toggleFinishedFilter() {
+    appDispatch({ type: "TOGGLE_FINISHED_FILTER" });
+  }
+  function toggleAlphabeticalFilter() {
+    appDispatch({ type: "TOGGLE_ALPHABETICAL_FILTER" });
+  }
+
   return (
     <div className="search">
-      <div className="search__search-group">
-        <FaSearch className="search__search-icon" />
-        <input className="search__field" type="text" placeholder="Search..." />
-        <FaTimesCircle className="search__delete-btn search__delete-btn--visible" />
-      </div>
+      <SearchField />
       <div className="search__filter-wrap">
-        <div className="search__checkbox-group">
-          <input id="finished" type="checkbox" />
-          <label htmlFor="finished">Already read</label>
-        </div>
-        <div className="search__checkbox-group">
-          <input id="alphabetical" type="checkbox" />
-          <label htmlFor="alphabetical">A → Z</label>
-        </div>
+        <Checkbox
+          field="finished"
+          label="Hide already read"
+          checked={appState.finishedFilter}
+          onChange={toggleFinishedFilter}
+        />
+        <Checkbox
+          field="alphabetical"
+          label="A → Z"
+          checked={appState.alphabeticalFilter}
+          onChange={toggleAlphabeticalFilter}
+        />
       </div>
     </div>
   );

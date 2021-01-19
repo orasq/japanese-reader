@@ -30,7 +30,6 @@ function ReaderTools(props) {
   }
 
   async function markAsFinished() {
-    console.log(props.bookId, !isFinished);
     try {
       const response = await props.finishedBookMutation({
         variables: {
@@ -80,15 +79,10 @@ function ReaderTools(props) {
         <Link to={`/book/${props.bookId}/edit`}>
           <RiEdit2Fill className="reader-tools__icons" />
         </Link>
-        {isFinished ? (
-          <FaCheck
-            onClick={markAsFinished}
-            className="reader-tools__icons reader-tools__icons--finished"
-          />
-        ) : (
-          <FaCheckCircle onClick={markAsFinished} className="reader-tools__icons" />
-        )}
-
+        <FaCheckCircle
+          onClick={markAsFinished}
+          className={`reader-tools__icons ${!isFinished ? "reader-tools__icons--inactive" : ""}`}
+        />
         <FaFont onClick={props.toggleFont} className="reader-tools__icons" />
       </div>
       <FaCog onClick={ToggleTools} className="reader-tools__cog" />

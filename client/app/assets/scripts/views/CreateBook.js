@@ -10,11 +10,12 @@ import { FaPlusCircle } from "react-icons/fa";
 
 // context import
 import DispatchContext from "../contexts/DispatchContext";
-import StateContext from "../contexts/StateContext";
 // queries import
 import { getAllBooksQuery, createBookMutation } from "../queries/queries";
 // components import
 import Page from "../components/Page";
+import InputField from "../components/InputField";
+import TextArea from "../components/TextArea";
 
 function CreateBook(props) {
   // contexts
@@ -25,7 +26,7 @@ function CreateBook(props) {
   const [text, setText] = useState();
 
   // convert file to base64 for basic image upload
-  function handleChange(e) {
+  function imageConvertion(e) {
     let image = e.target.files[0];
     if (image) {
       const reader = new FileReader();
@@ -67,42 +68,21 @@ function CreateBook(props) {
     <Page narrow>
       <h1 className="text-center">Create a new book</h1>
       <form onSubmit={handleSubmit} className="form">
-        <div className="form__group">
-          <label className="form__label" htmlFor="title">
-            Book's title
-          </label>
-          <input
-            autoFocus
-            onChange={e => setTitle(e.target.value)}
-            id="title"
-            type="text"
-            className="form__text-input"
-            placeholder="Enter title of the book ..."
-          />
-        </div>
-        <div className="form__group">
-          <label className="form__label" htmlFor="imageupload">
-            Book's Cover
-          </label>
-          <input
-            onChange={handleChange}
-            id="imageupload"
-            name="imageupload"
-            type="file"
-            accept=".jpg, .jpeg, .png"
-          />
-        </div>
-        <div className="form__group">
-          <label className="form__label" htmlFor="txtcontent">
-            Text *
-          </label>
-          <textarea
-            onChange={e => setText(e.target.value)}
-            id="txtcontent"
-            type="text"
-            className="form__text-area"
-          />
-        </div>
+        <InputField
+          autofocus
+          field="title"
+          type="text"
+          label="Title"
+          onChange={e => setTitle(e.target.value)}
+          placeholder="Enter title of the book ..."
+        />
+        <InputField field="imageupload" type="file" label="Cover" onChange={imageConvertion} />
+        <TextArea
+          field="txtcontent"
+          type="text"
+          label="Text"
+          onChange={e => setText(e.target.value)}
+        />
         <button className="button">
           <FaPlusCircle className="button__icon" /> Create new book
         </button>

@@ -22,6 +22,9 @@ import {
 
 // components import
 import Page from "../components/Page";
+import InputField from "../components/InputField";
+import TextArea from "../components/TextArea";
+import LoadingIcon from "../components/LoadingIcon";
 
 function CreateBook(props) {
   const [isLoading, setIsLoading] = useState(true);
@@ -56,7 +59,7 @@ function CreateBook(props) {
   }
 
   // convert file to base64 for basic image upload
-  function handleImageChange(e) {
+  function imageConvertion(e) {
     let image = e.target.files[0];
     if (image) {
       const reader = new FileReader();
@@ -93,6 +96,7 @@ function CreateBook(props) {
     }
   }
 
+  // on page load
   useEffect(() => {
     if (!props.data.loading) {
       setBookId(props.data.book.id);
@@ -106,12 +110,37 @@ function CreateBook(props) {
   return (
     <Page narrow>
       {isLoading ? (
-        <p>Loading ...</p>
+        <LoadingIcon />
       ) : (
         <>
           <h1 className="text-center">Edit this book</h1>
           <form onSubmit={handleSubmit} className="form">
-            <div className="form__group">
+            <InputField
+              autofocus
+              field="title"
+              type="text"
+              label="Title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+              placeholder="Enter title of the book ..."
+            />
+            <InputField
+              field="imageupload"
+              type="file"
+              label="Cover"
+              bookTitle={title}
+              value={cover}
+              onClick={() => setCover("")}
+              onChange={imageConvertion}
+            />
+            <TextArea
+              field="txtcontent"
+              type="text"
+              label="Text"
+              value={text}
+              onChange={e => setText(e.target.value)}
+            />
+            {/*<div className="form__group">
               <label className="form__label" htmlFor="title">
                 Book's title
               </label>
@@ -129,24 +158,6 @@ function CreateBook(props) {
               <label className="form__label" htmlFor="imageupload">
                 Book's Cover
               </label>
-              {cover ? (
-                <div className="form__cover-wrap">
-                  <button onClick={() => setCover("")} className="form__cover-delete">
-                    <FaTrash /> Delete
-                  </button>
-                  <div className="form__cover">
-                    <img src={`data:image/png;base64,${cover}`} alt={title} nopin="nopin" />
-                  </div>
-                </div>
-              ) : (
-                <input
-                  onChange={handleImageChange}
-                  id="imageupload"
-                  name="imageupload"
-                  type="file"
-                  accept=".jpg, .jpeg, .png"
-                />
-              )}
             </div>
             <div className="form__group">
               <label className="form__label" htmlFor="txtcontent">
@@ -159,7 +170,7 @@ function CreateBook(props) {
                 type="text"
                 className="form__text-area"
               />
-            </div>
+            </div> */}
           </form>
           <div className="button__group-row">
             <button onClick={handleSubmit} className="button">

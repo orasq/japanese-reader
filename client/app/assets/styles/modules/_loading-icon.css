@@ -1,0 +1,16 @@
+.loading-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: 5px solid $color_light;
+  border-top-color: $color_med;
+
+  animation: loadingSpin $anim_slow linear infinite;
+
+  &__wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

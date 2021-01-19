@@ -8,6 +8,7 @@ import { getBookQuery } from "../queries/queries";
 // components import
 import Page from "../components/Page";
 import ReaderTools from "../components/ReaderTools";
+import LoadingIcon from "../components/LoadingIcon";
 
 function Reader() {
   // states
@@ -25,21 +26,21 @@ function Reader() {
     localStorage.setItem("fontSize", fontSize);
   }, [fontSize]);
 
-  if (loading) {
-    return <p>Loading ...</p>;
-  }
-
   return (
     <Page>
-      <ReaderTools bookId={bookId} toggleFont={ToggleFont} finished={data.book.finished} />
-      {
-        <div className={`reader ${fontSize == "big" ? "reader--font-big" : ""}`}>
-          <h1 className="reader__title">{data.book.title}</h1>
-          <div className="reader__content">
-            <ReactMarkdown source={data.book.text} allowTypes={["paragraph"]} />
+      {loading ? (
+        <LoadingIcon />
+      ) : (
+        <>
+          <ReaderTools bookId={bookId} toggleFont={ToggleFont} finished={data.book.finished} />
+          <div className={`reader ${fontSize == "big" ? "reader--font-big" : ""}`}>
+            <h1 className="reader__title">{data.book.title}</h1>
+            <div className="reader__content">
+              <ReactMarkdown source={data.book.text} allowTypes={["paragraph"]} />
+            </div>
           </div>
-        </div>
-      }
+        </>
+      )}
     </Page>
   );
 }

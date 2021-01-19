@@ -36,6 +36,10 @@
     &:hover {
       color: $color_dark;
     }
+
+    &--inactive {
+      color: $color_light;
+    }
   }
 
   &--open &__wrap {
@@ -60,6 +64,10 @@ body.dark-theme .reader-tools {
   &__icons {
     &:hover {
       color: $dark-color_light;
+    }
+
+    &--inactive {
+      color: $dark-color_dark;
     }
   }
 

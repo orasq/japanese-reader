@@ -1,5 +1,7 @@
 const appState = {
-  floatingMessages: []
+  floatingMessages: [],
+  finishedFilter: false,
+  alphabeticalFilter: false
 };
 
 export default appState;

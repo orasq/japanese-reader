@@ -3,7 +3,7 @@
   padding: 35px 0;
 
   font-size: 0.8rem;
-  color: $color_dark;
+  color: $color_light;
   text-align: center;
 
   &__wrap {
@@ -11,4 +11,10 @@
     width: 100%;
     max-width: $wrapper_width;
   }
+}
+
+/* DARK THEME */
+
+body.dark-theme .footer {
+  color: $dark-color_dark;
 }
