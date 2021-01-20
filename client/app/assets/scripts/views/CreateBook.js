@@ -4,7 +4,7 @@ import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useState, useContext } from "react";
 import { withRouter } from "react-router-dom";
-import { graphql } from "react-apollo";
+import { useMutation, useQuery } from "@apollo/client";
 import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
 
@@ -24,6 +24,8 @@ function CreateBook(props) {
   const [title, setTitle] = useState();
   const [cover, setCover] = useState();
   const [text, setText] = useState();
+  // mutations
+  const [addBook, { data }] = useMutation(createBookMutation);
 
   // convert file to base64 for basic image upload
   function imageConvertion(e) {
@@ -43,14 +45,14 @@ function CreateBook(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await props.createBookMutation({
+      const response = await addBook({
         variables: {
           title: title,
           cover: cover,
           text: text,
           finished: false
-        },
-        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
+        }
+        // refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
       // redirect to book page
       props.history.push(`/book/${response.data.createBook.id}`);
@@ -91,8 +93,4 @@ function CreateBook(props) {
   );
 }
 
-export default compose(
-  withRouter,
-  graphql(getAllBooksQuery, { name: "getAllBooksQuery" }),
-  graphql(createBookMutation, { name: "createBookMutation" })
-)(CreateBook);
+export default withRouter(CreateBook);

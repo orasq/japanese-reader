@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from "@apollo/client";
 
 const getAllBooksQuery = gql`
   {
@@ -19,15 +19,6 @@ const getBookQuery = gql`
       cover
       text
       finished
-    }
-  }
-`;
-
-const getAllAuthorsQuery = gql`
-  {
-    allAuthors {
-      id
-      name
     }
   }
 `;
@@ -71,7 +62,6 @@ const editBookMutation = gql`
 export {
   getAllBooksQuery,
   getBookQuery,
-  getAllAuthorsQuery,
   createBookMutation,
   deleteBookMutation,
   editBookMutation,

@@ -11,7 +11,6 @@ const {
 
 // models
 const Book = require("../models/book");
-const Author = require("../models/author");
 
 // OBJECT TYPES
 
@@ -32,30 +31,6 @@ const BookType = new GraphQLObjectType({
     },
     finished: {
       type: GraphQLBoolean
-    },
-    author: {
-      type: AuthorType,
-      resolve(parent, args) {
-        return Author.findById(parent.authorId);
-      }
-    }
-  })
-});
-
-const AuthorType = new GraphQLObjectType({
-  name: "author",
-  fields: () => ({
-    id: {
-      type: GraphQLID
-    },
-    name: {
-      type: GraphQLString
-    },
-    books: {
-      type: new GraphQLList(BookType),
-      resolve(parent, args) {
-        return Book.find({ authorId: parent.id });
-      }
     }
   })
 });
@@ -77,19 +52,6 @@ const RootQuery = new GraphQLObjectType({
       resolve(parent, args) {
         return Book.find({});
       }
-    },
-    author: {
-      type: AuthorType,
-      args: { id: { type: GraphQLID } },
-      resolve(parent, args) {
-        return Author.findById(args.id);
-      }
-    },
-    allAuthors: {
-      type: new GraphQLList(AuthorType),
-      resolve(parent, args) {
-        return Author.find({});
-      }
     }
   }
 });
@@ -99,17 +61,6 @@ const RootQuery = new GraphQLObjectType({
 const Mutation = new GraphQLObjectType({
   name: "Mutation",
   fields: {
-    createAuthor: {
-      type: AuthorType,
-      args: {
-        name: { type: new GraphQLNonNull(GraphQLString) }
-      },
-      resolve(parent, args) {
-        /* Author() = mongoose model */
-        let author = new Author({ name: args.name });
-        return author.save();
-      }
-    },
     createBook: {
       type: BookType,
       args: {
@@ -124,8 +75,7 @@ const Mutation = new GraphQLObjectType({
           title: args.title,
           cover: args.cover,
           text: args.text,
-          finished: args.finished,
-          authorId: args.authorId
+          finished: args.finished
         });
         return book.save();
       }
@@ -151,7 +101,7 @@ const Mutation = new GraphQLObjectType({
         return Book.findByIdAndUpdate(args.id, {
           title: args.title,
           cover: args.cover,
-          text: args.text
+          text: args.tex
         });
       }
     },

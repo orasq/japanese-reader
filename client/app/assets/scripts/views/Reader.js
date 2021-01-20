@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "react-apollo";
+import { useQuery, NetworkStatus } from "@apollo/client";
 import ReactMarkdown from "react-markdown";
 
 // queries import
@@ -14,7 +14,9 @@ function Reader() {
   // states
   const [fontSize, setFontSize] = useState(localStorage.getItem("fontSize"));
   const { bookId } = useParams();
-  const { loading, error, data } = useQuery(getBookQuery, { variables: { id: bookId } });
+  const { loading, error, data } = useQuery(getBookQuery, {
+    variables: { id: bookId }
+  });
 
   // functions
   function ToggleFont() {

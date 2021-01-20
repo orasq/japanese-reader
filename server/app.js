@@ -18,6 +18,8 @@ mongoose.connect(process.env.CONNECTIONSTRING, { useNewUrlParser: true, useUnifi
 mongoose.connection.once("open", () => {
   console.log("connected to database");
 });
+// DeprecationWarning: Mongoose: `findOneAndUpdate()` and `findOneAndDelete()` without the `useFindAndModify` option set to false are deprecated.
+mongoose.set("useFindAndModify", false);
 
 app.use(bodyParser.json({ limit: "1mb" }));
 

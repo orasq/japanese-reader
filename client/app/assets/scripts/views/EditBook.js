@@ -1,11 +1,10 @@
 ////////////////////////////////////////////////////////////
 // Important !! Necessary to work with async/await and Babel
-import regeneratorRuntime from "regenerator-runtime";
+// import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useEffect, useState, useContext } from "react";
-import { withRouter } from "react-router-dom";
-import { graphql } from "react-apollo";
-import * as compose from "lodash.flowright";
+import { withRouter, useParams } from "react-router-dom";
+import { useQuery, useMutation } from "@apollo/client";
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
@@ -27,25 +26,39 @@ import TextArea from "../components/TextArea";
 import LoadingIcon from "../components/LoadingIcon";
 
 function CreateBook(props) {
-  const [isLoading, setIsLoading] = useState(true);
-  const [bookId, setBookId] = useState();
-  const [title, setTitle] = useState();
-  const [cover, setCover] = useState();
-  const [text, setText] = useState();
-
+  const { bookId: id } = useParams();
+  // context
   const appDispatch = useContext(DispatchContext);
+  // state
+  const [bookId, setBookId] = useState("");
+  const [title, setTitle] = useState("");
+  const [cover, setCover] = useState("");
+  const [text, setText] = useState("");
+  // queries
+  const { loading: getBookLoading, error: getBookError, data: getBookData } = useQuery(
+    getBookQuery,
+    {
+      variables: {
+        id: id
+      }
+    }
+  );
+  const { loading: getAllBooksLoading, error: getAllBooksError, data: getAllBooksData } = useQuery(
+    getAllBooksQuery
+  );
+  // mutations
+  const [deleteBookMut, { data }] = useMutation(deleteBookMutation);
+  const [editBookMut] = useMutation(editBookMutation);
 
   // delete book
-  async function deleteBook(e) {
-    e.preventDefault();
+  async function deleteBook() {
     try {
-      const response = await props.deleteBookMutation({
+      const response = await deleteBookMut({
         variables: {
           id: bookId
         },
         refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
-      console.log(response.data.deleteBook.id);
       // redirect to homepage
       props.history.push("/");
       // dispatch floating message
@@ -76,7 +89,7 @@ function CreateBook(props) {
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      const response = await props.editBookMutation({
+      const response = await editBookMut({
         variables: {
           id: bookId,
           title: title,
@@ -98,18 +111,17 @@ function CreateBook(props) {
 
   // on page load
   useEffect(() => {
-    if (!props.data.loading) {
-      setBookId(props.data.book.id);
-      setTitle(props.data.book.title);
-      setCover(props.data.book.cover);
-      setText(props.data.book.text);
-      setIsLoading(false);
+    if (!getBookLoading) {
+      setBookId(getBookData.book.id);
+      setTitle(getBookData.book.title);
+      setCover(getBookData.book.cover);
+      setText(getBookData.book.text);
     }
-  }, [props.data.loading]);
+  }, [getBookLoading]);
 
   return (
     <Page narrow>
-      {isLoading ? (
+      {getBookLoading ? (
         <LoadingIcon />
       ) : (
         <>
@@ -140,37 +152,6 @@ function CreateBook(props) {
               value={text}
               onChange={e => setText(e.target.value)}
             />
-            {/*<div className="form__group">
-              <label className="form__label" htmlFor="title">
-                Book's title
-              </label>
-              <input
-                autoFocus
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                id="title"
-                type="text"
-                className="form__text-input"
-                placeholder="Enter title of the book ..."
-              />
-            </div>
-            <div className="form__group">
-              <label className="form__label" htmlFor="imageupload">
-                Book's Cover
-              </label>
-            </div>
-            <div className="form__group">
-              <label className="form__label" htmlFor="txtcontent">
-                Text *
-              </label>
-              <textarea
-                value={text}
-                onChange={e => setText(e.target.value)}
-                id="txtcontent"
-                type="text"
-                className="form__text-area"
-              />
-            </div> */}
           </form>
           <div className="button__group-row">
             <button onClick={handleSubmit} className="button">
@@ -186,18 +167,4 @@ function CreateBook(props) {
   );
 }
 
-export default compose(
-  withRouter,
-  graphql(getBookQuery, {
-    options: props => {
-      return {
-        variables: {
-          id: props.match.params.bookId
-        }
-      };
-    }
-  }),
-  graphql(editBookMutation, { name: "editBookMutation" }),
-  graphql(getAllBooksQuery, { name: "getAllBooksQuery" }),
-  graphql(deleteBookMutation, { name: "deleteBookMutation" })
-)(CreateBook);
+export default withRouter(CreateBook);

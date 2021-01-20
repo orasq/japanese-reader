@@ -13,10 +13,10 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 // Apollo setup to be able to use GraphQL queries
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 const client = new ApolloClient({
-  uri: "http://localhost:5000/graphql"
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache()
 });
 
 // views & components import

@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useQuery } from "react-apollo";
+import { useQuery, NetworkStatus } from "@apollo/client";
 
 // queries import
 import { getAllBooksQuery } from "../queries/queries";
@@ -17,7 +17,7 @@ function BookList() {
   const appState = useContext(StateContext);
 
   // queries
-  const { loading, error, data } = useQuery(getAllBooksQuery);
+  const { loading, error, data, refetch, networkStatus } = useQuery(getAllBooksQuery);
 
   //functions
   function displayBooks() {
@@ -39,6 +39,10 @@ function BookList() {
     });
   }
 
+  // useEffect(() => {
+  //   refetch();
+  // }, []);
+
   // effects
   // useEffect(() => {
   //   if (!loading) {
@@ -50,6 +54,8 @@ function BookList() {
   // useEffect(() => {
   //   displayBooks();
   // }, [appState.finishedFilter]);
+
+  // if (networkStatus === NetworkStatus.refetch) return "Refetching!";
 
   return <div className="bookcard__wrap">{loading ? <LoadingIcon /> : displayBooks()}</div>;
 }

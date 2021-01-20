@@ -3,7 +3,7 @@
 import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { graphql } from "react-apollo";
+import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { FaCheckCircle, FaCheck, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
@@ -20,6 +20,10 @@ function ReaderTools(props) {
   const [isFinished, setIsFinished] = useState(props.finished);
   // context
   const appDispatch = useContext(DispatchContext);
+  // queries
+  const { loading, error } = useQuery(getAllBooksQuery);
+  // mutations
+  const [finishedBook, { data }] = useMutation(finishedBookMutation);
   // functions
   function ToggleTools() {
     setToolsOpened(!toolsOpened);
@@ -31,7 +35,7 @@ function ReaderTools(props) {
 
   async function markAsFinished() {
     try {
-      const response = await props.finishedBookMutation({
+      const response = await finishedBook({
         variables: {
           id: props.bookId,
           finished: !isFinished
@@ -90,4 +94,4 @@ function ReaderTools(props) {
   );
 }
 
-export default graphql(finishedBookMutation, { name: "finishedBookMutation" })(ReaderTools);
+export default ReaderTools;
