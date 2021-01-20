@@ -6,6 +6,8 @@ const AppReducer = (state, action) => {
       return { ...state, finishedFilter: !state.finishedFilter };
     case "TOGGLE_ALPHABETICAL_FILTER":
       return { ...state, alphabeticalFilter: !state.alphabeticalFilter };
+    case "UPDATE_SEARCH_KEYWORD":
+      return { ...state, searchKeyword: action.value };
   }
 };
 

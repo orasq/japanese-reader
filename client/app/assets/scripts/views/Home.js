@@ -13,7 +13,8 @@ import HomeFilter from "../components/HomeFilter";
 import LoadingIcon from "../components/LoadingIcon";
 
 function Home() {
-  const [searchKeyword, setSearchKeyword] = useState("");
+  // contexts
+  const appState = useContext(StateContext);
   // queries
   const { loading, error, data } = useQuery(getAllBooksQuery);
 
@@ -21,7 +22,9 @@ function Home() {
 
   // basic search filter on the title of the book
   function searchFiltering(books) {
-    return books.filter(book => book.title.toLowerCase().indexOf(searchKeyword.toLowerCase()) > -1);
+    return books.filter(
+      book => book.title.toString().toLowerCase().indexOf(appState.searchKeyword.toLowerCase()) > -1
+    );
   }
   return (
     <Page>
@@ -29,7 +32,7 @@ function Home() {
         <LoadingIcon />
       ) : (
         <>
-          <HomeFilter setSearchKeyword={setSearchKeyword} />
+          <HomeFilter />
           <BookList loading={loading} data={searchFiltering(data.allBooks)} />
         </>
       )}
