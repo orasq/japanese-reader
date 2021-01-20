@@ -8,7 +8,7 @@ import DispatchContext from "../contexts/DispatchContext";
 import SearchField from "./SearchField";
 import Checkbox from "./Checkbox";
 
-function HomeFilter() {
+function HomeFilter(props) {
   // contexts
   const appState = useContext(StateContext);
   const appDispatch = useContext(DispatchContext);
@@ -23,7 +23,7 @@ function HomeFilter() {
 
   return (
     <div className="search">
-      <SearchField />
+      <SearchField setSearchKeyword={props.setSearchKeyword} />
       <div className="search__filter-wrap">
         <Checkbox
           field="finished"
