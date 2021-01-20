@@ -34,6 +34,7 @@ function CreateBook(props) {
   const [title, setTitle] = useState("");
   const [cover, setCover] = useState("");
   const [text, setText] = useState("");
+
   // queries
   const { loading: getBookLoading, error: getBookError, data: getBookData } = useQuery(
     getBookQuery,

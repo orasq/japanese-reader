@@ -101,7 +101,7 @@ const Mutation = new GraphQLObjectType({
         return Book.findByIdAndUpdate(args.id, {
           title: args.title,
           cover: args.cover,
-          text: args.tex
+          text: args.text
         });
       }
     },
