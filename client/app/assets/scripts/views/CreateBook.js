@@ -78,7 +78,15 @@ function CreateBook(props) {
           onChange={e => setTitle(e.target.value)}
           placeholder="Enter title of the book ..."
         />
-        <InputField field="imageupload" type="file" label="Cover" onChange={imageConvertion} />
+        <InputField
+          field="imageupload"
+          type="file"
+          label="Cover"
+          bookTitle={title}
+          value={cover}
+          onClick={() => setCover("")}
+          onChange={imageConvertion}
+        />
         <TextArea
           field="txtcontent"
           type="text"

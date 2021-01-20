@@ -1,7 +1,7 @@
 const appState = {
   floatingMessages: [],
-  finishedFilter: false,
-  alphabeticalFilter: false,
+  finishedFilter: localStorage.getItem("finishedFilter") === "true",
+  alphabeticalFilter: localStorage.getItem("alphabeticalFilter") === "true",
   searchKeyword: ""
 };
 

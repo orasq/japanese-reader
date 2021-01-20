@@ -15,9 +15,11 @@ function HomeFilter() {
 
   // functions
   function toggleFinishedFilter() {
+    localStorage.setItem("finishedFilter", !appState.finishedFilter);
     appDispatch({ type: "TOGGLE_FINISHED_FILTER" });
   }
   function toggleAlphabeticalFilter() {
+    localStorage.setItem("alphabeticalFilter", !appState.alphabeticalFilter);
     appDispatch({ type: "TOGGLE_ALPHABETICAL_FILTER" });
   }
 
@@ -33,7 +35,7 @@ function HomeFilter() {
         />
         <Checkbox
           field="alphabetical"
-          label="A → Z"
+          label="あ → お"
           checked={appState.alphabeticalFilter}
           onChange={toggleAlphabeticalFilter}
         />
