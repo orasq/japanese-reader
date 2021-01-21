@@ -1,7 +1,12 @@
 .scroll-to-top {
   position: fixed;
-  top: 50px;
-  right: 50px;
+  top: 30px;
+  right: 30px;
+
+  @mixin s_screen {
+    bottom: 50px;
+    right: 50px;
+  }
 
   display: flex;
   flex-direction: column;
@@ -36,6 +41,7 @@
 
 body.dark-theme .scroll-to-top {
   color: $dark-color_dark;
+  background: $dark-color_bg;
 
   @mixin hover {
     &:hover {

@@ -1,7 +1,12 @@
 .reader-tools {
   position: fixed;
-  bottom: 50px;
-  right: 50px;
+  bottom: 30px;
+  right: 30px;
+
+  @mixin s_screen {
+    bottom: 50px;
+    right: 50px;
+  }
 
   display: flex;
   flex-direction: column;

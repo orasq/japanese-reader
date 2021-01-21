@@ -2,22 +2,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 0 25px;
   background: $color_bg !important; /* !important to prevent 'japanese reading extension‘ to modify bg color*/
 
   &__title {
-    margin-bottom: 6ch;
-    font-size: 1.6rem;
+    margin-bottom: 4ch;
+    font-size: 1.3rem;
     color: $color_med;
     text-align: center;
+
+    @mixin l_screen {
+      margin-bottom: 6ch;
+      font-size: 1.6rem;
+    }
   }
 
   &__content {
     width: 100%;
     max-width: 60ch;
     font-family: $font_jap;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 300;
     line-height: 1.8;
+
+    @mixin l_screen {
+      font-size: 1.2rem;
+    }
 
     p {
       position: relative;
@@ -26,11 +36,19 @@
   }
 
   &--font-big &__title {
-    font-size: 2.6rem;
+    font-size: 2rem;
+
+    @mixin l_screen {
+      font-size: 2.6rem;
+    }
   }
 
   &--font-big &__content {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
+
+    @mixin l_screen {
+      font-size: 1.6rem;
+    }
   }
 }
 

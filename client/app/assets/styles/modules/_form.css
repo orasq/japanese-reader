@@ -39,8 +39,12 @@
   }
 
   &__text-area {
-    min-height: 30vw;
+    min-height: 200px;
     padding: 30px 20px;
+
+    @mixin s_screen {
+      min-height: 400px;
+    }
   }
 
   &__cover-wrap {
