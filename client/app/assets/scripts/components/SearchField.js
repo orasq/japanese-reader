@@ -22,7 +22,9 @@ function SearchField() {
       />
       <FaTimesCircle
         onClick={e => appDispatch({ type: "UPDATE_SEARCH_KEYWORD", value: "" })}
-        className="search__delete-btn search__delete-btn--visible"
+        className={`search__delete-btn ${
+          appState.searchKeyword ? "search__delete-btn--visible" : ""
+        }`}
       />
     </div>
   );
