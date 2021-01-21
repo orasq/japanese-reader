@@ -7,10 +7,14 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
-    margin-bottom: 30px;
+
     padding: 30px;
     width: 100%;
     /* max-width: $wrapper_width; */
+
+    @mixin l_screen {
+      margin-bottom: 30px;
+    }
   }
 
   &__logo {
@@ -18,8 +22,10 @@
     color: $color_dark;
     transition: color $anim_fast ease-out;
 
-    &:hover {
-      color: $color_med_hover;
+    @mixin hover {
+      &:hover {
+        color: $color_med_hover;
+      }
     }
   }
 
@@ -39,8 +45,10 @@
     cursor: pointer;
     transition: color $anim_fast ease-out;
 
-    &:hover {
-      color: $color_med_hover;
+    @mixin hover {
+      &:hover {
+        color: $color_med_hover;
+      }
     }
   }
 }
@@ -52,8 +60,10 @@ body.dark-theme .header {
   &__theme-icon {
     color: $dark-color_dark;
 
-    &:hover {
-      color: $dark-color_med;
+    @mixin hover {
+      &:hover {
+        color: $dark-color_med;
+      }
     }
   }
 }

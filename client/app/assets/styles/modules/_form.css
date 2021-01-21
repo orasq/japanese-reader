@@ -82,16 +82,21 @@
     cursor: pointer;
     z-index: 2;
 
-    &:hover {
-      background-color: $error_hover;
+    @mixin hover {
+      &:hover {
+        background-color: $error_hover;
+      }
     }
 
     svg {
       margin-right: 3px;
     }
   }
-  &__cover-delete:hover svg {
-    animation: shake $anim_med ease-out;
+
+  @mixin hover {
+    &__cover-delete:hover svg {
+      animation: shake $anim_med ease-out;
+    }
   }
 }
 
@@ -173,8 +178,10 @@ body.dark-theme .form {
     background-color: $dark-error;
     border-top: 2px solid $dark-color_bg;
 
-    &:hover {
-      background-color: $dark-error_hover;
+    @mixin hover {
+      &:hover {
+        background-color: $dark-error_hover;
+      }
     }
   }
 }

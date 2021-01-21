@@ -6,9 +6,11 @@
   transition-property: background, transform;
   will-change: transform;
 
-  &:hover {
-    background: $color_light;
-    transform: translateY(-3px);
+  @mixin hover {
+    &:hover {
+      background: $color_light;
+      transform: translateY(-3px);
+    }
   }
 
   &__wrap {
@@ -74,8 +76,10 @@
 /* DARK THEME */
 
 body.dark-theme .bookcard {
-  &:hover {
-    background: $dark-color_dark;
+  @mixin hover {
+    &:hover {
+      background: $dark-color_dark;
+    }
   }
 
   &__title {

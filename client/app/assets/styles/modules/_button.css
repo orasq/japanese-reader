@@ -16,8 +16,10 @@
   overflow: hidden;
   transition: background $anim_fast ease-out;
 
-  &:hover:not(:disabled) {
-    background: $color_med_hover;
+  @mixin hover {
+    &:hover:not(:disabled) {
+      background: $color_med_hover;
+    }
   }
 
   &:disabled {
@@ -33,10 +35,12 @@
     }
   }
 
-  &--delete:hover:not(:disabled) {
-    background: $error_hover;
-    svg {
-      animation: shake $anim_med ease-out;
+  @mixin hover {
+    &--delete:hover:not(:disabled) {
+      background: $error_hover;
+      svg {
+        animation: shake $anim_med ease-out;
+      }
     }
   }
 
@@ -59,15 +63,19 @@
 body.dark-theme .button {
   background: $dark-color_dark;
 
-  &:hover:not(:disabled) {
-    background: $dark-color_med;
+  @mixin hover {
+    &:hover:not(:disabled) {
+      background: $dark-color_med;
+    }
   }
 
   &--delete {
     background: $dark-error;
 
-    &:hover:not(:disabled) {
-      background: $dark-error_hover;
+    @mixin hover {
+      &:hover:not(:disabled) {
+        background: $dark-error_hover;
+      }
     }
   }
 }

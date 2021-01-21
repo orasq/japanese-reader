@@ -1,15 +1,26 @@
 .search {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
   margin-bottom: 40px;
+
+  @mixin s_screen {
+    flex-direction: row;
+    align-items: center;
+  }
 
   &__search-group {
     position: relative;
     flex: 1;
     display: flex;
     flex-direction: row;
+    margin-bottom: 20px;
     overflow: hidden;
+
+    @mixin s_screen {
+      margin-bottom: 0;
+      margin-right: 20px;
+    }
   }
 
   &__search-icon {
@@ -29,6 +40,7 @@
     border-radius: $radius_round;
     border: 1px solid $color_light;
     background: $color_bg;
+    width: 100%;
 
     font-size: 1rem;
     color: $color_dark;
@@ -52,8 +64,10 @@
     transition: $anim_fast ease-out;
     transition-property: color, opacity, transform;
 
-    &:hover {
-      color: $color_med_hover;
+    @mixin hover {
+      &:hover {
+        color: $color_med_hover;
+      }
     }
 
     &--visible {
@@ -66,10 +80,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-  }
+    justify-content: center;
 
-  &__checkbox-group {
-    margin-left: 20px;
+    & > * + * {
+      margin-left: 20px;
+    }
   }
 }
 

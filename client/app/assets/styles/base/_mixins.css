@@ -1,17 +1,38 @@
-@define-mixin atSmall {
-  @media (min-width: 530px) {
+/* BREAKING POINTS */
+
+@define-mixin xs_screen {
+  @media (min-width: 321px) {
     @mixin-content;
   }
 }
 
-@define-mixin atMedium {
-  @media (min-width: 800px) {
+@define-mixin s_screen {
+  @media (min-width: 576px) {
     @mixin-content;
   }
 }
 
-@define-mixin atLarge {
-  @media (min-width: 1010px) {
+@define-mixin m_screen {
+  @media (min-width: 768px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin l_screen {
+  @media (min-width: 992px) {
+    @mixin-content;
+  }
+}
+
+@define-mixin xl_screen {
+  @media (min-width: 1300px) {
+    @mixin-content;
+  }
+}
+
+/* DISABLE HOVER EFFECT ON MOBILE*/
+@define-mixin hover {
+  @media (hover: hover) and (pointer: fine) {
     @mixin-content;
   }
 }

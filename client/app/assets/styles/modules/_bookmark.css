@@ -4,7 +4,14 @@
   left: -20px;
   font-size: 0.9rem;
   color: $color_light;
+  transition: color $anim_fast ease-out;
   cursor: pointer;
+
+  @mixin hover {
+    &:hover {
+      color: $color_med;
+    }
+  }
 
   &--active {
     color: $color_med;
@@ -20,6 +27,12 @@
 
 body.dark-theme .bookmark {
   color: $dark-color_dark;
+
+  @mixin hover {
+    &:hover {
+      color: $dark-color_med;
+    }
+  }
 
   &--active {
     color: $dark-color_med;

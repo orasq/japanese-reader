@@ -3,6 +3,13 @@
   top: 50px;
   right: 50px;
 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px;
+  border-radius: $radius_round;
+  background: $color_bg;
+
   font-size: 2.3rem;
   color: $color_light;
   opacity: 0;
@@ -10,9 +17,12 @@
   transition: $anim_fast opacity, $anim_fast color, $anim_fast visibility;
 
   cursor: pointer;
+  z-index: 99;
 
-  &:hover {
-    color: $color_med;
+  @mixin hover {
+    &:hover {
+      color: $color_med;
+    }
   }
 
   &--visible {
@@ -27,7 +37,9 @@
 body.dark-theme .scroll-to-top {
   color: $dark-color_dark;
 
-  &:hover {
-    color: $dark-color_med;
+  @mixin hover {
+    &:hover {
+      color: $dark-color_med;
+    }
   }
 }

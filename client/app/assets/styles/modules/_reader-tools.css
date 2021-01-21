@@ -14,6 +14,8 @@
   font-size: 1.3rem;
   color: $color_med;
 
+  z-index: 99;
+
   &__cog {
     color: $color_med;
     cursor: pointer;
@@ -33,8 +35,10 @@
     cursor: pointer;
     transition: color $anim_fast ease-out;
 
-    &:hover {
-      color: $color_dark;
+    @mixin hover {
+      &:hover {
+        color: $color_dark;
+      }
     }
 
     &--inactive {
@@ -62,8 +66,10 @@ body.dark-theme .reader-tools {
   }
 
   &__icons {
-    &:hover {
-      color: $dark-color_light;
+    @mixin hover {
+      &:hover {
+        color: $dark-color_light;
+      }
     }
 
     &--inactive {
