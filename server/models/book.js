@@ -5,7 +5,8 @@ const bookSchema = new Schema({
   title: String,
   cover: String,
   text: String,
-  finished: Boolean
+  finished: Boolean,
+  bookmarkIndex: Number
 });
 
 module.exports = mongoose.model("Book", bookSchema);

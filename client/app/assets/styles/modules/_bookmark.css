@@ -1,0 +1,27 @@
+.bookmark {
+  position: absolute;
+  top: 5px;
+  left: -20px;
+  font-size: 0.9rem;
+  color: $color_light;
+  cursor: pointer;
+
+  &--active {
+    color: $color_med;
+    transform: scale(1.2);
+  }
+
+  &--hidden {
+    visibility: hidden;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .bookmark {
+  color: $dark-color_dark;
+
+  &--active {
+    color: $dark-color_med;
+  }
+}

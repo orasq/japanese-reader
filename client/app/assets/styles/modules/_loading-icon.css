@@ -14,3 +14,10 @@
     transform: translateX(-50%);
   }
 }
+
+/* DARK THEME */
+
+body.dark-theme .loading-icon {
+  border-color: $dark-color_dark;
+  border-top-color: $dark-color_med;
+}

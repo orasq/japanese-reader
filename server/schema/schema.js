@@ -4,6 +4,7 @@ const {
   GraphQLObjectType,
   GraphQLString,
   GraphQLID,
+  GraphQLInt,
   GraphQLList,
   GraphQLNonNull,
   GraphQLBoolean
@@ -31,6 +32,9 @@ const BookType = new GraphQLObjectType({
     },
     finished: {
       type: GraphQLBoolean
+    },
+    bookmarkIndex: {
+      type: GraphQLInt
     }
   })
 });
@@ -67,7 +71,8 @@ const Mutation = new GraphQLObjectType({
         title: { type: new GraphQLNonNull(GraphQLString) },
         cover: { type: new GraphQLNonNull(GraphQLString) },
         text: { type: new GraphQLNonNull(GraphQLString) },
-        finished: { type: new GraphQLNonNull(GraphQLBoolean) }
+        finished: { type: new GraphQLNonNull(GraphQLBoolean) },
+        bookmarkIndex: { type: new GraphQLNonNull(GraphQLInt) }
       },
       resolve(parent, args) {
         /* Book() = mongoose model */
@@ -75,7 +80,8 @@ const Mutation = new GraphQLObjectType({
           title: args.title,
           cover: args.cover,
           text: args.text,
-          finished: args.finished
+          finished: args.finished,
+          bookmarkIndex: args.bookmarkIndex
         });
         return book.save();
       }
@@ -114,6 +120,18 @@ const Mutation = new GraphQLObjectType({
       resolve(parent, args) {
         return Book.findByIdAndUpdate(args.id, {
           finished: args.finished
+        });
+      }
+    },
+    addBookmark: {
+      type: BookType,
+      args: {
+        id: { type: new GraphQLNonNull(GraphQLID) },
+        bookmarkIndex: { type: new GraphQLNonNull(GraphQLInt) }
+      },
+      resolve(parent, args) {
+        return Book.findByIdAndUpdate(args.id, {
+          bookmarkIndex: args.bookmarkIndex
         });
       }
     }

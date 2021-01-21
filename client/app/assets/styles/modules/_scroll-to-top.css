@@ -1,0 +1,33 @@
+.scroll-to-top {
+  position: fixed;
+  top: 50px;
+  right: 50px;
+
+  font-size: 2.3rem;
+  color: $color_light;
+  opacity: 0;
+  visibility: hidden;
+  transition: $anim_fast opacity, $anim_fast color, $anim_fast visibility;
+
+  cursor: pointer;
+
+  &:hover {
+    color: $color_med;
+  }
+
+  &--visible {
+    opacity: 1;
+    visibility: visible;
+    transition: $anim_fast opacity, 0 $anim_fast visibility;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .scroll-to-top {
+  color: $dark-color_dark;
+
+  &:hover {
+    color: $dark-color_med;
+  }
+}
