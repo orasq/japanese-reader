@@ -17,8 +17,9 @@ import ScrollToTop from "../components/ScrollToTop";
 
 function Reader() {
   // states
-  const [bookmarkIndex, setBookmarkIndex] = useState();
+  const [bookmarkIndex, setBookmarkIndex] = useState(0);
   const [bookmarkRequest, setBookmarkRequest] = useState(0);
+  const [dataIsLoaded, setDataIsLoaded] = useState(false);
   // contexts
   const appDispatch = useContext(DispatchContext);
   const appState = useContext(StateContext);
@@ -35,6 +36,7 @@ function Reader() {
     appDispatch({ type: "TOGGLE_FONT_SIZE" });
   }
 
+  // function passed to <Bookmark/> component
   function handleBookmarkClick(paragraphIndex) {
     // if bookmark clicked is current active-bookmark, remove it
     if (paragraphIndex == bookmarkIndex) {
@@ -44,24 +46,6 @@ function Reader() {
     }
     setBookmarkRequest(bookmarkRequest + 1);
   }
-
-  useEffect(() => {
-    if (bookmarkRequest > 0) {
-      async function addBookmarkRequest() {
-        try {
-          const response = await addBookmark({
-            variables: {
-              id: bookId,
-              bookmarkIndex: bookmarkIndex
-            }
-          });
-        } catch (error) {
-          console.log(error);
-        }
-      }
-      addBookmarkRequest();
-    }
-  }, [bookmarkRequest]);
 
   // Create custom paragraphs component and modify renderer property of Markdown component
   function CustomParagraph(props) {
@@ -78,12 +62,37 @@ function Reader() {
       </>
     );
   }
-
   const renderers = {
     paragraph: props => <CustomParagraph {...props} />
   };
 
-  // effects
+  // make graphql query to save bookmark
+  useEffect(() => {
+    if (bookmarkRequest > 0) {
+      async function addBookmarkRequest() {
+        try {
+          const response = await addBookmark({
+            variables: {
+              id: bookId,
+              bookmarkIndex: bookmarkIndex
+            }
+          });
+          // dispatch message
+          if (bookmarkIndex > 0) {
+            appDispatch({
+              type: "ADD_FLOATING_MESSAGE",
+              value: "Bookmark successfully saved"
+            });
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      addBookmarkRequest();
+    }
+  }, [bookmarkRequest]);
+
+  // get font size
   useEffect(() => {
     localStorage.setItem("fontSize", appState.fontSize);
   }, [appState.fontSize]);
@@ -92,21 +101,21 @@ function Reader() {
   useEffect(() => {
     if (data) {
       setBookmarkIndex(data.book.bookmarkIndex);
+      setDataIsLoaded(true);
     }
   }, [loading]);
 
   // scroll to bookmark
   useEffect(() => {
-    if (bookmarkIndex) {
+    if (dataIsLoaded && bookmarkIndex > 0) {
       // may not be the optimal way to do this (use 'ref' instead?)
       const activeBookmark = document.querySelector(".bookmark--active");
       const bookmarkPositionY = activeBookmark.getBoundingClientRect().y;
-      window.scrollTo(0, bookmarkPositionY - 30);
-      console.log(bookmarkIndex);
-      console.log(activeBookmark);
-      console.log(bookmarkPositionY);
+      window.scrollTo(0, bookmarkPositionY - 20);
+    } else {
+      window.scrollTo(0, 0);
     }
-  }, [bookmarkIndex]);
+  }, [dataIsLoaded]);
 
   return (
     <Page>

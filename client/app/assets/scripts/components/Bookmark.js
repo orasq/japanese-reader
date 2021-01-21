@@ -17,7 +17,6 @@ function Bookmark(props) {
       }`}
       onClick={() => props.handleBookmarkClick(props.index)}
     >
-      {props.index}
       <FaBookmark />
     </span>
   );
