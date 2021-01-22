@@ -21,7 +21,8 @@ import {
 
 // components import
 import Page from "../components/Page";
-import InputField from "../components/InputField";
+import TextInput from "../components/TextInput";
+import FileInput from "../components/FileInput";
 import TextArea from "../components/TextArea";
 import LoadingIcon from "../components/LoadingIcon";
 
@@ -128,7 +129,7 @@ function CreateBook(props) {
         <>
           <h1 className="text-center">Edit this book</h1>
           <form onSubmit={handleSubmit} className="form">
-            <InputField
+            <TextInput
               autofocus
               field="title"
               type="text"
@@ -137,15 +138,15 @@ function CreateBook(props) {
               onChange={e => setTitle(e.target.value)}
               placeholder="Enter title of the book ..."
             />
-            <InputField
+            <FileInput
               field="imageupload"
-              type="file"
               label="Cover"
               bookTitle={title}
               value={cover}
               onClick={() => setCover("")}
               onChange={imageConvertion}
             />
+
             <TextArea
               field="txtcontent"
               type="text"

@@ -70,18 +70,14 @@ const Mutation = new GraphQLObjectType({
       args: {
         title: { type: new GraphQLNonNull(GraphQLString) },
         cover: { type: new GraphQLNonNull(GraphQLString) },
-        text: { type: new GraphQLNonNull(GraphQLString) },
-        finished: { type: new GraphQLNonNull(GraphQLBoolean) },
-        bookmarkIndex: { type: new GraphQLNonNull(GraphQLInt) }
+        text: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
         /* Book() = mongoose model */
         let book = new Book({
           title: args.title,
           cover: args.cover,
-          text: args.text,
-          finished: args.finished,
-          bookmarkIndex: args.bookmarkIndex
+          text: args.text
         });
         return book.save();
       }

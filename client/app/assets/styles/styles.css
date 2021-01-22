@@ -15,6 +15,8 @@
 @import "modules/_footer";
 @import "modules/_floating-messages";
 @import "modules/_form";
+@import "modules/_image-upload";
+@import "modules/_checkbox";
 @import "modules/_button";
 @import "modules/_bookcard";
 @import "modules/_search";

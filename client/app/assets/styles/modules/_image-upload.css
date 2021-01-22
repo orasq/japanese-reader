@@ -1,0 +1,125 @@
+.image-upload {
+  display: block;
+
+  &__input {
+    opacity: 0;
+    width: 0.1px;
+    height: 0.1px;
+    position: absolute;
+  }
+
+  &__input:focus ~ &__label::after {
+    border-color: $color_med;
+  }
+
+  &__label {
+    position: relative;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  &__label::after {
+    content: "+ Upload an image";
+    margin-top: 10px;
+    margin-left: -20px;
+    padding: 15px 20px;
+    border: 1px dashed $color_light;
+    border-radius: $radius_round;
+
+    color: $color_med;
+    transition: border-color $anim_fast ease-out;
+    cursor: pointer;
+  }
+
+  &__label:hover::after {
+    border-color: $color_med;
+  }
+
+  &--filled &__label::after {
+    display: none;
+  }
+
+  &__cover-wrap {
+    position: relative;
+    width: 100px; /* padding-top is relative to the parent width */
+    margin-left: 20px;
+    border-radius: $radius_med;
+    overflow: hidden;
+  }
+
+  &__cover {
+    position: relative;
+    height: 0; /* to keep aspect ratio */
+    padding-top: 150%; /* to keep aspect ratio */
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+  &__cover-delete {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px;
+    background-color: $error;
+    border: none;
+    border-top: 2px solid $color_bg;
+    font-size: 0.7rem;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    transition: background $anim_fast ease-out;
+    cursor: pointer;
+    z-index: 2;
+
+    @mixin hover {
+      &:hover {
+        background-color: $error_hover;
+      }
+    }
+
+    svg {
+      margin-right: 3px;
+    }
+  }
+
+  @mixin hover {
+    &__cover-delete:hover svg {
+      animation: shake $anim_med ease-out;
+    }
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .image-upload {
+  &__input:focus ~ &__label::after {
+    border-color: $dark-color_med;
+  }
+
+  &__label::after {
+    border-color: $dark-color_dark;
+  }
+
+  &__label:hover::after {
+    border-color: $dark-color_med;
+  }
+  &__cover-delete {
+    background-color: $dark-error;
+    border-top: 2px solid $dark-color_bg;
+
+    @mixin hover {
+      &:hover {
+        background-color: $dark-error_hover;
+      }
+    }
+  }
+}

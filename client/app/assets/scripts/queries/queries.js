@@ -25,12 +25,11 @@ const getBookQuery = gql`
 `;
 
 const createBookMutation = gql`
-  mutation($title: String!, $cover: String!, $text: String!, $finished: Boolean!) {
-    createBook(title: $title, cover: $cover, text: $text, finished: $finished) {
+  mutation($title: String!, $cover: String!, $text: String!) {
+    createBook(title: $title, cover: $cover, text: $text) {
       id
       title
       text
-      finished
     }
   }
 `;

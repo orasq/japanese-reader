@@ -14,7 +14,8 @@ import DispatchContext from "../contexts/DispatchContext";
 import { getAllBooksQuery, createBookMutation } from "../queries/queries";
 // components import
 import Page from "../components/Page";
-import InputField from "../components/InputField";
+import TextInput from "../components/TextInput";
+import FileInput from "../components/FileInput";
 import TextArea from "../components/TextArea";
 
 function CreateBook(props) {
@@ -26,6 +27,8 @@ function CreateBook(props) {
   const [text, setText] = useState();
   // mutations
   const [addBook, { data }] = useMutation(createBookMutation);
+
+  console.log(title, cover);
 
   // convert file to base64 for basic image upload
   function imageConvertion(e) {
@@ -54,6 +57,7 @@ function CreateBook(props) {
         }
         // refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
       });
+      console.log("hey");
       // redirect to book page
       props.history.push(`/book/${response.data.createBook.id}`);
       // dispatch floating message
@@ -70,7 +74,7 @@ function CreateBook(props) {
     <Page narrow>
       <h1 className="text-center">Create a new book</h1>
       <form onSubmit={handleSubmit} className="form">
-        <InputField
+        <TextInput
           autofocus
           field="title"
           type="text"
@@ -78,9 +82,8 @@ function CreateBook(props) {
           onChange={e => setTitle(e.target.value)}
           placeholder="Enter title of the book ..."
         />
-        <InputField
+        <FileInput
           field="imageupload"
-          type="file"
           label="Cover"
           bookTitle={title}
           value={cover}
