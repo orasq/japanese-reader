@@ -95,7 +95,12 @@ function ReaderTools(props) {
           onClick={markAsFinished}
           className={`reader-tools__icons ${!isFinished ? "reader-tools__icons--inactive" : ""}`}
         />
-        <FaFont onClick={props.toggleFont} className="reader-tools__icons" />
+        <FaFont
+          onClick={props.toggleFont}
+          className={`reader-tools__icons ${
+            appState.fontSize !== "big" ? "reader-tools__icons--inactive" : ""
+          }`}
+        />
       </div>
       <FaCog onClick={ToggleTools} className="reader-tools__cog" />
     </div>

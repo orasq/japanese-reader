@@ -25,6 +25,7 @@ function Reader() {
   const appState = useContext(StateContext);
   const { bookId } = useParams();
   // queries
+
   const { loading, data } = useQuery(getBookQuery, {
     variables: { id: bookId }
   });
