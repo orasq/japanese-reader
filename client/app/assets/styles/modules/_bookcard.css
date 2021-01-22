@@ -16,9 +16,13 @@
   &__wrap {
     position: relative;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(100px, 130px));
     justify-content: center;
     gap: 10px;
+
+    @mixin s_screen {
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
   }
 
   &__content {
@@ -55,6 +59,7 @@
     color: $color_dark;
     text-align: center;
     text-decoration: none;
+    word-break: break-all;
   }
 
   &__finished &__content {
@@ -91,6 +96,9 @@ body.dark-theme .bookcard {
   }
 
   &__finished-icon {
-    color: $dark-color_light;
+    top: 15px;
+    right: 15px;
+    color: $dark-color_dark;
+    border-radius: 50%;
   }
 }

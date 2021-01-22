@@ -1,23 +1,35 @@
 .floating-messages {
   &__msg {
     position: fixed;
-    top: 32px;
+    top: 19px;
     left: 50%;
     transform: translateX(-50%);
 
     display: none;
     align-items: center;
 
-    padding: 10px 30px;
+    padding: 10px 15px;
     border-radius: $radius_round;
-    background: $color_med;
+    background: #fff;
     box-shadow: 0px 6px 25px 0px $color_light;
 
-    color: #fff;
-    font-size: 0.9rem;
+    color: $color_med;
+    font-size: 0.75rem;
+    white-space: nowrap; /* avoid bubble to break on multiple lines when not enough place to display it with "left: 50%" */
 
     animation: alertPopup ease-out 4s forwards;
     z-index: 9999;
+
+    @mixin s_screen {
+      padding: 10px 30px;
+      background: $color_med;
+      font-size: 0.9rem;
+      color: #fff;
+    }
+
+    @mixin m_screen {
+      top: 32px;
+    }
 
     & span {
       margin-left: 10px;

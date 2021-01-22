@@ -1,11 +1,16 @@
 .bookmark {
   position: absolute;
-  top: 5px;
-  left: -20px;
-  font-size: 0.9rem;
+  top: -20px;
+  font-size: 1rem;
   color: $color_light;
   transition: color $anim_fast ease-out;
   cursor: pointer;
+
+  @mixin s_screen {
+    top: 5px;
+    left: -20px;
+    font-size: 0.9rem;
+  }
 
   @mixin hover {
     &:hover {

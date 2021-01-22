@@ -2,14 +2,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 25px;
+  padding: 0 5px;
   background: $color_bg !important; /* !important to prevent 'japanese reading extension‘ to modify bg color*/
+
+  @mixin s_screen {
+    padding: 0 25px;
+  }
 
   &__title {
     margin-bottom: 4ch;
     font-size: 1.3rem;
     color: $color_med;
     text-align: center;
+    word-break: break-all;
 
     @mixin l_screen {
       margin-bottom: 6ch;
@@ -24,6 +29,7 @@
     font-size: 1rem;
     font-weight: 300;
     line-height: 1.8;
+    word-break: break-all;
 
     @mixin l_screen {
       font-size: 1.2rem;

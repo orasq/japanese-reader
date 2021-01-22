@@ -51,9 +51,11 @@
 
   &__group-row {
     display: flex;
+    flex-wrap: wrap;
 
-    & > * + * {
-      margin-left: 20px;
+    & > * {
+      margin-top: 20px;
+      margin-right: 20px; /* not optimal, but useful when buttons wrap on small screen sizes */
     }
   }
 }

@@ -1,7 +1,7 @@
 .reader-tools {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 15px;
+  right: 15px;
 
   @mixin s_screen {
     bottom: 50px;

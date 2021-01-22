@@ -1,10 +1,10 @@
 .scroll-to-top {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
 
   @mixin s_screen {
-    bottom: 50px;
+    top: 50px;
     right: 50px;
   }
 
