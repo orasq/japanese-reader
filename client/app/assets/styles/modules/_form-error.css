@@ -1,0 +1,12 @@
+.form-error {
+  position: absolute;
+  bottom: -15px;
+  left: 10px;
+  padding: 5px 12px;
+  background: $error;
+  border-radius: $radius_round;
+
+  font-size: 0.85rem;
+  color: #fff;
+  z-index: 2;
+}

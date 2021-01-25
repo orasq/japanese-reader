@@ -143,7 +143,7 @@ function CreateBook(props) {
               label="Cover"
               bookTitle={title}
               value={cover}
-              onClick={() => setCover("")}
+              removeImage={() => setCover("")}
               onChange={imageConvertion}
             />
 

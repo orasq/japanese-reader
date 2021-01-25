@@ -1,11 +1,15 @@
 import React from "react";
 import { FaTrash } from "react-icons/fa";
 
+// components import
+import FormError from "./FormError";
+
 function FileInput(props) {
   return (
     <div className={`form__group ${props.value ? "image-upload--filled" : ""}`}>
+      {props.errorMessage && <FormError errorMessage={props.errorMessage} />}
       {/* Input is put before label, because it is hided and allow to select label on focus */}
-      {!props.value && (
+      {props.value < 1 && (
         <input
           id={props.field}
           type="file"
@@ -21,7 +25,7 @@ function FileInput(props) {
       {/* if image file is in state, display it */}
       {props.value && (
         <div className="image-upload__cover-wrap">
-          <button onClick={props.onClick} className="image-upload__cover-delete">
+          <button onClick={props.removeImage} className="image-upload__cover-delete">
             <FaTrash /> Delete
           </button>
           <div className="image-upload__cover">

@@ -9,6 +9,7 @@
   &__group {
     display: flex;
     flex-direction: column;
+    position: relative;
   }
 
   &__label {
@@ -45,6 +46,13 @@
     @mixin s_screen {
       min-height: 400px;
     }
+  }
+
+  /* ERRORS */
+
+  &__group--error &__text-input,
+  &__group--error &__text-area {
+    border-color: $error;
   }
 }
 

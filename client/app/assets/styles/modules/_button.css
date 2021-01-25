@@ -49,6 +49,10 @@
     font-size: 1rem;
   }
 
+  &__loading-icon {
+    animation: loadingSpin $anim_slow linear infinite;
+  }
+
   &__group-row {
     display: flex;
     flex-wrap: wrap;

@@ -31,8 +31,8 @@ import EditBook from "./views/EditBook";
 // app context, state & reducer import
 import StateContext from "./contexts/StateContext";
 import DispatchContext from "./contexts/DispatchContext";
-import AppState from "./AppState";
-import AppReducer from "./AppReducer";
+import AppState from "./states/AppState";
+import AppReducer from "./reducers/AppReducer";
 
 function App() {
   const [state, dispatch] = useReducer(AppReducer, AppState);
