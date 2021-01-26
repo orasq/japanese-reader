@@ -20,6 +20,10 @@
     margin-bottom: 0;
   }
 
+  &__label-mb {
+    margin-bottom: 10px;
+  }
+
   &__label::after {
     content: "+ Upload an image";
     margin-top: 10px;

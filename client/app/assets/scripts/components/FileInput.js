@@ -9,7 +9,7 @@ function FileInput(props) {
     <div className={`form__group ${props.value ? "image-upload--filled" : ""}`}>
       {props.errorMessage && <FormError errorMessage={props.errorMessage} />}
       {/* Input is put before label, because it is hided and allow to select label on focus */}
-      {props.value < 1 && (
+      {props.value.length < 1 && (
         <input
           id={props.field}
           type="file"
@@ -19,7 +19,10 @@ function FileInput(props) {
           onChange={props.onChange}
         />
       )}
-      <label className="form__label image-upload__label" htmlFor={props.field}>
+      <label
+        className={`form__label image-upload__label ${props.value ? "image-upload__label-mb" : ""}`}
+        htmlFor={props.field}
+      >
         {props.label}
       </label>
       {/* if image file is in state, display it */}
