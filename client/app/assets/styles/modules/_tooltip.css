@@ -1,0 +1,19 @@
+/* use of !important is necessary to overwrite 3rd party styles */
+.tooltip {
+  padding: 4px 10px !important;
+  background: $color_light !important;
+  border-radius: $radius_round !important;
+  color: $color_dark !important;
+
+  &::after {
+    display: none;
+    border-left-color: $color_light !important;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .tooltip {
+  background: $dark-color_dark !important;
+  color: $dark-color_light !important;
+}

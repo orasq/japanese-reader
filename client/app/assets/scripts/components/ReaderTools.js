@@ -5,6 +5,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
+import ReactTooltip from "react-tooltip";
 import { FaCheckCircle, FaBookmark, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
@@ -51,7 +52,7 @@ function ReaderTools(props) {
       if (!isFinished === true) {
         appDispatch({
           type: "ADD_FLOATING_MESSAGE",
-          value: "This is book is now marked as 'finished'"
+          value: "This is book is now marked as *finished*"
         });
       }
     } catch (error) {
@@ -83,24 +84,58 @@ function ReaderTools(props) {
   return (
     <div ref={tools} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
       <div className="reader-tools__wrap">
-        <Link to={`/book/${props.bookId}/edit`}>
+        <Link to={`/book/${props.bookId}/edit`} data-tip="Edit this book" data-for="edit">
           <RiEdit2Fill className="reader-tools__icons" />
         </Link>
+        <ReactTooltip
+          id="edit"
+          effect="solid"
+          place="left"
+          offset={{ left: -5 }}
+          className="tooltip"
+        />
         <FaBookmark
           onClick={() => appDispatch({ type: "TOGGLE_BOOKMARK_VISIBILITY" })}
           className={`reader-tools__icons ${
             !appState.bookmarkVisible ? "reader-tools__icons--inactive" : ""
           }`}
+          data-tip={appState.bookmarkVisible ? "Hide bookmarks" : "Display bookmarks"}
+          data-for="bookmark"
+        />
+        <ReactTooltip
+          id="bookmark"
+          effect="solid"
+          place="left"
+          offset={{ left: -5 }}
+          className="tooltip"
         />
         <FaCheckCircle
           onClick={markAsFinished}
           className={`reader-tools__icons ${!isFinished ? "reader-tools__icons--inactive" : ""}`}
+          data-tip={isFinished ? "Remove *finished* status" : "Mark as *finished*"}
+          data-for="finished"
+        />
+        <ReactTooltip
+          id="finished"
+          effect="solid"
+          place="left"
+          offset={{ left: -5 }}
+          className="tooltip"
         />
         <FaFont
           onClick={props.toggleFont}
           className={`reader-tools__icons ${
             appState.fontSize !== "big" ? "reader-tools__icons--inactive" : ""
           }`}
+          data-tip={appState.fontSize === "big" ? "Decrease font size" : "Increase font size"}
+          data-for="font"
+        />
+        <ReactTooltip
+          id="font"
+          effect="solid"
+          place="left"
+          offset={{ left: -5 }}
+          className="tooltip"
         />
       </div>
       <FaCog onClick={ToggleTools} className="reader-tools__cog" />

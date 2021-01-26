@@ -31,7 +31,7 @@ $wrapper_width: 1200px;
 $wrapper_width_narrow: 900px;
 
 /* BORDER RADIUS */
-$radius_btn: 5px;
+$radius_small: 5px;
 $radius_med: 15px;
 $radius_big: 20px;
 $radius_round: 100px;

@@ -21,6 +21,7 @@
 @import "modules/_button";
 @import "modules/_bookcard";
 @import "modules/_search";
+@import "modules/_tooltip.css";
 @import "modules/_reader.css";
 @import "modules/_reader-tools.css";
 @import "modules/_loading-icon.css";
