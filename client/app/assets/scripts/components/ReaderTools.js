@@ -1,6 +1,6 @@
 ////////////////////////////////////////////////////////////
 // Important !! Necessary to work with async/await and Babel
-import regeneratorRuntime from "regenerator-runtime";
+// import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/client";
@@ -10,6 +10,7 @@ import { RiEdit2Fill } from "react-icons/ri";
 
 // queries import
 import { finishedBookMutation, getAllBooksQuery } from "../queries/queries";
+
 // context import
 import DispatchContext from "../contexts/DispatchContext";
 import StateContext from "../contexts/StateContext";

@@ -1,7 +1,4 @@
-import React, { useEffect } from "react";
-
-// components import
-import Wrapper from "./Wrapper";
+import React from "react";
 
 function Footer() {
   const date = new Date();

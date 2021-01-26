@@ -2,9 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaGlasses, FaAdjust, FaPlusCircle } from "react-icons/fa";
 
-// components import
-import Wrapper from "./Wrapper";
-
 function Header() {
   // state
   const [theme, setTheme] = useState(localStorage.getItem("theme"));

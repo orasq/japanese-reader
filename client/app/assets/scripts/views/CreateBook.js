@@ -2,7 +2,7 @@
 // Important !! Necessary to work with async/await and Babel
 import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { useImmerReducer } from "use-immer";
@@ -12,11 +12,17 @@ import { CgSpinner } from "react-icons/cg";
 
 // app context import
 import DispatchContext from "../contexts/DispatchContext";
+
 // form validation context, state & reducer import
 import CreateFormState from "../states/CreateFormState";
 import FormValidationReducer from "../reducers/FormValidationReducer";
+
 // queries import
 import { createBookMutation } from "../queries/queries";
+
+// helpers import
+import base64Convertion from "../helpers/base64Convertion";
+
 // components import
 import Page from "../components/Page";
 import TextInput from "../components/TextInput";
@@ -26,43 +32,36 @@ import TextArea from "../components/TextArea";
 function CreateBook(props) {
   // contexts
   const appDispatch = useContext(DispatchContext);
+
   // reducers
   const [state, dispatch] = useImmerReducer(FormValidationReducer, CreateFormState);
+
   // mutations
-  const [addBook, { data }] = useMutation(createBookMutation);
-  // convert file to base64 for basic image upload
-  function imageConvertion(e) {
-    let image = e.target.files[0];
-    if (image) {
-      const reader = new FileReader();
-      reader.onload = handleReaderLoaded;
-      reader.readAsBinaryString(image);
-    }
-  }
-  // convert file to base64 for basic image upload
-  function handleReaderLoaded(readerEvent) {
-    let binaryString = readerEvent.target.result;
-    // setCover value in form state
-    dispatch({ type: "COVER_CHANGE", value: btoa(binaryString) });
+  const [addBookMut, { data }] = useMutation(createBookMutation);
+
+  // image upload handler
+  async function handleImage(e) {
+    // convert file to base64 for basic image upload
+    const base64String = await base64Convertion(e);
+    dispatch({ type: "COVER_CHANGE", value: base64String });
   }
 
-  // handle form submit
+  // form submit handler
   function handleSubmit(e) {
-    console.log("submit");
     e.preventDefault();
     dispatch({ type: "CHECK_TITLE", value: state.title.value });
     dispatch({ type: "CHECK_COVER", value: state.cover.value });
     dispatch({ type: "CHECK_TEXT", value: state.text.value });
     dispatch({ type: "SUBMIT_REQUEST" });
-    console.log("submited");
+    console.log("submit");
   }
   // create Book request
   useEffect(() => {
-    if (state.requestCount) {
+    if (state.saveRequestCount) {
       dispatch({ type: "SAVE_REQUEST_STARTED" });
       async function createBook(e) {
         try {
-          const response = await addBook({
+          const response = await addBookMut({
             variables: {
               title: state.title.value,
               cover: state.cover.value,
@@ -85,7 +84,7 @@ function CreateBook(props) {
       }
       createBook();
     }
-  }, [state.requestCount]);
+  }, [state.saveRequestCount]);
 
   return (
     <Page narrow>
@@ -108,7 +107,7 @@ function CreateBook(props) {
           value={state.cover.value}
           errorMessage={state.cover.errorMessage}
           removeImage={e => dispatch({ type: "COVER_CHANGE", value: "" })}
-          onChange={imageConvertion}
+          onChange={e => handleImage(e)}
         />
         <TextArea
           field="txtcontent"

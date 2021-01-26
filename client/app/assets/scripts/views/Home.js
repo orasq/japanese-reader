@@ -3,8 +3,10 @@ import { useQuery, NetworkStatus } from "@apollo/client";
 
 // queries import
 import { getAllBooksQuery } from "../queries/queries";
+
 // context import
 import StateContext from "../contexts/StateContext";
+
 // components import
 import Page from "../components/Page";
 import BookList from "../components/BookList";

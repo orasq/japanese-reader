@@ -1,4 +1,7 @@
-const CreateFormState = {
+const EditFormState = {
+  bookId: {
+    value: ""
+  },
   title: {
     value: "",
     hasErrors: false,
@@ -15,7 +18,9 @@ const CreateFormState = {
     errorMessage: ""
   },
   isSaving: false,
-  saveRequestCount: 0
+  saveRequestCount: 0,
+  deleteRequestCount: 0,
+  isFetching: true
 };
 
-export default CreateFormState;
+export default EditFormState;

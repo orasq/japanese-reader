@@ -43,14 +43,24 @@ const FormValidationReducer = (draft, action) => {
       return;
     case "SUBMIT_REQUEST":
       if (!draft.title.hasErrors && !draft.cover.hasErrors && !draft.text.hasErrors) {
-        draft.requestCount++;
+        draft.saveRequestCount++;
       }
+      return;
+    case "DELETE_REQUEST":
+      draft.deleteRequestCount++;
       return;
     case "SAVE_REQUEST_STARTED":
       draft.isSaving = true;
       return;
     case "SAVE_REQUEST_FINISHED":
       draft.isSaving = false;
+      return;
+    case "FETCH_FINISHED":
+      draft.bookId.value = action.value.bookId;
+      draft.title.value = action.value.title;
+      draft.cover.value = action.value.cover;
+      draft.text.value = action.value.text;
+      draft.isFetching = false;
       return;
   }
 };

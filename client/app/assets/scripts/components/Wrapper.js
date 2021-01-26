@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function Wrapper(props) {
   return <div className={`wrapper ${props.narrow ? "wrapper--narrow" : ""}`}>{props.children}</div>;

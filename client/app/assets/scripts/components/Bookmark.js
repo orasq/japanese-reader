@@ -1,7 +1,5 @@
-import { useQuery } from "@apollo/client";
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { FaBookmark } from "react-icons/fa";
-import { useMutation } from "@apollo/client";
 
 // contexts import
 import StateContext from "../contexts/StateContext";

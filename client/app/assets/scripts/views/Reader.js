@@ -5,9 +5,11 @@ import ReactMarkdown from "react-markdown";
 
 // queries import
 import { getBookQuery, addBookmarkMutation } from "../queries/queries";
+
 // context import
 import DispatchContext from "../contexts/DispatchContext";
 import StateContext from "../contexts/StateContext";
+
 // components import
 import Page from "../components/Page";
 import ReaderTools from "../components/ReaderTools";
@@ -16,19 +18,23 @@ import Bookmark from "../components/Bookmark";
 import ScrollToTop from "../components/ScrollToTop";
 
 function Reader() {
+  // url parameters
+  const { bookId } = useParams();
+
   // states
   const [bookmarkIndex, setBookmarkIndex] = useState(0);
   const [bookmarkRequest, setBookmarkRequest] = useState(0);
   const [dataIsLoaded, setDataIsLoaded] = useState(false);
+
   // contexts
   const appDispatch = useContext(DispatchContext);
   const appState = useContext(StateContext);
-  const { bookId } = useParams();
-  // queries
 
+  // queries
   const { loading, data } = useQuery(getBookQuery, {
     variables: { id: bookId }
   });
+
   // mutations
   const [addBookmark, { data: bookmarkData }] = useMutation(addBookmarkMutation);
 
