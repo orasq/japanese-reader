@@ -100,11 +100,15 @@ const Mutation = new GraphQLObjectType({
         text: { type: new GraphQLNonNull(GraphQLString) }
       },
       resolve(parent, args) {
-        return Book.findByIdAndUpdate(args.id, {
-          title: args.title,
-          cover: args.cover,
-          text: args.text
-        });
+        return Book.findByIdAndUpdate(
+          args.id,
+          {
+            title: args.title,
+            cover: args.cover,
+            text: args.text
+          },
+          { new: true } // important , otherwise return old values
+        );
       }
     },
     finishedBook: {
@@ -114,9 +118,13 @@ const Mutation = new GraphQLObjectType({
         finished: { type: new GraphQLNonNull(GraphQLBoolean) }
       },
       resolve(parent, args) {
-        return Book.findByIdAndUpdate(args.id, {
-          finished: args.finished
-        });
+        return Book.findByIdAndUpdate(
+          args.id,
+          {
+            finished: args.finished
+          },
+          { new: true } // important , otherwise return old values
+        );
       }
     },
     addBookmark: {
@@ -126,9 +134,13 @@ const Mutation = new GraphQLObjectType({
         bookmarkIndex: { type: new GraphQLNonNull(GraphQLInt) }
       },
       resolve(parent, args) {
-        return Book.findByIdAndUpdate(args.id, {
-          bookmarkIndex: args.bookmarkIndex
-        });
+        return Book.findByIdAndUpdate(
+          args.id,
+          {
+            bookmarkIndex: args.bookmarkIndex
+          },
+          { new: true } // important , otherwise return old values
+        );
       }
     }
   }

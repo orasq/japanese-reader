@@ -3,14 +3,14 @@
 // import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useEffect, useState, useRef, useContext } from "react";
-import { useQuery, useMutation } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import ReactTooltip from "react-tooltip";
 import { FaCheckCircle, FaBookmark, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
 // queries import
-import { finishedBookMutation, getAllBooksQuery } from "../queries/queries";
+import { finishedBookMutation } from "../queries/queries";
 
 // context import
 import DispatchContext from "../contexts/DispatchContext";
@@ -18,16 +18,17 @@ import StateContext from "../contexts/StateContext";
 
 function ReaderTools(props) {
   const tools = useRef(null);
+
   // states
   const [toolsOpened, setToolsOpened] = useState(false);
   const [isFinished, setIsFinished] = useState(props.finished);
+
   // context
   const appDispatch = useContext(DispatchContext);
   const appState = useContext(StateContext);
-  // queries
-  const { loading, error } = useQuery(getAllBooksQuery);
+
   // mutations
-  const [finishedBook, { data }] = useMutation(finishedBookMutation);
+  const [finishedBookMut, { data }] = useMutation(finishedBookMutation);
   // functions
   function ToggleTools() {
     setToolsOpened(!toolsOpened);
@@ -39,12 +40,11 @@ function ReaderTools(props) {
 
   async function markAsFinished() {
     try {
-      const response = await finishedBook({
+      const response = await finishedBookMut({
         variables: {
           id: props.bookId,
           finished: !isFinished
-        },
-        refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
+        }
       });
       // change state
       setIsFinished(!isFinished);

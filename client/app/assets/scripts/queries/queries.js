@@ -4,8 +4,8 @@ const getAllBooksQuery = gql`
   {
     allBooks {
       id
-      cover
       title
+      cover
       finished
     }
   }

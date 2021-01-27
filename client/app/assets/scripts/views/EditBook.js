@@ -86,7 +86,6 @@ function CreateBook(props) {
             // when mutation is complete, update Apollo cache
             // to reflect mutation on homepage without refetch
             update(cache, { data: { deleteBook } }) {
-              console.log(deleteBook.id);
               cache.modify({
                 fields: {
                   allBooks(existingBooks, { readField }) {
