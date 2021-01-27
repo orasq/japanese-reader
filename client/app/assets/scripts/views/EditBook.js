@@ -18,12 +18,7 @@ import EditFormState from "../states/EditFormState";
 import FormValidationReducer from "../reducers/FormValidationReducer";
 
 // queries import
-import {
-  getBookQuery,
-  getAllBooksQuery,
-  deleteBookMutation,
-  editBookMutation
-} from "../queries/queries";
+import { getBookQuery, deleteBookMutation, editBookMutation } from "../queries/queries";
 
 // helpers import
 import base64Convertion from "../helpers/base64Convertion";
@@ -46,19 +41,13 @@ function CreateBook(props) {
   const [state, dispatch] = useImmerReducer(FormValidationReducer, EditFormState);
 
   // queries
-  const { loading: getBookLoading, error: getBookError, data: getBookData } = useQuery(
-    getBookQuery,
-    {
-      variables: {
-        id: bookId
-      }
+  const { loading, error, data } = useQuery(getBookQuery, {
+    variables: {
+      id: bookId
     }
-  );
-  // const { loading: getAllBooksLoading, error: getAllBooksError, data: getAllBooksData } = useQuery(
-  //   getAllBooksQuery
-  // );
+  });
   // mutations
-  const [deleteBookMut, { data }] = useMutation(deleteBookMutation);
+  const [deleteBookMut, { data: deleteBookMutData }] = useMutation(deleteBookMutation);
   const [editBookMut] = useMutation(editBookMutation);
 
   // delete book handler
@@ -93,8 +82,19 @@ function CreateBook(props) {
           const response = await deleteBookMut({
             variables: {
               id: state.bookId.value
+            },
+            // when mutation is complete, update Apollo cache
+            // to reflect mutation on homepage without refetch
+            update(cache, { data: { deleteBook } }) {
+              console.log(deleteBook.id);
+              cache.modify({
+                fields: {
+                  allBooks(existingBooks, { readField }) {
+                    return existingBooks.filter(book => deleteBook.id !== readField("id", book));
+                  }
+                }
+              });
             }
-            // refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
           });
           // redirect to homepage
           props.history.push("/");
@@ -124,7 +124,6 @@ function CreateBook(props) {
               cover: state.cover.value,
               text: state.text.value
             }
-            // refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
           });
           dispatch({ type: "SAVE_REQUEST_FINISHED" });
           // redirect to book page
@@ -144,22 +143,22 @@ function CreateBook(props) {
 
   // on page load
   useEffect(() => {
-    if (!getBookLoading) {
+    if (!loading) {
       dispatch({
         type: "FETCH_FINISHED",
         value: {
-          bookId: getBookData.book.id,
-          title: getBookData.book.title,
-          cover: getBookData.book.cover,
-          text: getBookData.book.text
+          bookId: data.book.id,
+          title: data.book.title,
+          cover: data.book.cover,
+          text: data.book.text
         }
       });
     }
-  }, [getBookLoading]);
+  }, [loading]);
 
   return (
     <Page narrow>
-      {getBookLoading ? (
+      {loading ? (
         <LoadingIcon />
       ) : (
         <>

@@ -34,6 +34,17 @@ const createBookMutation = gql`
   }
 `;
 
+const editBookMutation = gql`
+  mutation($id: ID!, $title: String!, $cover: String!, $text: String!) {
+    editBook(id: $id, title: $title, cover: $cover, text: $text) {
+      id
+      title
+      cover
+      text
+    }
+  }
+`;
+
 const deleteBookMutation = gql`
   mutation($id: ID!) {
     deleteBook(id: $id) {
@@ -60,20 +71,12 @@ const addBookmarkMutation = gql`
   }
 `;
 
-const editBookMutation = gql`
-  mutation($id: ID!, $title: String!, $cover: String!, $text: String!) {
-    editBook(id: $id, title: $title, cover: $cover, text: $text) {
-      id
-    }
-  }
-`;
-
 export {
   getAllBooksQuery,
   getBookQuery,
   createBookMutation,
-  deleteBookMutation,
   editBookMutation,
+  deleteBookMutation,
   finishedBookMutation,
   addBookmarkMutation
 };

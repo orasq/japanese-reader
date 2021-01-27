@@ -4,7 +4,7 @@ import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
 import React, { useContext, useEffect } from "react";
 import { withRouter } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+import { gql, useQuery, useMutation } from "@apollo/client";
 import { useImmerReducer } from "use-immer";
 import * as compose from "lodash.flowright";
 import { FaPlusCircle } from "react-icons/fa";
@@ -65,10 +65,30 @@ function CreateBook(props) {
             variables: {
               title: state.title.value,
               cover: state.cover.value,
-              text: state.text.value,
-              finished: false
+              text: state.text.value
+            },
+            // when mutation is complete, update Apollo cache
+            // to reflect mutation on homepage without refetch
+            update(cache, { data: { createBook } }) {
+              cache.modify({
+                fields: {
+                  allBooks(existingBooks = []) {
+                    const newBookRef = cache.writeFragment({
+                      data: createBook,
+                      fragment: gql`
+                        fragment newBook on book {
+                          id
+                          title
+                          cover
+                          text
+                        }
+                      `
+                    });
+                    return [...existingBooks, newBookRef];
+                  }
+                }
+              });
             }
-            // refetchQueries: [{ query: getAllBooksQuery }] // allow the homepage to be up-to-date
           });
           dispatch({ type: "SAVE_REQUEST_FINISHED" });
           // redirect to book page

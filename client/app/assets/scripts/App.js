@@ -37,9 +37,9 @@ import AppReducer from "./reducers/AppReducer";
 function App() {
   const [state, dispatch] = useReducer(AppReducer, AppState);
   return (
-    <StateContext.Provider value={state}>
-      <DispatchContext.Provider value={dispatch}>
-        <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
+      <StateContext.Provider value={state}>
+        <DispatchContext.Provider value={dispatch}>
           <BrowserRouter>
             <FloatingMessage />
             <Header />
@@ -56,9 +56,9 @@ function App() {
             </Switch>
             <Footer />
           </BrowserRouter>
-        </ApolloProvider>
-      </DispatchContext.Provider>
-    </StateContext.Provider>
+        </DispatchContext.Provider>
+      </StateContext.Provider>
+    </ApolloProvider>
   );
 }
 

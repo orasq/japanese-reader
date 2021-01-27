@@ -24,11 +24,11 @@ function Home() {
   function alphabeticalFiltering(books) {
     return [...books].sort((a, b) => a.title.localeCompare(b.title, "ja"));
   }
-
+  // "Already read?" filtering function
   function finishedFiltering(books) {
     return books.filter(book => !book.finished);
   }
-
+  // search keyword filtering function
   function searchFiltering(books) {
     return books.filter(
       book => book.title.toString().toLowerCase().indexOf(appState.searchKeyword.toLowerCase()) > -1
