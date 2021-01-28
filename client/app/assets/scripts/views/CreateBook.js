@@ -84,7 +84,7 @@ function CreateBook(props) {
                         }
                       `
                     });
-                    return [...existingBooks, newBookRef];
+                    return [newBookRef, ...existingBooks];
                   }
                 }
               });

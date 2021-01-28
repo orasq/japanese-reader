@@ -54,7 +54,7 @@ const RootQuery = new GraphQLObjectType({
     allBooks: {
       type: new GraphQLList(BookType),
       resolve(parent, args) {
-        return Book.find({});
+        return Book.find({}).sort({ createdAt: "desc" });
       }
     }
   }
