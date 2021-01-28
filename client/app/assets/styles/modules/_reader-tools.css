@@ -110,6 +110,15 @@
   }
 }
 
+.reader-tools__wrap-exit .reader-tools__icon-group {
+  opacity: 1;
+}
+
+.reader-tools__wrap-exit .reader-tools__icon-group {
+  opacity: 0;
+  transition: opacity $anim_fast ease-out;
+}
+
 /* DARK THEME */
 body.dark-theme .reader-tools {
   border: 2px solid $dark-color_dark;
