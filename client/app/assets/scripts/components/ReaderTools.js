@@ -5,6 +5,7 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
 import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import ReactTooltip from "react-tooltip";
 import { FaCheckCircle, FaBookmark, FaFont, FaCog } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
@@ -83,61 +84,75 @@ function ReaderTools(props) {
 
   return (
     <div ref={tools} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
-      <div className="reader-tools__wrap">
-        <Link to={`/book/${props.bookId}/edit`} data-tip="Edit this book" data-for="edit">
-          <RiEdit2Fill className="reader-tools__icons" />
-        </Link>
-        <ReactTooltip
-          id="edit"
-          effect="solid"
-          place="left"
-          offset={{ left: -5 }}
-          className="tooltip"
-        />
-        <FaBookmark
-          onClick={() => appDispatch({ type: "TOGGLE_BOOKMARK_VISIBILITY" })}
-          className={`reader-tools__icons ${
-            !appState.bookmarkVisible ? "reader-tools__icons--inactive" : ""
-          }`}
-          data-tip={appState.bookmarkVisible ? "Hide bookmarks" : "Display bookmarks"}
-          data-for="bookmark"
-        />
-        <ReactTooltip
-          id="bookmark"
-          effect="solid"
-          place="left"
-          offset={{ left: -5 }}
-          className="tooltip"
-        />
-        <FaCheckCircle
-          onClick={markAsFinished}
-          className={`reader-tools__icons ${!isFinished ? "reader-tools__icons--inactive" : ""}`}
-          data-tip={isFinished ? "Mark as unread" : "Mark as read"}
-          data-for="finished"
-        />
-        <ReactTooltip
-          id="finished"
-          effect="solid"
-          place="left"
-          offset={{ left: -5 }}
-          className="tooltip"
-        />
-        <FaFont
-          onClick={props.toggleFont}
-          className={`reader-tools__icons ${
-            appState.fontSize !== "big" ? "reader-tools__icons--inactive" : ""
-          }`}
-          data-tip={appState.fontSize === "big" ? "Decrease font size" : "Increase font size"}
-          data-for="font"
-        />
-        <ReactTooltip
-          id="font"
-          effect="solid"
-          place="left"
-          offset={{ left: -5 }}
-          className="tooltip"
-        />
-      </div>
+      {/* group of icons */}
+      <CSSTransition classNames="reader-tools__wrap" in={toolsOpened} timeout={500} unmountOnExit>
+        <div className="reader-tools__wrap">
+          <div className="reader-tools__icon-group">
+            <Link to={`/book/${props.bookId}/edit`} data-tip="Edit this book" data-for="edit">
+              <RiEdit2Fill className="reader-tools__icons" />
+            </Link>
+            <ReactTooltip
+              id="edit"
+              effect="solid"
+              place="left"
+              offset={{ left: -5 }}
+              className="tooltip"
+            />
+          </div>
+          <div className="reader-tools__icon-group">
+            <FaBookmark
+              onClick={() => appDispatch({ type: "TOGGLE_BOOKMARK_VISIBILITY" })}
+              className={`reader-tools__icons ${
+                !appState.bookmarkVisible ? "reader-tools__icons--inactive" : ""
+              }`}
+              data-tip={appState.bookmarkVisible ? "Hide bookmarks" : "Display bookmarks"}
+              data-for="bookmark"
+            />
+            <ReactTooltip
+              id="bookmark"
+              effect="solid"
+              place="left"
+              offset={{ left: -5 }}
+              className="tooltip"
+            />
+          </div>
+          <div className="reader-tools__icon-group">
+            <FaCheckCircle
+              onClick={markAsFinished}
+              className={`reader-tools__icons ${
+                !isFinished ? "reader-tools__icons--inactive" : ""
+              }`}
+              data-tip={isFinished ? "Mark as unread" : "Mark as read"}
+              data-for="finished"
+            />
+            <ReactTooltip
+              id="finished"
+              effect="solid"
+              place="left"
+              offset={{ left: -5 }}
+              className="tooltip"
+            />
+          </div>
+          <div className="reader-tools__icon-group">
+            <FaFont
+              onClick={props.toggleFont}
+              className={`reader-tools__icons ${
+                appState.fontSize !== "big" ? "reader-tools__icons--inactive" : ""
+              }`}
+              data-tip={appState.fontSize === "big" ? "Decrease font size" : "Increase font size"}
+              data-for="font"
+            />
+            <ReactTooltip
+              id="font"
+              effect="solid"
+              place="left"
+              offset={{ left: -5 }}
+              className="tooltip"
+            />
+          </div>
+        </div>
+      </CSSTransition>
+      {/* settings icons */}
       <FaCog onClick={ToggleTools} className="reader-tools__cog" />
     </div>
   );

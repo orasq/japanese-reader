@@ -27,9 +27,10 @@
   }
 
   &__wrap {
-    display: none;
+    display: flex;
     flex-direction: column;
     margin-bottom: 25px;
+    overflow: hidden;
 
     & > * + * {
       margin-top: 20px;
@@ -52,11 +53,63 @@
   }
 
   &--open &__wrap {
-    display: flex;
   }
 
   &--open &__cog {
     color: $color_light;
+  }
+}
+
+/* REACT CSS TRANSITIONS */
+
+.reader-tools__wrap {
+  &-enter {
+    margin-bottom: 0;
+    max-height: 0px;
+  }
+
+  &-enter-active {
+    margin-bottom: 25px;
+    max-height: 300px;
+    transition: $anim_fast ease-out;
+    transition-property: max-height margin-bottom;
+  }
+
+  &-exit {
+    margin-bottom: 25px;
+    max-height: 300px;
+    transform: translateY(0);
+  }
+
+  &-exit-active {
+    margin-bottom: 0;
+    max-height: 0px;
+    transition: $anim_fast ease-out;
+    transition-property: max-height margin-bottom;
+  }
+}
+
+/* icons animations */
+.reader-tools__wrap-enter .reader-tools__icon-group {
+  opacity: 0;
+}
+
+.reader-tools__wrap-enter-active .reader-tools__icon-group {
+  opacity: 1;
+  transition: opacity $anim_fast ease-out;
+
+  /* not ideal, look later for better solution */
+  &:nth-child(4) {
+    transition-delay: 0.15s;
+  }
+  &:nth-child(3) {
+    transition-delay: 0.18s;
+  }
+  &:nth-child(2) {
+    transition-delay: 0.21s;
+  }
+  &:nth-child(1) {
+    transition-delay: 0.24s;
   }
 }
 
