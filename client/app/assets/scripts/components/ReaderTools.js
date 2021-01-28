@@ -52,7 +52,7 @@ function ReaderTools(props) {
       if (!isFinished === true) {
         appDispatch({
           type: "ADD_FLOATING_MESSAGE",
-          value: "This is book is now marked as *finished*"
+          value: "This is book is now marked as read"
         });
       }
     } catch (error) {
@@ -112,7 +112,7 @@ function ReaderTools(props) {
         <FaCheckCircle
           onClick={markAsFinished}
           className={`reader-tools__icons ${!isFinished ? "reader-tools__icons--inactive" : ""}`}
-          data-tip={isFinished ? "Remove *finished* status" : "Mark as *finished*"}
+          data-tip={isFinished ? "Mark as unread" : "Mark as read"}
           data-for="finished"
         />
         <ReactTooltip

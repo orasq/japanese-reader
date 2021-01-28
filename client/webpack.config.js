@@ -85,6 +85,10 @@ if (currentTask == "dev") {
   cssConfig.use.unshift("style-loader");
   /* where should the bundled js file be placed */
   config.output = {
+    /* publicPath set to "/" is necessary for React Router
+    to work with parameters in url (need a relative path to bundle.js).
+    Otherwise, displays blank page on reload */
+    publicPath: "/",
     filename: "bundled.js",
     /* webpack requires an absolute path -> using nodeJS package */
     path: path.resolve(__dirname, "app")
