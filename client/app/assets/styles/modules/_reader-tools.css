@@ -52,9 +52,6 @@
     }
   }
 
-  &--open &__wrap {
-  }
-
   &--open &__cog {
     color: $color_light;
   }
@@ -98,7 +95,7 @@
   opacity: 1;
   transition: opacity $anim_fast ease-out;
 
-  /* not ideal, look later for better solution */
+  /* not ideal, check later for better solution */
   &:nth-child(4) {
     transition-delay: 0.15s;
   }
