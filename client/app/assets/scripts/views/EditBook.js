@@ -2,10 +2,11 @@
 // Important !! Necessary to work with async/await and Babel
 // import regeneratorRuntime from "regenerator-runtime";
 ////////////////////////////////////////////////////////////
-import React, { useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { withRouter, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { useImmerReducer } from "use-immer";
+import { CSSTransition } from "react-transition-group";
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { CgSpinner } from "react-icons/cg";
@@ -29,10 +30,14 @@ import TextInput from "../components/TextInput";
 import FileInput from "../components/FileInput";
 import TextArea from "../components/TextArea";
 import LoadingIcon from "../components/LoadingIcon";
+import ConfirmModal from "../components/ConfirmModal";
 
 function CreateBook(props) {
   // url parameters
   const { bookId } = useParams();
+
+  // states
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
 
   // context
   const appDispatch = useContext(DispatchContext);
@@ -50,12 +55,18 @@ function CreateBook(props) {
   const [deleteBookMut, { data: deleteBookMutData }] = useMutation(deleteBookMutation);
   const [editBookMut] = useMutation(editBookMutation);
 
+  // delete modal display handler
+  function handleShowModalDisplay() {
+    setShowDeleteModal(true);
+  }
+
+  function handleHideModalDisplay() {
+    setShowDeleteModal(false);
+  }
+
   // delete book handler
   function handleDelete() {
-    const confirmation = window.confirm("Are you sure you wnat to delete this book?");
-    if (confirmation) {
-      dispatch({ type: "DELETE_REQUEST" });
-    }
+    dispatch({ type: "DELETE_REQUEST" });
   }
 
   // image upload handler
@@ -212,9 +223,24 @@ function CreateBook(props) {
               )}
               Edit this book
             </button>
-            <button onClick={handleDelete} className="button button--delete">
-              <FaTrash className="button__icon" /> Delete this book
-            </button>
+            {/* Delete + modal group */}
+            <div className="button__delete-group">
+              <CSSTransition
+                classNames="confirm-modal"
+                in={showDeleteModal}
+                timeout={200}
+                unmountOnExit
+              >
+                <ConfirmModal
+                  handleDelete={handleDelete}
+                  handleHideModalDisplay={handleHideModalDisplay}
+                />
+              </CSSTransition>
+
+              <button onClick={handleShowModalDisplay} className="button button--delete">
+                <FaTrash className="button__icon" /> Delete this book
+              </button>
+            </div>
           </div>
         </>
       )}

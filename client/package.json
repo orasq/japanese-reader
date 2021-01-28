@@ -21,6 +21,7 @@
     "react-query": "^3.5.16",
     "react-router-dom": "^5.2.0",
     "react-tooltip": "^4.2.13",
+    "react-transition-group": "^4.4.1",
     "regenerator-runtime": "^0.13.7",
     "use-immer": "^0.4.2"
   },

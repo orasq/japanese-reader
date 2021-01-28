@@ -1,0 +1,108 @@
+.confirm-modal {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  padding: 10px;
+
+  border-radius: $radius_med;
+  border: 1px dashed $color_light;
+  background: $color_bg;
+  /*box-shadow: 0px 6px 25px 0px $color_light;*/
+  color: $color_dark;
+  text-align: center;
+
+  &__text {
+    font-size: 0.9rem;
+  }
+
+  &__btn-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  &__btn {
+    padding: 5px 10px;
+    border-radius: $radius_round;
+    background: $error;
+    border: none;
+
+    font-size: 0.75rem;
+    color: #fff;
+    text-transform: uppercase;
+    transition: background $anim_fast ease-out;
+    cursor: pointer;
+
+    &:hover {
+      background: $error_hover;
+    }
+  }
+
+  &__btn--ghost {
+    background: transparent;
+    border: 1px solid $color_light;
+    color: $color_dark;
+    transition: border-color $anim_fast ease-out;
+
+    &:hover {
+      border-color: $color_med;
+      background: transparent;
+    }
+  }
+}
+
+/* REACT CSS TRANSITIONS */
+.confirm-modal {
+  &-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  &-enter-active {
+    opacity: 1;
+    transform: translateY(0);
+    transition: $anim_fast visibility ease-out, $anim_fast opacity ease-out,
+      $anim_fast transform ease-out;
+  }
+
+  &-exit {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &-exit-active {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: $anim_fast visibility ease-out, $anim_fast opacity ease-out,
+      $anim_fast transform ease-out;
+  }
+}
+
+/* DARK THEME */
+
+body.dark-theme .confirm-modal {
+  border-color: $dark-color_dark;
+  background: $dark-color_bg;
+  color: $dark-color_med;
+
+  &__btn {
+    background: $dark-error;
+    color: #fff;
+
+    &:hover {
+      background: $dark-error_hover;
+    }
+  }
+
+  &__btn--ghost {
+    background: transparent;
+    border-color: $dark-color_dark;
+    color: $color_med;
+
+    &:hover {
+      background: transparent;
+      border-color: $dark-color_med;
+    }
+  }
+}
