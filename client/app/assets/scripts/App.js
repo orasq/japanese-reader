@@ -36,7 +36,7 @@ function App() {
     <ApolloProvider client={client}>
       <StateContext.Provider value={state}>
         <DispatchContext.Provider value={dispatch}>
-          <BrowserRouter basename="/japanese-reader/">
+          <BrowserRouter basename={process.env.PUBLIC_URL}>
             <FloatingMessage />
             <Header />
             <Switch>
