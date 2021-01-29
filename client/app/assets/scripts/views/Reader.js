@@ -6,7 +6,7 @@ import ReactMarkdown from "react-markdown";
 // queries import
 import { getBookQuery, addBookmarkMutation } from "../queries/queries";
 
-// context import
+// contexts import
 import DispatchContext from "../contexts/DispatchContext";
 import StateContext from "../contexts/StateContext";
 
@@ -54,7 +54,7 @@ function Reader() {
     setBookmarkRequest(bookmarkRequest + 1);
   }
 
-  // Create custom paragraphs component and modify renderer property of Markdown component
+  // create custom paragraphs component and modify renderer property of Markdown component
   function CustomParagraph(props) {
     return (
       <>
@@ -104,7 +104,7 @@ function Reader() {
     localStorage.setItem("fontSize", appState.fontSize);
   }, [appState.fontSize]);
 
-  // scroll to bookmark
+  // before scroll to bookmark
   useEffect(() => {
     if (data) {
       setBookmarkIndex(data.book.bookmarkIndex);
@@ -125,7 +125,7 @@ function Reader() {
   }, [dataIsLoaded]);
 
   return (
-    <Page>
+    <Page title={loading ? "..." : data.book.title}>
       {loading ? (
         <LoadingIcon />
       ) : (

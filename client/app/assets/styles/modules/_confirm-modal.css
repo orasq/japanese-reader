@@ -34,8 +34,10 @@
     transition: background $anim_fast ease-out;
     cursor: pointer;
 
-    &:hover {
-      background: $error_hover;
+    @mixin hover {
+      &:hover {
+        background: $error_hover;
+      }
     }
   }
 
@@ -45,9 +47,11 @@
     color: $color_dark;
     transition: border-color $anim_fast ease-out;
 
-    &:hover {
-      border-color: $color_med;
-      background: transparent;
+    @mixin hover {
+      &:hover {
+        border-color: $color_med;
+        background: transparent;
+      }
     }
   }
 }
@@ -90,8 +94,10 @@ body.dark-theme .confirm-modal {
     background: $dark-error;
     color: #fff;
 
-    &:hover {
-      background: $dark-error_hover;
+    @mixin hover {
+      &:hover {
+        background: $dark-error_hover;
+      }
     }
   }
 
@@ -100,9 +106,11 @@ body.dark-theme .confirm-modal {
     border-color: $dark-color_dark;
     color: $color_med;
 
-    &:hover {
-      background: transparent;
-      border-color: $dark-color_med;
+    @mixin hover {
+      &:hover {
+        background: transparent;
+        border-color: $dark-color_med;
+      }
     }
   }
 }

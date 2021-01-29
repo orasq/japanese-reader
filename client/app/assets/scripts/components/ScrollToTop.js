@@ -8,13 +8,16 @@ function ScrollToTop() {
 
   //functions
   function showScrollIcon() {
+    console.log("They see me scrollin'");
     window.scrollY > 900 ? setIconVisible(true) : setIconVisible(false);
   }
-  const throttledShowScroll = throttle(showScrollIcon, 200);
 
   // effects
   useEffect(() => {
+    // throttling event
+    const throttledShowScroll = throttle(showScrollIcon, 200);
     window.addEventListener("scroll", throttledShowScroll);
+
     // cleanup when unmount
     return () => {
       window.removeEventListener("scroll", throttledShowScroll);

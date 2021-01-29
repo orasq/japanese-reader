@@ -1,5 +1,5 @@
 function base64Convertion(e) {
-  // get the file upload by the user
+  // get the file uploaded by the user
   const image = e.target.files[0];
   // FileReader object lets web applications asynchronously read
   // the contents of files (or raw data buffers) stored on the user's computer

@@ -3,9 +3,9 @@ const appState = {
   bookmarksVisible: false,
   bookmarkIndex: 4,
   floatingMessages: [],
+  searchKeyword: "",
   finishedFilter: localStorage.getItem("finishedFilter") === "true",
-  alphabeticalFilter: localStorage.getItem("alphabeticalFilter") === "true",
-  searchKeyword: ""
+  alphabeticalFilter: localStorage.getItem("alphabeticalFilter") === "true"
 };
 
 export default appState;

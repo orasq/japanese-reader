@@ -55,11 +55,10 @@ function CreateBook(props) {
   const [deleteBookMut, { data: deleteBookMutData }] = useMutation(deleteBookMutation);
   const [editBookMut] = useMutation(editBookMutation);
 
-  // delete modal display handler
+  // delete modal display handlers
   function handleShowModalDisplay() {
     setShowDeleteModal(true);
   }
-
   function handleHideModalDisplay() {
     setShowDeleteModal(false);
   }
@@ -167,7 +166,7 @@ function CreateBook(props) {
   }, [loading]);
 
   return (
-    <Page narrow>
+    <Page title="Edit Book" narrow>
       {loading ? (
         <LoadingIcon />
       ) : (

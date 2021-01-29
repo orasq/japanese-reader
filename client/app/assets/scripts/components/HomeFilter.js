@@ -18,6 +18,7 @@ function HomeFilter() {
     localStorage.setItem("finishedFilter", !appState.finishedFilter);
     appDispatch({ type: "TOGGLE_FINISHED_FILTER" });
   }
+
   function toggleAlphabeticalFilter() {
     localStorage.setItem("alphabeticalFilter", !appState.alphabeticalFilter);
     appDispatch({ type: "TOGGLE_ALPHABETICAL_FILTER" });

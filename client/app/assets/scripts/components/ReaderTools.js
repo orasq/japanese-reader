@@ -13,16 +13,17 @@ import { RiEdit2Fill } from "react-icons/ri";
 // queries import
 import { finishedBookMutation } from "../queries/queries";
 
-// context import
+// contexts import
 import DispatchContext from "../contexts/DispatchContext";
 import StateContext from "../contexts/StateContext";
 
 function ReaderTools(props) {
-  const tools = useRef(null);
+  const toolbox = useRef(null);
 
   // states
   const [toolsOpened, setToolsOpened] = useState(false);
   const [isFinished, setIsFinished] = useState(props.finished);
+  const [finishRequest, setFinishRequest] = useState(0);
 
   // context
   const appDispatch = useContext(DispatchContext);
@@ -30,6 +31,7 @@ function ReaderTools(props) {
 
   // mutations
   const [finishedBookMut, { data }] = useMutation(finishedBookMutation);
+
   // functions
   function ToggleTools() {
     setToolsOpened(!toolsOpened);
@@ -39,32 +41,14 @@ function ReaderTools(props) {
     setToolsOpened(false);
   }
 
-  async function markAsFinished() {
-    try {
-      const response = await finishedBookMut({
-        variables: {
-          id: props.bookId,
-          finished: !isFinished
-        }
-      });
-      // change state
-      setIsFinished(!isFinished);
-      // dispatch message
-      if (!isFinished === true) {
-        appDispatch({
-          type: "ADD_FLOATING_MESSAGE",
-          value: "This is book is now marked as read"
-        });
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  // check if clicked element is tool-box
+  // check if clicked element is toolbox
   // if not, close the dropdown
   function checkClickOutside(e) {
-    if (e.target !== tools.current && !tools.current.contains(e.target)) {
+    // if click inside
+    if (toolbox.current.contains(e.target)) {
+      return;
+    } else {
+      // if click outside
       CloseTools();
     }
   }
@@ -72,18 +56,47 @@ function ReaderTools(props) {
   // effects
   useEffect(() => {
     if (toolsOpened) {
-      document.addEventListener("click", checkClickOutside);
+      document.addEventListener("mousedown", checkClickOutside);
     } else {
-      document.removeEventListener("click", checkClickOutside);
+      document.removeEventListener("mousedown", checkClickOutside);
     }
     // cleanup when unmount
     return () => {
-      document.removeEventListener("click", checkClickOutside);
+      document.removeEventListener("mousedown", checkClickOutside);
     };
   }, [toolsOpened]);
 
+  // mark as finished request
+  useEffect(() => {
+    if (finishRequest) {
+      async function markAsFinished() {
+        try {
+          const response = await finishedBookMut({
+            variables: {
+              id: props.bookId,
+              finished: !isFinished
+            }
+          });
+          // dispatch message
+          if (!isFinished === true) {
+            appDispatch({
+              type: "ADD_FLOATING_MESSAGE",
+              value: "This is book is now marked as read"
+            });
+          }
+          // change states
+          setIsFinished(!isFinished);
+          setFinishRequest(0);
+        } catch (error) {
+          console.log(error);
+        }
+      }
+      markAsFinished();
+    }
+  }, [finishRequest]);
+
   return (
-    <div ref={tools} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
+    <div ref={toolbox} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
       {/* group of icons */}
       <CSSTransition classNames="reader-tools__wrap" in={toolsOpened} timeout={500} unmountOnExit>
         <div className="reader-tools__wrap">
@@ -118,7 +131,7 @@ function ReaderTools(props) {
           </div>
           <div className="reader-tools__icon-group">
             <FaCheckCircle
-              onClick={markAsFinished}
+              onClick={() => setFinishRequest(finishRequest + 1)}
               className={`reader-tools__icons ${
                 !isFinished ? "reader-tools__icons--inactive" : ""
               }`}

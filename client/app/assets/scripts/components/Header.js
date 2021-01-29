@@ -3,8 +3,9 @@ import { Link } from "react-router-dom";
 import { FaGlasses, FaAdjust, FaPlusCircle } from "react-icons/fa";
 
 function Header() {
-  // state
+  // states
   const [theme, setTheme] = useState(localStorage.getItem("theme"));
+
   // functions
   function ToggleTheme() {
     if (theme == "light") {
@@ -13,6 +14,7 @@ function Header() {
       setTheme("light");
     }
   }
+
   // effects
   useEffect(() => {
     if (theme == "dark") {

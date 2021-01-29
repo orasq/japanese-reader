@@ -1,6 +1,4 @@
 .header {
-  /*border-bottom: 1px solid $color_light;*/
-
   &__wrap {
     display: flex;
     flex-direction: row;

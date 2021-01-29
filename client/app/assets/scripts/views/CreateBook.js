@@ -107,7 +107,7 @@ function CreateBook(props) {
   }, [state.saveRequestCount]);
 
   return (
-    <Page narrow>
+    <Page title="Create New Book" narrow>
       <h1 className="text-center">Create a new book</h1>
       <form onSubmit={handleSubmit} className="form">
         <TextInput

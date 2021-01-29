@@ -8,7 +8,7 @@ function FileInput(props) {
   return (
     <div className={`form__group ${props.value ? "image-upload--filled" : ""}`}>
       {props.errorMessage && <FormError errorMessage={props.errorMessage} />}
-      {/* Input is put before label, because it is hided and allow to select label on focus */}
+      {/* Input is put before label, because it's hidden and allow to select label on focus */}
       {props.value.length < 1 && (
         <input
           id={props.field}

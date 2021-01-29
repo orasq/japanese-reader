@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaCheckCircle } from "react-icons/fa";
 
 function BookCard(props) {
+  // excerpt function
   function titleExcerpt() {
     const title = props.book.title;
     const charLimit = 30;
@@ -10,7 +11,6 @@ function BookCard(props) {
     if (title.length > charLimit) {
       return title.substring(0, charLimit).concat("...");
     }
-
     return title;
   }
 

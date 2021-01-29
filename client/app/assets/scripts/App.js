@@ -3,10 +3,6 @@ in browser's memory without having to refresh the browser.
 Development performance and practical benefits */
 import "../styles/styles.css";
 
-/* lazy loading for images.
-Add "lazyload" class to <img> tags, and change 'srcset' to 'data-srcset'*/
-import "lazysizes";
-
 // React
 import React, { useReducer } from "react";
 import ReactDOM from "react-dom";

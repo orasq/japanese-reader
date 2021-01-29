@@ -19,12 +19,12 @@ function Home() {
   // queries
   const { loading, error, data } = useQuery(getAllBooksQuery);
 
-  // Alphabetical sorting function
-  // Second argument in localCompare() allows to specify the target language
+  // alphabetical sorting function
+  // second argument in localCompare() allows to specify the target language
   function alphabeticalFiltering(books) {
     return [...books].sort((a, b) => a.title.localeCompare(b.title, "ja"));
   }
-  // "Already read?" filtering function
+  // "already read?" filtering function
   function finishedFiltering(books) {
     return books.filter(book => !book.finished);
   }
@@ -34,7 +34,7 @@ function Home() {
       book => book.title.toString().toLowerCase().indexOf(appState.searchKeyword.toLowerCase()) > -1
     );
   }
-
+  // simple filtering logic
   function booksFiltering(books) {
     if (appState.finishedFilter) {
       books = finishedFiltering(books);
@@ -49,7 +49,7 @@ function Home() {
   }
 
   return (
-    <Page>
+    <Page title="Home">
       {loading ? (
         <LoadingIcon />
       ) : (
