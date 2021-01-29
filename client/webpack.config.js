@@ -130,6 +130,10 @@ if (currentTask == "build") {
   /*postCSSPlugins.push(require("cssnano"));*/
   /* where should the bundled js file be placed */
   config.output = {
+    /* publicPath set to *repo name* is necessary for React Router
+    to work with parameters in url (need a relative path to bundle.js).
+    Otherwise, displays blank page on reload */
+    publicPath: "/japanese-reader/",
     /* generate 'random' file names (cache busting) */
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
