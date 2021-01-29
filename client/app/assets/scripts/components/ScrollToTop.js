@@ -8,7 +8,6 @@ function ScrollToTop() {
 
   //functions
   function showScrollIcon() {
-    console.log("They see me scrollin'");
     window.scrollY > 900 ? setIconVisible(true) : setIconVisible(false);
   }
 

@@ -115,7 +115,7 @@ if (currentTask == "dev") {
 class RunAfterCompile {
   apply(compiler) {
     compiler.hooks.done.tap("Copy images", () => {
-      fse.copySync("./app/assets/images", "./docs/assets/images");
+      fse.copySync("./app/assets/images", "./build/assets/images");
     });
   }
 }
