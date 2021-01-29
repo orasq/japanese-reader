@@ -130,6 +130,8 @@ if (currentTask == "build") {
   /*postCSSPlugins.push(require("cssnano"));*/
   /* where should the bundled js file be placed */
   config.output = {
+    /* publicPath set to *name of github repo* is necessary for GitHub Pages */
+    publicPath: "/japanese-reader/",
     /* generate 'random' file names (cache busting) */
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
