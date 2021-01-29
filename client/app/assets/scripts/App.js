@@ -6,7 +6,7 @@ import "../styles/styles.css";
 // React
 import React, { useReducer } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 
 // Apollo setup to be able to use GraphQL queries
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
@@ -36,7 +36,7 @@ function App() {
     <ApolloProvider client={client}>
       <StateContext.Provider value={state}>
         <DispatchContext.Provider value={dispatch}>
-          <BrowserRouter basename="/japanese-reader/">
+          <HashRouter basename="/japanese-reader/">
             <FloatingMessage />
             <Header />
             <Switch>
@@ -51,7 +51,7 @@ function App() {
               </Route>
             </Switch>
             <Footer />
-          </BrowserRouter>
+          </HashRouter>
         </DispatchContext.Provider>
       </StateContext.Provider>
     </ApolloProvider>
