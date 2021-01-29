@@ -130,13 +130,11 @@ if (currentTask == "build") {
   /*postCSSPlugins.push(require("cssnano"));*/
   /* where should the bundled js file be placed */
   config.output = {
-    /* publicPath set to *name of github repo* is necessary for GitHub Pages */
-    publicPath: "/japanese-reader/",
     /* generate 'random' file names (cache busting) */
     filename: "[name].[chunkhash].js",
     chunkFilename: "[name].[chunkhash].js",
     /* webpack requires an absolute path */
-    path: path.resolve(__dirname, "docs")
+    path: path.resolve(__dirname, "build")
   };
   config.mode = "production";
   /* create separate files for project (code we write) and vendors (lodash, lazysizes, ...) js code */
