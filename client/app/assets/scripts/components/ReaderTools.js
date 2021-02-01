@@ -19,6 +19,8 @@ import StateContext from "../contexts/StateContext";
 
 function ReaderTools(props) {
   const toolbox = useRef(null);
+  // to use with react-tooltip and disable diplay on mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   // states
   const [toolsOpened, setToolsOpened] = useState(false);
@@ -108,7 +110,7 @@ function ReaderTools(props) {
               id="edit"
               effect="solid"
               place="left"
-              clickable={false}
+              disable={isMobile}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -126,7 +128,7 @@ function ReaderTools(props) {
               id="bookmark"
               effect="solid"
               place="left"
-              clickable={false}
+              disable={isMobile}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -144,7 +146,7 @@ function ReaderTools(props) {
               id="finished"
               effect="solid"
               place="left"
-              clickable={false}
+              disable={isMobile}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -162,7 +164,7 @@ function ReaderTools(props) {
               id="font"
               effect="solid"
               place="left"
-              clickable={false}
+              disable={isMobile}
               offset={{ left: -5 }}
               className="tooltip"
             />

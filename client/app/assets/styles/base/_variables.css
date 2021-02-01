@@ -16,7 +16,7 @@ $color_med_hover: hsl($color_hue, $color_saturation, 40%);
 
 /* dark theme */
 $dark-color_bg: hsl($color_hue, $color_saturation, 8%);
-$dark-color_dark: hsl($color_hue, $color_saturation, 15%);
+$dark-color_dark: hsl($color_hue, $color_saturation, 18%);
 $dark-color_med: hsl($color_hue, $color_saturation, 35%);
 $dark-color_light: hsl($color_hue, $color_saturation, 80%);
 $dark-color_med_hover: hsl($color_hue, $color_saturation, 40%);
