@@ -374,19 +374,19 @@ body.dark-theme h1 {
     color: hsl(180, 30%, 25%);
   }
 body.dark-theme ::-moz-placeholder {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 body.dark-theme :-ms-input-placeholder {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 body.dark-theme ::placeholder {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 body.dark-theme :-ms-input-placeholder {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 body.dark-theme ::-ms-input-placeholder {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 .text-center {
   text-align: center;
@@ -566,7 +566,7 @@ body.dark-theme ::-ms-input-placeholder {
 /* DARK THEME */
 body.dark-theme .header__logo,
   body.dark-theme .header__theme-icon {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 @media (hover: hover) and (pointer: fine) {
       body.dark-theme .header__logo:hover, body.dark-theme .header__theme-icon:hover {
@@ -588,7 +588,7 @@ body.dark-theme .header__logo,
   }
 /* DARK THEME */
 body.dark-theme .footer {
-  color: hsl(180, 30%, 15%);
+  color: hsl(180, 30%, 18%);
 }
 .floating-messages__msg {
     position: fixed;
@@ -695,7 +695,7 @@ body.dark-theme .form__label {
   }
 body.dark-theme .form__text-input,
   body.dark-theme .form__text-area {
-    border-color: hsl(180, 30%, 15%);
+    border-color: hsl(180, 30%, 18%);
     color: hsl(180, 30%, 80%);
     background: hsl(180, 30%, 8%);
   }
@@ -812,7 +812,7 @@ body.dark-theme .image-upload__input:focus ~ body.dark-theme .image-upload__labe
     border-color: hsl(180, 30%, 35%);
   }
 body.dark-theme .image-upload__label::after {
-    border-color: hsl(180, 30%, 15%);
+    border-color: hsl(180, 30%, 18%);
   }
 body.dark-theme .image-upload__label:hover::after {
     border-color: hsl(180, 30%, 35%);
@@ -881,7 +881,7 @@ body.dark-theme input[type="checkbox"] + label {
     color: hsl(180, 30%, 35%);
   }
 body.dark-theme input[type="checkbox"] + label::before {
-    background: hsl(180, 30%, 15%);
+    background: hsl(180, 30%, 18%);
   }
 body.dark-theme input[type="checkbox"] + label::after {
     background: hsl(180, 30%, 35%);
@@ -958,7 +958,7 @@ body.dark-theme input[type="checkbox"]:checked + label::after {
   }
 /* DARK THEME */
 body.dark-theme .button {
-  background: hsl(180, 30%, 15%);
+  background: hsl(180, 30%, 18%);
 }
 @media (hover: hover) and (pointer: fine) {
     body.dark-theme .button:hover:not(:disabled) {
@@ -1050,7 +1050,7 @@ body.dark-theme .button--delete {
 /* DARK THEME */
 @media (hover: hover) and (pointer: fine) {
     body.dark-theme .bookcard:hover {
-      background: hsl(180, 30%, 15%);
+      background: hsl(180, 30%, 18%);
     }
   }
 body.dark-theme .bookcard__title {
@@ -1064,6 +1064,33 @@ body.dark-theme .bookcard__finished-icon {
     right: 15px;
     color: hsl(180, 30%, 80%);
     border-radius: 50%;
+  }
+.empty-booklist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+
+  text-align: center;
+  color: hsl(180, 30%, 50%);
+  line-height: 1.5;
+}
+.empty-booklist__title {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+.empty-booklist__icon {
+    margin-bottom: 20px;
+    font-size: 3rem;
+    color: hsl(180, 30%, 80%);
+  }
+/* DARK-THEME */
+body.dark-theme .empty-booklist {
+  color: hsl(180, 30%, 35%);
+}
+body.dark-theme .empty-booklist__icon {
+    color: hsl(180, 30%, 18%);
   }
 .search {
   display: flex;
@@ -1168,14 +1195,14 @@ body.dark-theme .bookcard__finished-icon {
 /* DARK THEME */
 body.dark-theme .search__field {
     background: hsl(180, 30%, 8%);
-    border-color: hsl(180, 30%, 15%);
+    border-color: hsl(180, 30%, 18%);
     color: hsl(180, 30%, 80%);
   }
 body.dark-theme .search__field:focus {
       border-color: hsl(180, 30%, 35%);
     }
 body.dark-theme .search__search-icon {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 /* use of !important is necessary to overwrite 3rd party styles */
 .tooltip {
@@ -1190,7 +1217,7 @@ body.dark-theme .search__search-icon {
   }
 /* DARK THEME */
 body.dark-theme .tooltip {
-  background: hsl(180, 30%, 15%) !important;
+  background: hsl(180, 30%, 18%) !important;
   color: hsl(180, 30%, 80%) !important;
 }
 .reader {
@@ -1370,7 +1397,7 @@ body.dark-theme .reader__title {
 }
 /* DARK THEME */
 body.dark-theme .reader-tools {
-  border: 2px solid hsl(180, 30%, 15%);
+  border: 2px solid hsl(180, 30%, 18%);
   background: hsl(180, 30%, 8%);
   color: hsl(180, 30%, 35%);
 }
@@ -1383,10 +1410,10 @@ body.dark-theme .reader-tools__cog {
       }
   }
 body.dark-theme .reader-tools__icons--inactive {
-      color: hsl(180, 30%, 15%);
+      color: hsl(180, 30%, 18%);
     }
 body.dark-theme .reader-tools--open .reader-tools__cog {
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 18%);
   }
 .loading-icon {
   height: 40px;
@@ -1407,7 +1434,7 @@ body.dark-theme .reader-tools--open .reader-tools__cog {
   }
 /* DARK THEME */
 body.dark-theme .loading-icon {
-  border-color: hsl(180, 30%, 15%);
+  border-color: hsl(180, 30%, 18%);
   border-top-color: hsl(180, 30%, 35%);
 }
 .bookmark {
@@ -1439,7 +1466,7 @@ body.dark-theme .loading-icon {
   }
 /* DARK THEME */
 body.dark-theme .bookmark {
-  color: hsl(180, 30%, 15%);
+  color: hsl(180, 30%, 18%);
 }
 @media (hover: hover) and (pointer: fine) {
     body.dark-theme .bookmark:hover {
@@ -1488,7 +1515,7 @@ body.dark-theme .bookmark--active {
   }
 /* DARK THEME */
 body.dark-theme .scroll-to-top {
-  color: hsl(180, 30%, 15%);
+  color: hsl(180, 30%, 18%);
   background: hsl(180, 30%, 8%);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -1570,7 +1597,7 @@ body.dark-theme .scroll-to-top {
   }
 /* DARK THEME */
 body.dark-theme .confirm-modal {
-  border-color: hsl(180, 30%, 15%);
+  border-color: hsl(180, 30%, 18%);
   background: hsl(180, 30%, 8%);
   color: hsl(180, 30%, 35%);
 }
@@ -1585,7 +1612,7 @@ body.dark-theme .confirm-modal__btn {
   }
 body.dark-theme .confirm-modal__btn--ghost {
     background: transparent;
-    border-color: hsl(180, 30%, 15%);
+    border-color: hsl(180, 30%, 18%);
     color: hsl(180, 30%, 50%);
   }
 @media (hover: hover) and (pointer: fine) {
