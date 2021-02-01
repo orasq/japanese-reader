@@ -5,9 +5,9 @@ const FormValidationReducer = (draft, action) => {
       draft.title.errorMessage = "";
       draft.title.value = action.value;
       // 50 characters limit
-      if (action.value.trim().length > 50) {
+      if (action.value.trim().length > 30) {
         draft.title.hasErrors = true;
-        draft.title.errorMessage = "Your title cannot exceed 50 characters";
+        draft.title.errorMessage = "Your title cannot exceed 30 characters";
       } else {
         draft.title.hasErrors = false;
         draft.title.errorMessage = "";
@@ -16,7 +16,7 @@ const FormValidationReducer = (draft, action) => {
     case "CHECK_TITLE":
       if (!action.value.trim()) {
         draft.title.hasErrors = true;
-        draft.title.errorMessage = "You must provide a title";
+        draft.title.errorMessage = "Please provide a title";
       }
       return;
     case "COVER_CHANGE":
@@ -27,13 +27,21 @@ const FormValidationReducer = (draft, action) => {
     case "CHECK_COVER":
       if (!action.value) {
         draft.cover.hasErrors = true;
-        draft.cover.errorMessage = "You must upload an image";
+        draft.cover.errorMessage = "Please upload an image";
       }
       return;
     case "TEXT_CHANGE":
       draft.text.hasErrors = false;
       draft.text.errorMessage = "";
       draft.text.value = action.value;
+      // 10 000 characters limit
+      if (action.value.trim().length > 10000) {
+        draft.text.hasErrors = true;
+        draft.text.errorMessage = "Your text cannot exceed 10 000 characters";
+      } else {
+        draft.text.hasErrors = false;
+        draft.text.errorMessage = "";
+      }
       return;
     case "CHECK_TEXT":
       if (!action.value.trim()) {

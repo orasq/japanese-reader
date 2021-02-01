@@ -11,9 +11,11 @@ import { HashRouter, Switch, Route } from "react-router-dom";
 // Apollo setup to be able to use GraphQL queries
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 const client = new ApolloClient({
-  uri: "https://japanese-reader-public.herokuapp.com/graphql",
+  uri: "http://localhost:5000/graphql",
   cache: new InMemoryCache()
 });
+
+// https://japanese-reader-public.herokuapp.com/graphql
 
 // views & components import
 import Header from "./components/Header";

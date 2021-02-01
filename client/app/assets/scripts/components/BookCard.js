@@ -22,11 +22,7 @@ function BookCard(props) {
       {props.book.finished && <FaCheckCircle className="bookcard__finished-icon" />}
       <div className="bookcard__content">
         <div className="bookcard__cover">
-          <img
-            src={`data:image/png;base64,${props.book.cover}`}
-            alt={props.book.title}
-            nopin="nopin"
-          />
+          <img src={props.book.cover} alt={props.book.title} nopin="nopin" />
         </div>
         <h3 className="bookcard__title">{titleExcerpt()}</h3>
       </div>

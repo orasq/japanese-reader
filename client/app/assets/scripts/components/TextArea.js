@@ -14,6 +14,7 @@ function TextArea(props) {
         id={props.field}
         type="text"
         className="form__text-area"
+        autoComplete="off"
         value={props.value}
         onBlur={props.onBlur}
         onChange={props.onChange}

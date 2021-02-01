@@ -13,7 +13,7 @@ function FileInput(props) {
         <input
           id={props.field}
           type="file"
-          accept={props.type === "file" ? ".jpg, .jpeg, .png" : ""}
+          accept="image/*"
           className="image-upload__input"
           value={props.value}
           onChange={props.onChange}
@@ -32,7 +32,7 @@ function FileInput(props) {
             <FaTrash /> Delete
           </button>
           <div className="image-upload__cover">
-            <img src={`data:image/png;base64,${props.value}`} alt={props.bookTitle} nopin="nopin" />
+            <img src={props.value} alt={props.bookTitle} nopin="nopin" />
           </div>
         </div>
       )}

@@ -30,7 +30,7 @@ function HomeFilter() {
       <div className="search__filter-wrap">
         <Checkbox
           field="finished"
-          label="Hide already read"
+          label="Hide finished books"
           checked={appState.finishedFilter}
           onChange={toggleFinishedFilter}
         />

@@ -6,7 +6,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { withRouter, useParams } from "react-router-dom";
 import { useQuery, useMutation } from "@apollo/client";
 import { useImmerReducer } from "use-immer";
+import Resizer from "react-image-file-resizer";
 import { CSSTransition } from "react-transition-group";
+// icons
 import { FaTrash } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 import { CgSpinner } from "react-icons/cg";
@@ -20,9 +22,6 @@ import FormValidationReducer from "../reducers/FormValidationReducer";
 
 // queries import
 import { getBookQuery, deleteBookMutation, editBookMutation } from "../queries/queries";
-
-// helpers import
-import base64Convertion from "../helpers/base64Convertion";
 
 // components import
 import Page from "../components/Page";
@@ -70,9 +69,29 @@ function CreateBook(props) {
 
   // image upload handler
   async function handleImage(e) {
-    // convert file to base64 for basic image upload
-    const base64String = await base64Convertion(e);
-    dispatch({ type: "COVER_CHANGE", value: base64String });
+    let file = e.target.files[0];
+    if (file) {
+      try {
+        // image file resizer/compressor
+        Resizer.imageFileResizer(
+          file,
+          280,
+          600,
+          "JPEG",
+          80,
+          0,
+          uri => {
+            console.log(uri);
+            dispatch({ type: "COVER_CHANGE", value: uri });
+          },
+          "base64",
+          140,
+          300
+        );
+      } catch (err) {
+        console.log(err);
+      }
+    }
   }
 
   // form submit handler

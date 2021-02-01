@@ -11,10 +11,11 @@ function TextInput(props) {
         {props.label}
       </label>
       <input
-        autoFocus={props.autofocus}
         id={props.field}
         type="text"
         className="form__text-input"
+        autoFocus={props.autofocus}
+        autoComplete="off"
         placeholder={props.placeholder}
         value={props.value}
         onBlur={props.onBlur}

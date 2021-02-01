@@ -7,7 +7,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import ReactTooltip from "react-tooltip";
-import { FaCheckCircle, FaBookmark, FaFont, FaCog } from "react-icons/fa";
+import { FaCheckCircle, FaBookmark, FaFont, FaCog, FaTimes } from "react-icons/fa";
 import { RiEdit2Fill } from "react-icons/ri";
 
 // queries import
@@ -108,6 +108,7 @@ function ReaderTools(props) {
               id="edit"
               effect="solid"
               place="left"
+              clickable={false}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -125,6 +126,7 @@ function ReaderTools(props) {
               id="bookmark"
               effect="solid"
               place="left"
+              clickable={false}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -142,6 +144,7 @@ function ReaderTools(props) {
               id="finished"
               effect="solid"
               place="left"
+              clickable={false}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -159,6 +162,7 @@ function ReaderTools(props) {
               id="font"
               effect="solid"
               place="left"
+              clickable={false}
               offset={{ left: -5 }}
               className="tooltip"
             />
@@ -166,7 +170,11 @@ function ReaderTools(props) {
         </div>
       </CSSTransition>
       {/* settings icons */}
-      <FaCog onClick={ToggleTools} className="reader-tools__cog" />
+      {toolsOpened ? (
+        <FaTimes onClick={ToggleTools} className="reader-tools__cog" />
+      ) : (
+        <FaCog onClick={ToggleTools} className="reader-tools__cog" />
+      )}
     </div>
   );
 }

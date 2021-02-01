@@ -25,7 +25,7 @@
   }
 
   &__label::after {
-    content: "+ Upload an image";
+    content: "Upload an image";
     margin-top: 10px;
     margin-left: -20px;
     padding: 15px 20px;

@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const bookSchema = new Schema(
   {
-    title: { type: String, maxLength: 50 },
+    title: { type: String, maxLength: 30 },
     cover: {
       type: String,
       minLength: 2 /* minLength: 2 to avoid empty strings in state to be accepted */
     },
-    text: String,
+    text: { type: String, maxLength: 10000 },
     finished: Boolean,
     bookmarkIndex: Number
   },

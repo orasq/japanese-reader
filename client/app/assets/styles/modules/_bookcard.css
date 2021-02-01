@@ -98,7 +98,7 @@ body.dark-theme .bookcard {
   &__finished-icon {
     top: 15px;
     right: 15px;
-    color: $dark-color_dark;
+    color: $dark-color_light;
     border-radius: 50%;
   }
 }
