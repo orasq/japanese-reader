@@ -287,7 +287,6 @@ template {
 /* DISABLE HOVER EFFECT ON MOBILE*/
 html {
   scroll-behavior: smooth;
-  font-size: 16px;
   box-sizing: border-box;
 }
 *,
@@ -738,7 +737,7 @@ body.dark-theme .form__text-input:focus, body.dark-theme .form__text-area:focus 
     margin-bottom: 10px;
   }
 .image-upload__label::after {
-    content: "+ Upload an image";
+    content: "Upload an image";
     margin-top: 10px;
     margin-left: -20px;
     padding: 15px 20px;
@@ -1063,7 +1062,7 @@ body.dark-theme .bookcard__cover {
 body.dark-theme .bookcard__finished-icon {
     top: 15px;
     right: 15px;
-    color: hsl(180, 30%, 15%);
+    color: hsl(180, 30%, 80%);
     border-radius: 50%;
   }
 .search {
