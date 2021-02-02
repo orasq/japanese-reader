@@ -67,14 +67,28 @@
     opacity: 0.5;
   }
 
-  &__finished-icon {
+  &__finished-icon-wrap {
     position: absolute;
     top: 5px;
     right: 5px;
-    overflow: hidden;
-    font-size: 1.2rem;
-    color: $color_med;
+    width: 20px;
+    height: 20px;
+    padding: 2px;
+    background: $color_bg;
+    border-radius: 50%;
     z-index: 1;
+  }
+
+  @mixin hover {
+    &:hover &__finished-icon-wrap {
+      background: $color_light;
+    }
+  }
+
+  &__finished-icon {
+    height: 100%;
+    width: 100%;
+    color: $color_med;
   }
 }
 
@@ -95,10 +109,23 @@ body.dark-theme .bookcard {
     filter: brightness(0.7);
   }
 
+  &__finished-icon-wrap {
+    background: $dark-color_bg;
+  }
+
+  @mixin hover {
+    &:hover .bookcard__finished-icon-wrap {
+      background: $dark-color_dark;
+    }
+  }
+
   &__finished-icon {
-    top: 15px;
-    right: 15px;
-    color: $dark-color_light;
-    border-radius: 50%;
+    color: $dark-color_med;
+  }
+
+  @mixin hover {
+    &:hover .bookcard__finished-icon {
+      color: color($dark-color_med tint(20%));
+    }
   }
 }

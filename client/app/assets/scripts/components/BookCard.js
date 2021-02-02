@@ -19,7 +19,11 @@ function BookCard(props) {
       to={`/book/${props.book.id}`}
       className={`bookcard ${props.book.finished ? "bookcard__finished" : ""}`}
     >
-      {props.book.finished && <FaCheckCircle className="bookcard__finished-icon" />}
+      {props.book.finished && (
+        <div className="bookcard__finished-icon-wrap">
+          <FaCheckCircle className="bookcard__finished-icon" />
+        </div>
+      )}
       <div className="bookcard__content">
         <div className="bookcard__cover">
           <img src={props.book.cover} alt={props.book.title} nopin="nopin" />
