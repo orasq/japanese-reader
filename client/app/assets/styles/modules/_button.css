@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 2rem;
-  padding: 5px 15px;
+  padding: 0.75em 1.25em;
   background: $color_med;
   border: none;
   border-radius: $radius_round;
@@ -17,8 +16,10 @@
   transition: background $anim_fast ease-out;
 
   @mixin hover {
-    &:hover:not(:disabled) {
-      background: $color_med_hover;
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
+      background: color($color_med shade(20%));
     }
   }
 
@@ -28,7 +29,7 @@
   }
 
   &--delete {
-    background: $error;
+    background: $color_error;
 
     svg {
       font-size: 0.8rem;
@@ -36,8 +37,10 @@
   }
 
   @mixin hover {
-    &--delete:hover:not(:disabled) {
-      background: $error_hover;
+    &--delete:hover:not(:disabled),
+    &--delete:focus:not(:disabled),
+    &--delete:active:not(:disabled) {
+      background: color($color_error shade(20%));
       svg {
         animation: shake $anim_med ease-out;
       }
@@ -74,17 +77,21 @@ body.dark-theme .button {
   background: $dark-color_dark;
 
   @mixin hover {
-    &:hover:not(:disabled) {
+    &:hover:not(:disabled),
+    &:focus:not(:disabled),
+    &:active:not(:disabled) {
       background: $dark-color_med;
     }
   }
 
   &--delete {
-    background: $dark-error;
+    background: $dark-color_error;
 
     @mixin hover {
-      &:hover:not(:disabled) {
-        background: $dark-error_hover;
+      &:hover:not(:disabled),
+      &:focus:not(:disabled),
+      &:active:not(:disabled) {
+        background: color($dark-color_error tint(10%) saturation(+ 20%));
       }
     }
   }

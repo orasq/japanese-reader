@@ -25,7 +25,7 @@
   &__btn {
     padding: 5px 10px;
     border-radius: $radius_round;
-    background: $error;
+    background: $color_error;
     border: none;
 
     font-size: 0.75rem;
@@ -36,7 +36,7 @@
 
     @mixin hover {
       &:hover {
-        background: $error_hover;
+        background: color($color_error shade(20%));
       }
     }
   }
@@ -91,12 +91,12 @@ body.dark-theme .confirm-modal {
   color: $dark-color_med;
 
   &__btn {
-    background: $dark-error;
+    background: $dark-color_error;
     color: #fff;
 
     @mixin hover {
       &:hover {
-        background: $dark-error_hover;
+        background: color($dark-color_error tint(10%) saturation(+ 20%));
       }
     }
   }

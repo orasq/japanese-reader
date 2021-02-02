@@ -11,6 +11,7 @@
 
   &__title {
     margin-bottom: 4ch;
+    font-family: $font_jap;
     font-size: 1.3rem;
     color: $color_med;
     text-align: center;

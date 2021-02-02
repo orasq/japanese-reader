@@ -64,7 +64,7 @@
 
     @mixin hover {
       &:hover {
-        color: $color_med_hover;
+        color: color($color_med shade(20%));
       }
     }
 

@@ -30,6 +30,7 @@ import FileInput from "../components/FileInput";
 import TextArea from "../components/TextArea";
 import LoadingIcon from "../components/LoadingIcon";
 import ConfirmModal from "../components/ConfirmModal";
+import NotFound from "../components/NotFound";
 
 function CreateBook(props) {
   // url parameters
@@ -171,7 +172,7 @@ function CreateBook(props) {
 
   // on page load
   useEffect(() => {
-    if (!loading) {
+    if (data) {
       dispatch({
         type: "FETCH_FINISHED",
         value: {
@@ -183,6 +184,11 @@ function CreateBook(props) {
       });
     }
   }, [loading]);
+
+  // 404 not found
+  if (!loading && !data) {
+    return <NotFound />;
+  }
 
   return (
     <Page title="Edit Book" narrow>

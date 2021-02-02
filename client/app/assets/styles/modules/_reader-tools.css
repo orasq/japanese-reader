@@ -24,6 +24,13 @@
   &__cog {
     color: $color_med;
     cursor: pointer;
+    transition: color $anim_fast ease-out;
+
+    @mixin hover {
+      &:hover {
+        color: color($color_med shade(20%));
+      }
+    }
   }
 
   &__wrap {
@@ -43,7 +50,7 @@
 
     @mixin hover {
       &:hover {
-        color: $color_dark;
+        color: color($color_med shade(20%));
       }
     }
 
@@ -127,12 +134,19 @@ body.dark-theme .reader-tools {
 
   &__cog {
     color: $dark-color_med;
+    transition: color $anim_fast ease-out;
+
+    @mixin hover {
+      &:hover {
+        color: color($dark-color_med tint(20%));
+      }
+    }
   }
 
   &__icons {
     @mixin hover {
       &:hover {
-        color: $dark-color_light;
+        color: color($dark-color_med tint(20%));
       }
     }
 

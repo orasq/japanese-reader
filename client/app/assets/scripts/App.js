@@ -17,14 +17,17 @@ const client = new ApolloClient({
 // http://localhost:5000/graphql
 // https://japanese-reader-public.herokuapp.com/graphql
 
-// views & components import
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import FloatingMessage from "./components/FloatingMessage";
+// views import
 import Home from "./views/Home";
 import Reader from "./views/Reader";
 import CreateBook from "./views/CreateBook";
 import EditBook from "./views/EditBook";
+
+// components import
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import FloatingMessage from "./components/FloatingMessage";
+import NotFound from "./components/NotFound";
 
 // app context, state & reducer import
 import StateContext from "./contexts/StateContext";
@@ -50,6 +53,9 @@ function App() {
               <Route path="/book/:bookId/edit" component={EditBook} exact />
               <Route path="/create-book">
                 <CreateBook />
+              </Route>
+              <Route>
+                <NotFound />
               </Route>
             </Switch>
             <Footer />

@@ -73,7 +73,7 @@
     bottom: 0;
     left: 0;
     padding: 5px;
-    background-color: $error;
+    background-color: $color_error;
     border: none;
     border-top: 2px solid $color_bg;
     font-size: 0.7rem;
@@ -86,7 +86,7 @@
 
     @mixin hover {
       &:hover {
-        background-color: $error_hover;
+        background-color: color($color_error shade(20%));
       }
     }
 
@@ -117,12 +117,12 @@ body.dark-theme .image-upload {
     border-color: $dark-color_med;
   }
   &__cover-delete {
-    background-color: $dark-error;
+    background-color: $dark-color_error;
     border-top: 2px solid $dark-color_bg;
 
     @mixin hover {
       &:hover {
-        background-color: $dark-error_hover;
+        background-color: color($dark-color_error tint(10%) saturation(+ 20%));
       }
     }
   }

@@ -16,6 +16,7 @@ import ReaderTools from "../components/ReaderTools";
 import LoadingIcon from "../components/LoadingIcon";
 import Bookmark from "../components/Bookmark";
 import ScrollToTop from "../components/ScrollToTop";
+import NotFound from "../components/NotFound";
 
 function Reader() {
   // url parameters
@@ -123,6 +124,11 @@ function Reader() {
       window.scrollTo(0, 0);
     }
   }, [dataIsLoaded]);
+
+  // 404 not found
+  if (!loading && !data) {
+    return <NotFound />;
+  }
 
   return (
     <Page title={loading ? "..." : data.book.title}>

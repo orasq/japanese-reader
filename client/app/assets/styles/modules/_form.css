@@ -52,7 +52,7 @@
 
   &__group--error &__text-input,
   &__group--error &__text-area {
-    border-color: $error;
+    border-color: $color_error;
   }
 }
 

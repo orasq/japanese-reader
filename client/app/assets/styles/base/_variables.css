@@ -1,8 +1,6 @@
 /* COLORS */
-$error: #b85858;
-$error_hover: #933f3f;
-$dark-error: #522d2d;
-$dark-error_hover: #633737;
+$color_error: #b85858;
+$dark-color_error: #522d2d;
 
 $color_hue: 180;
 $color_saturation: 30%;
@@ -12,14 +10,12 @@ $color_bg: hsl($color_hue, $color_saturation, 98%);
 $color_dark: hsl($color_hue, $color_saturation, 25%);
 $color_med: hsl($color_hue, $color_saturation, 50%);
 $color_light: hsl($color_hue, $color_saturation, 80%);
-$color_med_hover: hsl($color_hue, $color_saturation, 40%);
 
 /* dark theme */
 $dark-color_bg: hsl($color_hue, $color_saturation, 8%);
 $dark-color_dark: hsl($color_hue, $color_saturation, 18%);
 $dark-color_med: hsl($color_hue, $color_saturation, 35%);
 $dark-color_light: hsl($color_hue, $color_saturation, 80%);
-$dark-color_med_hover: hsl($color_hue, $color_saturation, 40%);
 
 /* SIZES */
 $wrapper_width: 1200px;
