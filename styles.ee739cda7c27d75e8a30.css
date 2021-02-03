@@ -394,6 +394,125 @@ body.dark-theme ::-ms-input-placeholder {
 .text-center {
   text-align: center;
 }
+/* MARGIN */
+.mt-xxs {
+  margin-top: 5px;
+}
+@media (min-width: 768px) {
+.mt-xxs {
+    margin-top: 8px
+}
+  }
+.mt-xs {
+  margin-top: 10px;
+}
+@media (min-width: 768px) {
+.mt-xs {
+    margin-top: 15px
+}
+  }
+.mt-s {
+  margin-top: 20px;
+}
+@media (min-width: 768px) {
+.mt-s {
+    margin-top: 35px
+}
+  }
+.mt-m {
+  margin-top: 35px;
+}
+@media (min-width: 768px) {
+.mt-m {
+    margin-top: 60px
+}
+  }
+.mt-l {
+  margin-top: 50px;
+}
+@media (min-width: 768px) {
+.mt-l {
+    margin-top: 80px
+}
+  }
+.mt-xl {
+  margin-top: 70px;
+}
+@media (min-width: 768px) {
+.mt-xl {
+    margin-top: 120px
+}
+  }
+.mt-xxl {
+  margin-top: 100px;
+}
+@media (min-width: 768px) {
+.mt-xxl {
+    margin-top: 160px
+}
+  }
+.mb-xxs {
+  margin-bottom: 5px;
+}
+@media (min-width: 768px) {
+.mb-xxs {
+    margin-bottom: 8px
+}
+  }
+.mb-xs {
+  margin-bottom: 10px;
+}
+@media (min-width: 768px) {
+.mb-xs {
+    margin-bottom: 15px
+}
+  }
+.mb-s {
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+.mb-s {
+    margin-bottom: 35px
+}
+  }
+.mb-m {
+  margin-bottom: 35px;
+}
+@media (min-width: 768px) {
+.mb-m {
+    margin-bottom: 60px
+}
+  }
+.mb-l {
+  margin-bottom: 50px;
+}
+@media (min-width: 768px) {
+.mb-l {
+    margin-bottom: 80px
+}
+  }
+.mb-xl {
+  margin-bottom: 70px;
+}
+@media (min-width: 768px) {
+.mb-xl {
+    margin-bottom: 120px
+}
+  }
+.mb-xxl {
+  margin-bottom: 100px;
+}
+@media (min-width: 768px) {
+.mb-xxl {
+    margin-bottom: 160px
+}
+  }
+/* LAYOUT */
+.flex-col-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 @-webkit-keyframes shake {
   0% {
     transform: translateX(0);
@@ -740,7 +859,7 @@ body.dark-theme .form__text-input:focus, body.dark-theme .form__text-area:focus 
     margin-bottom: 10px;
   }
 .image-upload__label::after {
-    content: "Upload an image";
+    content: attr(data-text-content);
     margin-top: 10px;
     margin-left: -20px;
     padding: 15px 20px;
@@ -1666,14 +1785,5 @@ body.dark-theme .confirm-modal__btn--ghost {
         background: transparent;
         border-color: hsl(180, 30%, 35%);
       }
-  }
-.not-found {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.not-found__text {
-    margin-top: 30px;
-    margin-bottom: 40px;
   }
 
