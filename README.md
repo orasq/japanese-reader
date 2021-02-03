@@ -10,7 +10,7 @@ Small project using React, Apollo, GraphQL and MongoDB.
 
 ---
 
-As a learner of the japanese language, one of my main challenge is to make my way through its daunting writing system made of thousands of characters.
+As a japanese language learner, one of my main challenge is to make my way through its daunting writing system made of thousands of characters.
 The best way to achieve this is rather simple in itself: read, read and read. But not that easy to put into practice.
 
 To make it easier, I'm heavily relying on a great Chrome extension called Rikaikun, allowing me to check instantaneously the reading and meaning of any word I encounter in a text.
