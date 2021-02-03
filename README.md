@@ -1,7 +1,7 @@
 ## Preview
 [Live preview here](https://orasq.github.io/japanese-reader/#/)
 
-This test/demo version isn't linked to my personal DB, so you can freely interact with the app (create, edit, delete, ...).
+<sup>This test/demo version isn't linked to my personal DB, so you can freely interact with the app (create, edit, delete, ...).<sup>
 
 <sup>Note that the Express server is hosted on a free Heroku account. The first loading might take some time. 💤 <sup>
 
