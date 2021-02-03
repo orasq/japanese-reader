@@ -22,6 +22,7 @@ function FileInput(props) {
       <label
         className={`form__label image-upload__label ${props.value ? "image-upload__label-mb" : ""}`}
         htmlFor={props.field}
+        data-text-content="Upload an image"
       >
         {props.label}
       </label>

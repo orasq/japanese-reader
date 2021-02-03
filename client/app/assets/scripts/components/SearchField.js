@@ -17,6 +17,7 @@ function SearchField() {
         className="search__field"
         type="text"
         placeholder="Search..."
+        autoComplete="off"
         value={appState.searchKeyword}
         onChange={e => appDispatch({ type: "UPDATE_SEARCH_KEYWORD", value: e.target.value })}
       />

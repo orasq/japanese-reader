@@ -41,7 +41,7 @@ function App() {
     <ApolloProvider client={client}>
       <StateContext.Provider value={state}>
         <DispatchContext.Provider value={dispatch}>
-          <HashRouter basename="/japanese-reader/">
+          <HashRouter>
             <FloatingMessage />
             <Header />
             <Switch>
