@@ -60,10 +60,17 @@ p {
   margin: 0;
 }
 
+a:focus,
+button:focus,
 input:focus,
-textarea:focus,
-button:focus {
+textarea:focus {
   outline: none;
+}
+
+button {
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 
 ::placeholder {

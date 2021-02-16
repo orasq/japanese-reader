@@ -5,6 +5,7 @@
     justify-content: space-between;
     align-items: center;
     margin: 0 auto;
+    border-radius: $radius_med;
 
     padding: 15px;
     width: 100%;
@@ -20,14 +21,23 @@
   }
 
   &__logo {
+    padding: 10px;
+    border-radius: $radius_small;
     font-size: 2rem;
     color: $color_dark;
-    transition: color $anim_fast ease-out;
+    transition: $anim_fast ease-out;
+    transition-property: color, background;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
+        background: $color_pale;
         color: color($color_med shade(20%));
       }
+    }
+
+    & svg {
+      display: block; /* remove extra space below svg */
     }
   }
 
@@ -42,15 +52,24 @@
   }
 
   &__theme-icon {
+    padding: 6px;
+    border-radius: $radius_small;
     font-size: 1.5rem;
     color: $color_med;
     cursor: pointer;
-    transition: color $anim_fast ease-out;
+    transition: $anim_fast ease-out;
+    transition-property: color, background;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
+        background: $color_pale;
         color: color($color_med shade(20%));
       }
+    }
+
+    & svg {
+      display: block; /* remove extra space below svg */
     }
   }
 }
@@ -63,7 +82,9 @@ body.dark-theme .header {
     color: $dark-color_dark;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
+        background: $dark-color_pale;
         color: $dark-color_med;
       }
     }

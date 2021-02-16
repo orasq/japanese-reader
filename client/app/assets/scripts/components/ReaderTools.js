@@ -99,12 +99,27 @@ function ReaderTools(props) {
 
   return (
     <div ref={toolbox} className={`reader-tools ${toolsOpened ? "reader-tools--open" : ""}`}>
+      {/* settings icons */}
+      {toolsOpened ? (
+        <button onClick={ToggleTools} className="reader-tools__cog">
+          <FaTimes />
+        </button>
+      ) : (
+        <button onClick={ToggleTools} className="reader-tools__cog">
+          <FaCog />
+        </button>
+      )}
       {/* group of icons */}
       <CSSTransition classNames="reader-tools__wrap" in={toolsOpened} timeout={500} unmountOnExit>
         <div className="reader-tools__wrap">
           <div className="reader-tools__icon-group">
-            <Link to={`/book/${props.bookId}/edit`} data-tip="Edit this book" data-for="edit">
-              <RiEdit2Fill className="reader-tools__icons" />
+            <Link
+              to={`/book/${props.bookId}/edit`}
+              data-tip="Edit this book"
+              data-for="edit"
+              className="reader-tools__icons reader-tools__icons--inactive"
+            >
+              <RiEdit2Fill />
             </Link>
             <ReactTooltip
               id="edit"
@@ -116,14 +131,16 @@ function ReaderTools(props) {
             />
           </div>
           <div className="reader-tools__icon-group">
-            <FaBookmark
+            <button
               onClick={() => appDispatch({ type: "TOGGLE_BOOKMARK_VISIBILITY" })}
               className={`reader-tools__icons ${
                 !appState.bookmarkVisible ? "reader-tools__icons--inactive" : ""
               }`}
               data-tip={appState.bookmarkVisible ? "Hide bookmarks" : "Display bookmarks"}
               data-for="bookmark"
-            />
+            >
+              <FaBookmark />
+            </button>
             <ReactTooltip
               id="bookmark"
               effect="solid"
@@ -134,14 +151,16 @@ function ReaderTools(props) {
             />
           </div>
           <div className="reader-tools__icon-group">
-            <FaCheckCircle
+            <button
               onClick={() => setFinishRequest(finishRequest + 1)}
               className={`reader-tools__icons ${
                 !isFinished ? "reader-tools__icons--inactive" : ""
               }`}
               data-tip={isFinished ? "Mark as unread" : "Mark as read"}
               data-for="finished"
-            />
+            >
+              <FaCheckCircle />
+            </button>
             <ReactTooltip
               id="finished"
               effect="solid"
@@ -152,14 +171,16 @@ function ReaderTools(props) {
             />
           </div>
           <div className="reader-tools__icon-group">
-            <FaFont
+            <button
               onClick={props.toggleFont}
               className={`reader-tools__icons ${
                 appState.fontSize !== "big" ? "reader-tools__icons--inactive" : ""
               }`}
               data-tip={appState.fontSize === "big" ? "Decrease font size" : "Increase font size"}
               data-for="font"
-            />
+            >
+              <FaFont />
+            </button>
             <ReactTooltip
               id="font"
               effect="solid"
@@ -171,12 +192,6 @@ function ReaderTools(props) {
           </div>
         </div>
       </CSSTransition>
-      {/* settings icons */}
-      {toolsOpened ? (
-        <FaTimes onClick={ToggleTools} className="reader-tools__cog" />
-      ) : (
-        <FaCog onClick={ToggleTools} className="reader-tools__cog" />
-      )}
     </div>
   );
 }

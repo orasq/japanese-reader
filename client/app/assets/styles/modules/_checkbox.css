@@ -55,6 +55,10 @@ input[type="checkbox"]:checked + label::after {
   background: #fff;
 }
 
+input[type="checkbox"]:focus + label::before {
+  box-shadow: 0 0 0 5px $color_pale;
+}
+
 /* DARK THEME */
 
 body.dark-theme {
@@ -80,5 +84,9 @@ body.dark-theme {
 
   input[type="checkbox"]:checked + label::after {
     background: $dark-color_light;
+  }
+
+  input[type="checkbox"]:focus + label::before {
+    box-shadow: 0 0 0 5px $dark-color_pale;
   }
 }

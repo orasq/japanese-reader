@@ -10,12 +10,14 @@ $color_bg: hsl($color_hue, $color_saturation, 98%);
 $color_dark: hsl($color_hue, $color_saturation, 25%);
 $color_med: hsl($color_hue, $color_saturation, 50%);
 $color_light: hsl($color_hue, $color_saturation, 80%);
+$color_pale: hsl($color_hue, $color_saturation, 90%);
 
 /* dark theme */
 $dark-color_bg: hsl($color_hue, $color_saturation, 8%);
 $dark-color_dark: hsl($color_hue, $color_saturation, 18%);
 $dark-color_med: hsl($color_hue, $color_saturation, 35%);
 $dark-color_light: hsl($color_hue, $color_saturation, 80%);
+$dark-color_pale: hsl($color_hue, $color_saturation, 12%);
 
 /* SIZES */
 $wrapper_width: 1200px;

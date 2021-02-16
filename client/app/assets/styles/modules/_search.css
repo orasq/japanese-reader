@@ -42,10 +42,10 @@
 
     font-size: 1rem;
     color: $color_dark;
-    transition: border-color $anim_fast ease-out;
+    transition: border $anim_fast ease-out;
 
     &:focus {
-      border-color: $color_med;
+      border: 1px dashed $color_med;
     }
   }
 

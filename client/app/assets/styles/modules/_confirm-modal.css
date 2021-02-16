@@ -35,7 +35,8 @@
     cursor: pointer;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
         background: color($color_error shade(20%));
       }
     }
@@ -48,7 +49,8 @@
     transition: border-color $anim_fast ease-out;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
         border-color: $color_med;
         background: transparent;
       }

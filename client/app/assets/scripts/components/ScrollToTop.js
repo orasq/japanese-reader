@@ -25,12 +25,12 @@ function ScrollToTop() {
 
   return (
     <>
-      <div
+      <button
         className={`scroll-to-top ${iconVisible ? "scroll-to-top--visible" : ""}`}
         onClick={() => window.scrollTo(0, 0)}
       >
         <BiArrowToTop />
-      </div>
+      </button>
     </>
   );
 }

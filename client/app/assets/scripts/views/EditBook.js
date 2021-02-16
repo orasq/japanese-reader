@@ -249,6 +249,9 @@ function CreateBook(props) {
             </button>
             {/* Delete + modal group */}
             <div className="button__delete-group">
+              <button onClick={handleShowModalDisplay} className="button button--delete">
+                <FaTrash className="button__icon" /> Delete this book
+              </button>
               <CSSTransition
                 classNames="confirm-modal"
                 in={showDeleteModal}
@@ -260,10 +263,6 @@ function CreateBook(props) {
                   handleHideModalDisplay={handleHideModalDisplay}
                 />
               </CSSTransition>
-
-              <button onClick={handleShowModalDisplay} className="button button--delete">
-                <FaTrash className="button__icon" /> Delete this book
-              </button>
             </div>
           </div>
         </>

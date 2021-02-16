@@ -85,7 +85,8 @@
     z-index: 2;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: color($color_error shade(20%));
       }
     }
@@ -96,7 +97,8 @@
   }
 
   @mixin hover {
-    &__cover-delete:hover svg {
+    &__cover-delete:hover svg,
+    &__cover-delete:focus svg {
       animation: shake $anim_med ease-out;
     }
   }

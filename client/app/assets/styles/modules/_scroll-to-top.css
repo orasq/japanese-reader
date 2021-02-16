@@ -44,7 +44,8 @@ body.dark-theme .scroll-to-top {
   background: $dark-color_bg;
 
   @mixin hover {
-    &:hover {
+    &:hover,
+    &:focus {
       color: $dark-color_med;
     }
   }

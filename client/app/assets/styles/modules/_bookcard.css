@@ -7,7 +7,8 @@
   will-change: transform;
 
   @mixin hover {
-    &:hover {
+    &:hover,
+    &:focus {
       background: $color_light;
       transform: translateY(-3px);
     }
@@ -80,7 +81,8 @@
   }
 
   @mixin hover {
-    &:hover &__finished-icon-wrap {
+    &:hover &__finished-icon-wrap,
+    &:focus &__finished-icon-wrap {
       background: $color_light;
     }
   }
@@ -96,7 +98,8 @@
 
 body.dark-theme .bookcard {
   @mixin hover {
-    &:hover {
+    &:hover,
+    &:focus {
       background: $dark-color_dark;
     }
   }
@@ -114,7 +117,8 @@ body.dark-theme .bookcard {
   }
 
   @mixin hover {
-    &:hover .bookcard__finished-icon-wrap {
+    &:hover .bookcard__finished-icon-wrap,
+    &:focus .bookcard__finished-icon-wrap {
       background: $dark-color_dark;
     }
   }

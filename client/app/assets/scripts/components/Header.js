@@ -33,12 +33,14 @@ function Header() {
           <FaGlasses />
         </Link>
         <div className="header__tools">
-          <Link to="/create-book">
+          <Link to="/create-book" tabIndex="-1">
             <button className="button">
               <FaPlusCircle className="button__icon" /> Add a Book
             </button>
           </Link>
-          <FaAdjust onClick={ToggleTheme} className="header__theme-icon" />
+          <button onClick={ToggleTheme} className="header__theme-icon">
+            <FaAdjust />
+          </button>
         </div>
       </div>
     </header>

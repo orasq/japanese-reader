@@ -9,34 +9,42 @@
   }
 
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse; /* to reconcile design choices and tab-navigation  */
   align-items: center;
-  padding: 15px;
+  /*padding: 15px;*/
   border-radius: $radius_round;
   border: 2px solid $color_light;
   background: $color_bg;
 
   font-size: 1.3rem;
-  color: $color_med;
 
   z-index: 99;
 
   &__cog {
+    padding: 15px;
+    border-radius: 50%;
     color: $color_med;
     cursor: pointer;
-    transition: color $anim_fast ease-out;
+    transition: $anim_fast ease-out;
+    transition-property: color, background;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
+        background: $color_pale;
         color: color($color_med shade(20%));
       }
+    }
+
+    & svg {
+      display: block; /* remove extra space below svg */
     }
   }
 
   &__wrap {
     display: flex;
     flex-direction: column;
-    margin-bottom: 25px;
+    padding: 15px;
     overflow: hidden;
 
     & > * + * {
@@ -45,11 +53,13 @@
   }
 
   &__icons {
+    color: $color_med;
     cursor: pointer;
     transition: color $anim_fast ease-out;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
         color: color($color_med shade(20%));
       }
     }
@@ -61,6 +71,12 @@
 
   &--open &__cog {
     color: $color_light;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: $color_med;
+    }
   }
 }
 
@@ -68,25 +84,25 @@
 
 .reader-tools__wrap {
   &-enter {
-    margin-bottom: 0;
+    padding: 0;
     max-height: 0px;
   }
 
   &-enter-active {
-    margin-bottom: 25px;
+    padding: 15px;
     max-height: 300px;
     transition: $anim_fast ease-out;
     transition-property: max-height margin-bottom;
   }
 
   &-exit {
-    margin-bottom: 25px;
+    padding: 15px;
     max-height: 300px;
     transform: translateY(0);
   }
 
   &-exit-active {
-    margin-bottom: 0;
+    padding: 0;
     max-height: 0px;
     transition: $anim_fast ease-out;
     transition-property: max-height margin-bottom;
@@ -137,15 +153,19 @@ body.dark-theme .reader-tools {
     transition: color $anim_fast ease-out;
 
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
+        background: $dark-color_pale;
         color: color($dark-color_med tint(20%));
       }
     }
   }
 
   &__icons {
+    color: $dark-color_med;
     @mixin hover {
-      &:hover {
+      &:hover,
+      &:focus {
         color: color($dark-color_med tint(20%));
       }
     }
@@ -157,5 +177,11 @@ body.dark-theme .reader-tools {
 
   &--open .reader-tools__cog {
     color: $dark-color_dark;
+
+    &:hover,
+    &:focus {
+      background: transparent;
+      color: $dark-color_med;
+    }
   }
 }
