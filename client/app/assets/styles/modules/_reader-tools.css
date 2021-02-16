@@ -44,24 +44,33 @@
   &__wrap {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    overflow: hidden;
+    padding: 15px 0 5px 0;
+    /*overflow: hidden;*/
 
     & > * + * {
-      margin-top: 20px;
+      margin-top: 5px;
     }
   }
 
   &__icons {
+    display: block;
+    padding: 6px;
+    border-radius: $radius_small;
     color: $color_med;
     cursor: pointer;
     transition: color $anim_fast ease-out;
 
     @mixin hover {
-      &:hover,
-      &:focus {
+      &:hover {
         color: color($color_med shade(20%));
       }
+      &:focus {
+        background: color($color_pale tint(30%));
+      }
+    }
+
+    & svg {
+      display: block; /* remove extra space below svg */
     }
 
     &--inactive {
@@ -89,14 +98,14 @@
   }
 
   &-enter-active {
-    padding: 15px;
+    padding: 15px 0 5px 0;
     max-height: 300px;
     transition: $anim_fast ease-out;
     transition-property: max-height margin-bottom;
   }
 
   &-exit {
-    padding: 15px;
+    padding: 15px 0 5px 0;
     max-height: 300px;
     transform: translateY(0);
   }
@@ -164,9 +173,11 @@ body.dark-theme .reader-tools {
   &__icons {
     color: $dark-color_med;
     @mixin hover {
-      &:hover,
-      &:focus {
+      &:hover {
         color: color($dark-color_med tint(20%));
+      }
+      &:focus {
+        background: $dark-color_pale;
       }
     }
 

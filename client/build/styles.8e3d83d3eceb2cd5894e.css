@@ -1529,23 +1529,31 @@ body.dark-theme .reader__title {
 .reader-tools__wrap {
     display: flex;
     flex-direction: column;
-    padding: 15px;
-    overflow: hidden;
+    padding: 15px 0 5px 0;
   }
+/*overflow: hidden;*/
 .reader-tools__wrap > * + * {
-      margin-top: 20px;
+      margin-top: 5px;
     }
 .reader-tools__icons {
+    display: block;
+    padding: 6px;
+    border-radius: 5px;
     color: hsl(180, 30%, 50%);
     cursor: pointer;
     transition: color 0.2s ease-out;
   }
 @media (hover: hover) and (pointer: fine) {
-      .reader-tools__icons:hover,
-      .reader-tools__icons:focus {
+      .reader-tools__icons:hover {
         color: rgb(71, 133, 133);
       }
+      .reader-tools__icons:focus {
+        background: rgb(232, 242, 242);
+      }
   }
+.reader-tools__icons svg {
+      display: block; /* remove extra space below svg */
+    }
 .reader-tools__icons--inactive {
       color: hsl(180, 30%, 80%);
     }
@@ -1563,13 +1571,13 @@ body.dark-theme .reader__title {
     max-height: 0px;
   }
 .reader-tools__wrap-enter-active {
-    padding: 15px;
+    padding: 15px 0 5px 0;
     max-height: 300px;
     transition: 0.2s ease-out;
     transition-property: max-height margin-bottom;
   }
 .reader-tools__wrap-exit {
-    padding: 15px;
+    padding: 15px 0 5px 0;
     max-height: 300px;
     transform: translateY(0);
   }
@@ -1628,9 +1636,11 @@ body.dark-theme .reader-tools__icons {
     color: hsl(180, 30%, 35%);
   }
 @media (hover: hover) and (pointer: fine) {
-      body.dark-theme .reader-tools__icons:hover,
-      body.dark-theme .reader-tools__icons:focus {
+      body.dark-theme .reader-tools__icons:hover {
         color: rgb(101, 144, 144);
+      }
+      body.dark-theme .reader-tools__icons:focus {
+        background: hsl(180, 30%, 12%);
       }
   }
 body.dark-theme .reader-tools__icons--inactive {

@@ -82,15 +82,14 @@ function CreateBook(props) {
           80,
           0,
           uri => {
-            console.log(uri);
             dispatch({ type: "COVER_CHANGE", value: uri });
           },
           "base64",
           140,
           300
         );
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        console.log(error);
       }
     }
   }
