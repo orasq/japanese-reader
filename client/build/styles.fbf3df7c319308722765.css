@@ -665,7 +665,7 @@ body.dark-theme ::-ms-input-placeholder {
   }
 .header__logo {
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 15px;
     font-size: 2rem;
     color: hsl(180, 30%, 25%);
     transition: 0.2s ease-out;

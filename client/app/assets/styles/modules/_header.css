@@ -22,7 +22,7 @@
 
   &__logo {
     padding: 10px;
-    border-radius: $radius_small;
+    border-radius: $radius_med;
     font-size: 2rem;
     color: $color_dark;
     transition: $anim_fast ease-out;
