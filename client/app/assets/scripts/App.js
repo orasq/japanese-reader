@@ -28,6 +28,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import FloatingMessage from "./components/FloatingMessage";
 import NotFound from "./components/NotFound";
+import Disclaimer from "./components/Disclaimer";
 
 // app context, state & reducer import
 import StateContext from "./contexts/StateContext";
@@ -42,6 +43,7 @@ function App() {
       <StateContext.Provider value={state}>
         <DispatchContext.Provider value={dispatch}>
           <HashRouter>
+            <Disclaimer />
             <FloatingMessage />
             <Header />
             <Switch>
