@@ -117,7 +117,7 @@ function ReaderTools(props) {
               to={`/book/${props.bookId}/edit`}
               data-tip="Edit this book"
               data-for="edit"
-              className="reader-tools__icons reader-tools__icons--inactive"
+              className="reader-tools__icons"
             >
               <RiEdit2Fill />
             </Link>

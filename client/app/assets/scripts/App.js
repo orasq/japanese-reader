@@ -43,7 +43,6 @@ function App() {
       <StateContext.Provider value={state}>
         <DispatchContext.Provider value={dispatch}>
           <HashRouter>
-            <Disclaimer />
             <FloatingMessage />
             <Header />
             <Switch>
@@ -60,6 +59,7 @@ function App() {
                 <NotFound />
               </Route>
             </Switch>
+            <Disclaimer />
             <Footer />
           </HashRouter>
         </DispatchContext.Provider>

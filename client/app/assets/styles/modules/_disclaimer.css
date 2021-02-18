@@ -2,12 +2,12 @@
   position: fixed;
   bottom: 20px;
   left: 20px;
-  max-width: 320px;
   margin-right: 20px;
   padding: 20px;
   border-radius: $radius_med;
   background: #fff;
   box-shadow: 0px 6px 25px 0px $color_light;
+  color: $color_dark;
   font-size: 0.9rem;
   line-height: 1.5;
   z-index: 100;
@@ -17,6 +17,10 @@
   visibility: hidden;
   opacity: 0;
   transform: translateY(20%);
+
+  @mixin s_screen {
+    max-width: 320px;
+  }
 
   &__txt {
     margin-bottom: 20px;
@@ -34,4 +38,12 @@
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* DARK-THEME */
+
+body.dark-theme .disclaimer {
+  background: $dark-color_light;
+  box-shadow: 0px 6px 25px 0px $dark-color_pale;
+  color: $dark-color_dark;
 }

@@ -83,10 +83,8 @@
 
     @mixin xs_screen {
       justify-content: center;
-    }
 
-    & > * + * {
-      @mixin xs_screen {
+      & > * + * {
         margin-left: 20px;
       }
     }
