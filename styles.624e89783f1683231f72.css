@@ -1366,12 +1366,10 @@ body.dark-theme .empty-booklist__icon {
   .search__filter-wrap {
       justify-content: center
   }
-  }
-@media (min-width: 321px) {
 
-    .search__filter-wrap > * + * {
-        margin-left: 20px
-    }
+      .search__filter-wrap > * + * {
+        margin-left: 20px;
+      }
   }
 .search__checkbox-group {
     margin-top: 20px;
@@ -1448,7 +1446,9 @@ body.dark-theme .tooltip {
     font-weight: 300;
     line-height: 1.8;
     word-break: break-all;
+    white-space: pre-wrap;
   }
+/* enable line break */
 @media (min-width: 992px) {
 
   .reader__content {
@@ -1867,12 +1867,12 @@ body.dark-theme .confirm-modal__btn--ghost {
   position: fixed;
   bottom: 20px;
   left: 20px;
-  max-width: 320px;
   margin-right: 20px;
   padding: 20px;
   border-radius: 15px;
   background: #fff;
   box-shadow: 0px 6px 25px 0px hsl(180, 30%, 80%);
+  color: hsl(180, 30%, 25%);
   font-size: 0.9rem;
   line-height: 1.5;
   z-index: 100;
@@ -1886,6 +1886,11 @@ body.dark-theme .confirm-modal__btn--ghost {
   opacity: 0;
   transform: translateY(20%);
 }
+@media (min-width: 576px) {
+.disclaimer {
+    max-width: 320px
+}
+  }
 .disclaimer__txt {
     margin-bottom: 20px;
   }
@@ -1912,5 +1917,11 @@ body.dark-theme .confirm-modal__btn--ghost {
     opacity: 1;
     transform: translateY(0);
   }
+}
+/* DARK-THEME */
+body.dark-theme .disclaimer {
+  background: hsl(180, 30%, 80%);
+  box-shadow: 0px 6px 25px 0px hsl(180, 30%, 12%);
+  color: hsl(180, 30%, 18%);
 }
 
