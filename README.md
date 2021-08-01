@@ -1,5 +1,5 @@
 ## Preview
-[Live preview here](https://orasq.github.io/japanese-reader/#/)
+~~Live preview here~~
 
 <sup>This test/demo version isn't linked to my personal DB, so you can freely interact with the app (create, edit, delete, ...).<sup>
 
