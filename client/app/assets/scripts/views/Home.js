@@ -18,6 +18,7 @@ function Home() {
   const appState = useContext(StateContext);
   // queries
   const { loading, error, data } = useQuery(getAllBooksQuery);
+  console.log(error);
 
   // alphabetical sorting function
   // second argument in localCompare() allows to specify the target language
