@@ -35,9 +35,9 @@ const FormValidationReducer = (draft, action) => {
       draft.text.errorMessage = "";
       draft.text.value = action.value;
       // 10 000 characters limit
-      if (action.value.trim().length > 10000) {
+      if (action.value.trim().length > 10000000) {
         draft.text.hasErrors = true;
-        draft.text.errorMessage = "Your text cannot exceed 10 000 characters";
+        draft.text.errorMessage = "Your text cannot exceed 10 000 000 characters";
       } else {
         draft.text.hasErrors = false;
         draft.text.errorMessage = "";
